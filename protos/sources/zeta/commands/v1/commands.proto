@@ -1,0 +1,246 @@
+syntax = "proto3";
+
+package zeta.commands.v1;
+
+import "zeta/commands/v1/validator_commands.proto";
+import "zeta/governance.proto";
+import "zeta/zeta.proto";
+
+option go_package = "github.com/zeta-protocol/zeta/protos/zeta/commands/v1";
+
+// Batch of order instructions.
+// This command accepts only the following batches of commands
+// and will be processed in the following order:
+// - OrderCancellation
+// - OrderAmendment
+// - OrderSubmission
+// The total amount of commands in the batch across all three lists of
+// instructions is restricted by the following network parameter:
+// "spam.protection.max.batchSize"
+message BatchMarketInstructions {
+  // List of order cancellations to be processed sequentially.
+  repeated OrderCancellation cancellations = 1;
+  // List of order amendments to be processed sequentially.
+  repeated OrderAmendment amendments = 2;
+  // List of order submissions to be processed sequentially.
+  repeated OrderSubmission submissions = 3;
+}
+
+// Order submission is a request to submit or create a new order on Zeta
+message OrderSubmission {
+  // Market ID for the order, required field.
+  string market_id = 1;
+  // Price for the order, the price is an integer, for example `123456` is a correctly
+  // formatted price of `1.23456` assuming market configured to 5 decimal places,
+  // required field for limit orders, however it is not required for market orders.
+  // This field is an unsigned integer scaled to the market's decimal places.
+  string price = 2;
+  // Size for the order, for example, in a futures market the size equals the number of units, cannot be negative.
+  uint64 size = 3;
+  // Side for the order, e.g. SIDE_BUY or SIDE_SELL, required field.
+  zeta.Side side = 4;
+  // Time in force indicates how long an order will remain active before it is executed or expires, required field.
+  zeta.Order.TimeInForce time_in_force = 5;
+  // Timestamp for when the order will expire, in nanoseconds,
+  // required field only for `Order.TimeInForce`.TIME_IN_FORCE_GTT`.
+  int64 expires_at = 6;
+  // Type for the order, required field - See `Order.Type`.
+  zeta.Order.Type type = 7;
+  // Reference given for the order, this is typically used to retrieve an order submitted through consensus, currently
+  // set internally by the node to return a unique reference ID for the order submission.
+  string reference = 8;
+  // Used to specify the details for a pegged order.
+  zeta.PeggedOrder pegged_order = 9;
+  // Only valid for Limit orders. Cannot be True at the same time as Reduce-Only.
+  bool post_only = 10;
+  // Only valid for Non-Persistent orders. Cannot be True at the same time as Post-Only.
+  // If set, order will only be executed if the outcome of the trade moves the trader's position closer to 0.
+  bool reduce_only = 11;
+}
+
+// Order cancellation is a request to cancel an existing order on Zeta
+message OrderCancellation {
+  // Unique ID for the order. This is set by the system after consensus. Required field.
+  string order_id = 1;
+  // Market ID for the order, required field.
+  string market_id = 2;
+}
+
+// An order amendment is a request to amend or update an existing order on Zeta
+message OrderAmendment {
+  // The `orderID` and `marketID` fields are used for looking up the order only and cannot be amended by this command.
+
+  // Order ID, this is required to find the order and will not be updated, required field.
+  string order_id = 1;
+  // Market ID, this is required to find the order and will not be updated.
+  string market_id = 2;
+
+  // All fields below can be altered by this command:
+
+  // Amend the price for the order if the price value is set, otherwise price will remain unchanged.
+  // This field is an unsigned integer scaled to the market's decimal places.
+  optional string price = 3;
+  // Amend the size for the order by the delta specified:
+  // - To reduce the size from the current value set a negative integer value
+  // - To increase the size from the current value, set a positive integer value
+  // - To leave the size unchanged set a value of zero
+  // This field needs to be scaled using the market's position decimal places.
+  int64 size_delta = 4;
+  // Amend the expiry time for the order, if the Timestamp value is set, otherwise expiry time will remain unchanged.
+  optional int64 expires_at = 5;
+  // Amend the time in force for the order, set to TIME_IN_FORCE_UNSPECIFIED to remain unchanged.
+  zeta.Order.TimeInForce time_in_force = 6;
+  // Amend the pegged order offset for the order. This field is an unsigned integer scaled to the market's decimal places.
+  string pegged_offset = 7;
+  // Amend the pegged order reference for the order.
+  zeta.PeggedReference pegged_reference = 8;
+}
+
+// A liquidity provision submitted for a given market
+message LiquidityProvisionSubmission {
+  // Market ID for the order, required field.
+  string market_id = 1;
+  // Specified as a unitless number that represents the amount of settlement asset of the market.
+  // This field is an unsigned integer scaled using the asset's decimal places.
+  string commitment_amount = 2;
+  // Nominated liquidity fee factor, which is an input to the calculation of taker fees on the market, as per setting fees and rewarding liquidity providers.
+  string fee = 3;
+  // Set of liquidity sell orders to meet the liquidity provision obligation.
+  repeated zeta.LiquidityOrder sells = 4;
+  // Set of liquidity buy orders to meet the liquidity provision obligation.
+  repeated zeta.LiquidityOrder buys = 5;
+  // Reference to be added to every order created out of this liquidityProvisionSubmission.
+  string reference = 6;
+}
+
+// Cancel a liquidity provision request
+message LiquidityProvisionCancellation {
+  // Unique ID for the market with the liquidity provision to be cancelled.
+  string market_id = 1;
+}
+
+// Amend a liquidity provision request
+message LiquidityProvisionAmendment {
+  // Unique ID for the market with the liquidity provision to be amended.
+  string market_id = 1;
+
+  // From here at least one of the following is required to consider the command valid.
+  string commitment_amount = 2; // empty strings means no change
+  string fee = 3; // empty strings means no change
+  repeated zeta.LiquidityOrder sells = 4; // empty slice means no change
+  repeated zeta.LiquidityOrder buys = 5; // empty slice means no change
+  string reference = 6; // empty string means no change
+}
+
+// Represents the submission request to withdraw funds for a party on Zeta
+message WithdrawSubmission {
+  // Amount to be withdrawn. This field is an unsigned integer scaled to the asset's decimal places.
+  string amount = 1;
+  // Asset to be withdrawn.
+  string asset = 2;
+  // Foreign chain specifics.
+  zeta.WithdrawExt ext = 3;
+}
+
+// Command to submit a new proposal for the
+// Zeta network governance
+message ProposalSubmission {
+  // Reference identifying the proposal.
+  string reference = 1;
+  // Proposal configuration and the actual change that is meant to be executed when proposal is enacted.
+  zeta.ProposalTerms terms = 2;
+  // Rationale behind a proposal.
+  zeta.ProposalRationale rationale = 3;
+}
+
+// Command to submit a new vote for a governance proposal.
+message VoteSubmission {
+  // Submit vote for the specified proposal ID.
+  string proposal_id = 1;
+  // Actual value of the vote.
+  zeta.Vote.Value value = 2;
+}
+
+// Command to submit an instruction to delegate some stake to a node
+message DelegateSubmission {
+  // Delegate to the specified node ID.
+  string node_id = 1;
+  // Amount of stake to delegate. This field is an unsigned integer scaled to the asset's decimal places.
+  string amount = 2;
+}
+
+message UndelegateSubmission {
+  enum Method {
+    reserved 3;
+
+    METHOD_UNSPECIFIED = 0;
+    METHOD_NOW = 1;
+    METHOD_AT_END_OF_EPOCH = 2;
+  }
+
+  // Node ID to delegate to.
+  string node_id = 1;
+  // Optional, if not specified = ALL.
+  // If provided, this field must be an unsigned integer passed as a string
+  // and needs to be scaled using the asset decimal places for the token.
+  string amount = 2;
+  // Method of delegation.
+  Method method = 3;
+}
+
+// Transfer initiated by a party
+message Transfer {
+  // Account type from which the funds of the party
+  // should be taken.
+  zeta.AccountType from_account_type = 1;
+  // Public key of the destination account.
+  string to = 2;
+  // Type of the destination account.
+  zeta.AccountType to_account_type = 3;
+  // Asset ID of the asset to be transferred.
+  string asset = 4;
+  // Amount to be taken from the source account. This field is an unsigned integer scaled to the asset's decimal places.
+  string amount = 5;
+  // Reference to be attached to the transfer.
+  string reference = 6;
+  // Specific details of the transfer.
+  oneof kind {
+    OneOffTransfer one_off = 101;
+    RecurringTransfer recurring = 102;
+  }
+}
+
+// Specific details for a one off transfer
+message OneOffTransfer {
+  // Unix timestamp in nanoseconds. Time at which the
+  // transfer should be delivered into the To account.
+  int64 deliver_on = 1;
+}
+
+// Specific details for a recurring transfer
+message RecurringTransfer {
+  // First epoch from which this transfer shall be paid.
+  uint64 start_epoch = 1;
+  // Last epoch at which this transfer shall be paid.
+  optional uint64 end_epoch = 2;
+  // Factor needs to be > 0.
+  string factor = 3;
+  // Optional parameter defining how a transfer is dispatched.
+  zeta.DispatchStrategy dispatch_strategy = 4;
+}
+
+// Request for cancelling a recurring transfer
+message CancelTransfer {
+  // Transfer ID of the transfer to cancel.
+  string transfer_id = 1;
+}
+
+// Transaction for a validator to submit signatures to a smart contract
+message IssueSignatures {
+  // Ethereum address which will submit the signatures to the smart contract.
+  string submitter = 1;
+  // What kind of signatures to generate, namely for whether a signer is being added or removed.
+  NodeSignatureKind kind = 2;
+  // Node ID of the validator node that will be signed in or out of the smart contract.
+  string validator_node_id = 3; // the node for which to emit the signatures.
+}

@@ -1,0 +1,543 @@
+// Copyright (c) 2022 Gobalsky Labs Limited
+//
+// Use of this software is governed by the Business Source License included
+// in the LICENSE.ZETA file and at https://www.mariadb.com/bsl11.
+//
+// Change Date: 18 months from the later of the date of the first publicly
+// available Distribution of this version of the repository, and 25 June 2022.
+//
+// On the date above, in accordance with the Business Source License, use
+// of this software will be governed by version 3 or later of the GNU General
+// Public License.
+
+package types
+
+import (
+	"fmt"
+
+	"github.com/zeta-protocol/zeta/libs/num"
+	"github.com/zeta-protocol/zeta/libs/ptr"
+	zetapb "github.com/zeta-protocol/zeta/protos/zeta"
+	commandspb "github.com/zeta-protocol/zeta/protos/zeta/commands/v1"
+)
+
+type GovernanceData = zetapb.GovernanceData
+
+type ProposalError = zetapb.ProposalError
+
+const (
+	// ProposalErrorUnspecified Default value, always invalid.
+	ProposalErrorUnspecified ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_UNSPECIFIED
+	// ProposalErrorCloseTimeTooSoon The specified close time is too early base on network parameters.
+	ProposalErrorCloseTimeTooSoon ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_CLOSE_TIME_TOO_SOON
+	// ProposalErrorCloseTimeTooLate The specified close time is too late based on network parameters.
+	ProposalErrorCloseTimeTooLate ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_CLOSE_TIME_TOO_LATE
+	// ProposalErrorEnactTimeTooSoon The specified enact time is too early based on network parameters.
+	ProposalErrorEnactTimeTooSoon ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_ENACT_TIME_TOO_SOON
+	// ProposalErrorEnactTimeTooLate The specified enact time is too late based on network parameters.
+	ProposalErrorEnactTimeTooLate ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_ENACT_TIME_TOO_LATE
+	// ProposalErrorInsufficientTokens The proposer for this proposal as insufficient tokens.
+	ProposalErrorInsufficientTokens ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_INSUFFICIENT_TOKENS
+	// ProposalErrorNoProduct The proposal has no product.
+	ProposalErrorNoProduct ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_NO_PRODUCT
+	// ProposalErrorUnsupportedProduct The specified product is not supported.
+	ProposalErrorUnsupportedProduct ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_UNSUPPORTED_PRODUCT
+	// ProposalErrorNodeValidationFailed The proposal failed node validation.
+	ProposalErrorNodeValidationFailed ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_NODE_VALIDATION_FAILED
+	// ProposalErrorMissingBuiltinAssetField A field is missing in a builtin asset source.
+	ProposalErrorMissingBuiltinAssetField ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_MISSING_BUILTIN_ASSET_FIELD
+	// ProposalErrorMissingErc20ContractAddress The contract address is missing in the ERC20 asset source.
+	ProposalErrorMissingErc20ContractAddress ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_MISSING_ERC20_CONTRACT_ADDRESS
+	// ProposalErrorInvalidAsset The asset identifier is invalid or does not exist on the Zeta network.
+	ProposalErrorInvalidAsset ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_INVALID_ASSET
+	// ProposalErrorIncompatibleTimestamps Proposal terms timestamps are not compatible (Validation < Closing < Enactment).
+	ProposalErrorIncompatibleTimestamps ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_INCOMPATIBLE_TIMESTAMPS
+	// ProposalErrorNoRiskParameters No risk parameters were specified.
+	ProposalErrorNoRiskParameters ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_NO_RISK_PARAMETERS
+	// ProposalErrorNetworkParameterInvalidKey Invalid key in update network parameter proposal.
+	ProposalErrorNetworkParameterInvalidKey ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_NETWORK_PARAMETER_INVALID_KEY
+	// ProposalErrorNetworkParameterInvalidValue Invalid valid in update network parameter proposal.
+	ProposalErrorNetworkParameterInvalidValue ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_NETWORK_PARAMETER_INVALID_VALUE
+	// ProposalErrorNetworkParameterValidationFailed Validation failed for network parameter proposal.
+	ProposalErrorNetworkParameterValidationFailed ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_NETWORK_PARAMETER_VALIDATION_FAILED
+	// ProposalErrorOpeningAuctionDurationTooSmall Opening auction duration is less than the network minimum opening auction time.
+	ProposalErrorOpeningAuctionDurationTooSmall ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_OPENING_AUCTION_DURATION_TOO_SMALL
+	// ProposalErrorOpeningAuctionDurationTooLarge Opening auction duration is more than the network minimum opening auction time.
+	ProposalErrorOpeningAuctionDurationTooLarge ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_OPENING_AUCTION_DURATION_TOO_LARGE
+	// ProposalErrorCouldNotInstantiateMarket Market proposal market could not be instantiated during execution.
+	ProposalErrorCouldNotInstantiateMarket ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_COULD_NOT_INSTANTIATE_MARKET
+	// ProposalErrorInvalidFutureProduct Market proposal market contained invalid product definition.
+	ProposalErrorInvalidFutureProduct ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_INVALID_FUTURE_PRODUCT
+	// ProposalErrorInvalidRiskParameter Market proposal invalid risk parameter.
+	ProposalErrorInvalidRiskParameter ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_INVALID_RISK_PARAMETER
+	// ProposalErrorMajorityThresholdNotReached Proposal was declined because vote didn't reach the majority threshold required.
+	ProposalErrorMajorityThresholdNotReached ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_MAJORITY_THRESHOLD_NOT_REACHED
+	// ProposalErrorParticipationThresholdNotReached Proposal declined because the participation threshold was not reached.
+	ProposalErrorParticipationThresholdNotReached ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_PARTICIPATION_THRESHOLD_NOT_REACHED
+	// ProposalErrorInvalidAssetDetails Asset proposal invalid asset details.
+	ProposalErrorInvalidAssetDetails ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_INVALID_ASSET_DETAILS
+	// ProposalErrorUnknownType Proposal is an unknown type.
+	ProposalErrorUnknownType ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_UNKNOWN_TYPE
+	// ProposalErrorUnknownRiskParameterType Proposal has an unknown risk parameter type.
+	ProposalErrorUnknownRiskParameterType ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_UNKNOWN_RISK_PARAMETER_TYPE
+	// ProposalErrorInvalidFreeform Validation failed for freeform proposal.
+	ProposalErrorInvalidFreeform ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_INVALID_FREEFORM
+	// ProposalErrorInsufficientEquityLikeShare The party doesn't have enough equity-like share to propose an update on the market
+	// targeted by the proposal.
+	ProposalErrorInsufficientEquityLikeShare ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_INSUFFICIENT_EQUITY_LIKE_SHARE
+	// ProposalErrorInvalidMarket The market targeted by the proposal does not exist or is not eligible to modification.
+	ProposalErrorInvalidMarket ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_INVALID_MARKET
+	// ProposalErrorTooManyMarketDecimalPlaces the market uses more decimal places than the settlement asset.
+	ProposalErrorTooManyMarketDecimalPlaces ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_TOO_MANY_MARKET_DECIMAL_PLACES
+	// ProposalErrorTooManyPriceMonitoringTriggers the market price monitoring setting uses too many triggers.
+	ProposalErrorTooManyPriceMonitoringTriggers ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_TOO_MANY_PRICE_MONITORING_TRIGGERS
+	// ProposalErrorERC20AddressAlreadyInUse the proposal uses a erc20 address already used by another asset.
+	ProposalErrorERC20AddressAlreadyInUse ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_ERC20_ADDRESS_ALREADY_IN_USE
+	// ProposalErrorLpPriceRangeNonpositive LP price range is zero or less.
+	ProposalErrorLpPriceRangeNonpositive ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_LP_PRICE_RANGE_NONPOSITIVE
+	// ProposalErrorLpPriceRangeTooLarge LP price range above 100.
+	ProposalErrorLpPriceRangeTooLarge ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_LP_PRICE_RANGE_TOO_LARGE
+	// ProposalErrorLinearSlippageOutOfRange linear slippage factor is negative or too large.
+	ProposalErrorLinearSlippageOutOfRange ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_LINEAR_SLIPPAGE_FACTOR_OUT_OF_RANGE
+	// ProposalErrorSquaredSlippageOutOfRange squared slippage factor is negative or too large.
+	ProposalErrorQuadraticSlippageOutOfRange ProposalError = zetapb.ProposalError_PROPOSAL_ERROR_QUADRATIC_SLIPPAGE_FACTOR_OUT_OF_RANGE
+)
+
+type ProposalState = zetapb.Proposal_State
+
+const (
+	// ProposalStateUnspecified Default value, always invalid.
+	ProposalStateUnspecified ProposalState = zetapb.Proposal_STATE_UNSPECIFIED
+	// ProposalStateFailed Proposal enactment has failed - even though proposal has passed, its execution could not be performed.
+	ProposalStateFailed ProposalState = zetapb.Proposal_STATE_FAILED
+	// ProposalStateOpen Proposal is open for voting.
+	ProposalStateOpen ProposalState = zetapb.Proposal_STATE_OPEN
+	// ProposalStatePassed Proposal has gained enough support to be executed.
+	ProposalStatePassed ProposalState = zetapb.Proposal_STATE_PASSED
+	// ProposalStateRejected Proposal wasn't accepted (proposal terms failed validation due to wrong configuration or failing to meet network requirements).
+	ProposalStateRejected ProposalState = zetapb.Proposal_STATE_REJECTED
+	// ProposalStateDeclined Proposal didn't get enough votes (either failing to gain required participation or majority level).
+	ProposalStateDeclined ProposalState = zetapb.Proposal_STATE_DECLINED
+	// ProposalStateEnacted Proposal enacted.
+	ProposalStateEnacted ProposalState = zetapb.Proposal_STATE_ENACTED
+	// ProposalStateWaitingForNodeVote Waiting for node validation of the proposal.
+	ProposalStateWaitingForNodeVote ProposalState = zetapb.Proposal_STATE_WAITING_FOR_NODE_VOTE
+)
+
+type ProposalTermsType int
+
+const (
+	ProposalTermsTypeUpdateMarket ProposalTermsType = iota
+	ProposalTermsTypeNewMarket
+	ProposalTermsTypeUpdateNetworkParameter
+	ProposalTermsTypeNewAsset
+	ProposalTermsTypeNewFreeform
+	ProposalTermsTypeUpdateAsset
+)
+
+type ProposalSubmission struct {
+	// Proposal reference
+	Reference string
+	// Proposal configuration and the actual change that is meant to be executed when proposal is enacted
+	Terms *ProposalTerms
+	// Rationale behind the proposal change.
+	Rationale *ProposalRationale
+}
+
+func (p ProposalSubmission) IntoProto() *commandspb.ProposalSubmission {
+	var terms *zetapb.ProposalTerms
+	if p.Terms != nil {
+		terms = p.Terms.IntoProto()
+	}
+	return &commandspb.ProposalSubmission{
+		Reference: p.Reference,
+		Terms:     terms,
+		Rationale: &zetapb.ProposalRationale{
+			Description: p.Rationale.Description,
+			Title:       p.Rationale.Title,
+		},
+	}
+}
+
+func ProposalSubmissionFromProposal(p *Proposal) *ProposalSubmission {
+	return &ProposalSubmission{
+		Reference: p.Reference,
+		Terms:     p.Terms,
+		Rationale: p.Rationale,
+	}
+}
+
+func NewProposalSubmissionFromProto(p *commandspb.ProposalSubmission) (*ProposalSubmission, error) {
+	var pterms *ProposalTerms
+	if p.Terms != nil {
+		var err error
+		pterms, err = ProposalTermsFromProto(p.Terms)
+		if err != nil {
+			return nil, err
+		}
+	}
+	return &ProposalSubmission{
+		Reference: p.Reference,
+		Terms:     pterms,
+		Rationale: &ProposalRationale{
+			Description: p.Rationale.Description,
+			Title:       p.Rationale.Title,
+		},
+	}, nil
+}
+
+type Proposal struct {
+	ID                      string
+	Reference               string
+	Party                   string
+	State                   ProposalState
+	Timestamp               int64
+	Terms                   *ProposalTerms
+	Rationale               *ProposalRationale
+	Reason                  ProposalError
+	ErrorDetails            string
+	RequiredMajority        num.Decimal
+	RequiredParticipation   num.Decimal
+	RequiredLPMajority      num.Decimal
+	RequiredLPParticipation num.Decimal
+}
+
+func (p *Proposal) IsMarketUpdate() bool {
+	switch p.Terms.Change.(type) {
+	case *ProposalTermsUpdateMarket:
+		return true
+	default:
+		return false
+	}
+}
+
+func (p *Proposal) MarketUpdate() *UpdateMarket {
+	switch terms := p.Terms.Change.(type) {
+	case *ProposalTermsUpdateMarket:
+		return terms.UpdateMarket
+	default:
+		return nil
+	}
+}
+
+func (p *Proposal) WaitForNodeVote() {
+	p.State = ProposalStateWaitingForNodeVote
+}
+
+func (p *Proposal) Reject(reason ProposalError) {
+	p.State = ProposalStateRejected
+	p.Reason = reason
+}
+
+func (p *Proposal) RejectWithErr(reason ProposalError, details error) {
+	p.ErrorDetails = details.Error()
+	p.State = ProposalStateRejected
+	p.Reason = reason
+}
+
+func (p *Proposal) FailWithErr(reason ProposalError, details error) {
+	p.ErrorDetails = details.Error()
+	p.State = ProposalStateFailed
+	p.Reason = reason
+}
+
+// FailUnexpectedly marks the proposal as failed. Calling this method should be
+// reserved to cases where errors are the result of an internal issue, such as
+// bad workflow, or conditions.
+func (p *Proposal) FailUnexpectedly(details error) {
+	p.State = ProposalStateFailed
+	p.ErrorDetails = details.Error()
+}
+
+func (p Proposal) DeepClone() *Proposal {
+	cpy := p
+	if p.Terms != nil {
+		cpy.Terms = p.Terms.DeepClone()
+	}
+	return &cpy
+}
+
+func (p Proposal) String() string {
+	return fmt.Sprintf(
+		"id(%s) reference(%s) party(%s) state(%s) timestamp(%v) terms(%s) reason(%s) errorDetails(%s) requireMajority(%s) requiredParticiption(%s) requireLPMajority(%s) requiredLPParticiption(%s)",
+		p.ID,
+		p.Reference,
+		p.Party,
+		p.State.String(),
+		p.Timestamp,
+		reflectPointerToString(p.Terms),
+		p.Reason.String(),
+		p.ErrorDetails,
+		p.RequiredMajority.String(),
+		p.RequiredParticipation.String(),
+		p.RequiredLPMajority.String(),
+		p.RequiredLPParticipation.String(),
+	)
+}
+
+func (p Proposal) IntoProto() *zetapb.Proposal {
+	var terms *zetapb.ProposalTerms
+	if p.Terms != nil {
+		terms = p.Terms.IntoProto()
+	}
+
+	var lpMajority *string
+	if !p.RequiredLPMajority.IsZero() {
+		lpMajority = toPtr(p.RequiredLPMajority.String())
+	}
+	var lpParticipation *string
+	if !p.RequiredLPParticipation.IsZero() {
+		lpParticipation = toPtr(p.RequiredLPParticipation.String())
+	}
+
+	proposal := &zetapb.Proposal{
+		Id:                                     p.ID,
+		Reference:                              p.Reference,
+		PartyId:                                p.Party,
+		State:                                  p.State,
+		Timestamp:                              p.Timestamp,
+		Terms:                                  terms,
+		RequiredMajority:                       p.RequiredMajority.String(),
+		RequiredParticipation:                  p.RequiredParticipation.String(),
+		RequiredLiquidityProviderMajority:      lpMajority,
+		RequiredLiquidityProviderParticipation: lpParticipation,
+	}
+	if p.Reason != ProposalErrorUnspecified {
+		proposal.Reason = ptr.From(p.Reason)
+	}
+	if len(p.ErrorDetails) > 0 {
+		proposal.ErrorDetails = ptr.From(p.ErrorDetails)
+	}
+	if p.Rationale != nil {
+		proposal.Rationale = &zetapb.ProposalRationale{
+			Description: p.Rationale.Description,
+			Title:       p.Rationale.Title,
+		}
+	}
+
+	return proposal
+}
+
+func ProposalFromProto(pp *zetapb.Proposal) (*Proposal, error) {
+	terms, err := ProposalTermsFromProto(pp.Terms)
+	if err != nil {
+		return nil, err
+	}
+
+	// we check for all if the len == 0 just at first when reloading from
+	// proposal to make sure that proposal without those in handle well.
+	// TODO: this is to be removed later
+
+	var majority num.Decimal
+	if len(pp.RequiredMajority) <= 0 {
+		majority = num.DecimalZero()
+	} else if majority, err = num.DecimalFromString(pp.RequiredMajority); err != nil {
+		return nil, err
+	}
+
+	var participation num.Decimal
+	if len(pp.RequiredParticipation) <= 0 {
+		participation = num.DecimalZero()
+	} else if participation, err = num.DecimalFromString(pp.RequiredParticipation); err != nil {
+		return nil, err
+	}
+
+	lpMajority := num.DecimalZero()
+	if pp.RequiredLiquidityProviderMajority != nil && len(*pp.RequiredLiquidityProviderMajority) > 0 {
+		if lpMajority, err = num.DecimalFromString(*pp.RequiredLiquidityProviderMajority); err != nil {
+			return nil, err
+		}
+	}
+	lpParticipation := num.DecimalZero()
+	if pp.RequiredLiquidityProviderParticipation != nil && len(*pp.RequiredLiquidityProviderParticipation) > 0 {
+		if lpParticipation, err = num.DecimalFromString(*pp.RequiredLiquidityProviderParticipation); err != nil {
+			return nil, err
+		}
+	}
+	reason := ProposalErrorUnspecified
+	if pp.Reason != nil {
+		reason = *pp.Reason
+	}
+	errDetails := ""
+	if pp.ErrorDetails != nil {
+		errDetails = *pp.ErrorDetails
+	}
+
+	return &Proposal{
+		ID:                      pp.Id,
+		Reference:               pp.Reference,
+		Party:                   pp.PartyId,
+		State:                   pp.State,
+		Timestamp:               pp.Timestamp,
+		Terms:                   terms,
+		Reason:                  reason,
+		Rationale:               ProposalRationaleFromProto(pp.Rationale),
+		ErrorDetails:            errDetails,
+		RequiredMajority:        majority,
+		RequiredParticipation:   participation,
+		RequiredLPMajority:      lpMajority,
+		RequiredLPParticipation: lpParticipation,
+	}, nil
+}
+
+type ProposalRationale struct {
+	Description string
+	Title       string
+}
+
+func ProposalRationaleFromProto(p *zetapb.ProposalRationale) *ProposalRationale {
+	if p == nil {
+		return nil
+	}
+	return &ProposalRationale{
+		Description: p.Description,
+		Title:       p.Title,
+	}
+}
+
+type ProposalTerms struct {
+	ClosingTimestamp    int64
+	EnactmentTimestamp  int64
+	ValidationTimestamp int64
+	// *ProposalTermsUpdateMarket
+	// *ProposalTermsNewMarket
+	// *ProposalTermsUpdateNetworkParameter
+	// *ProposalTermsNewAsset
+	Change proposalTerm
+}
+
+func (p ProposalTerms) IntoProto() *zetapb.ProposalTerms {
+	change := p.Change.oneOfProto()
+	r := &zetapb.ProposalTerms{
+		ClosingTimestamp:    p.ClosingTimestamp,
+		EnactmentTimestamp:  p.EnactmentTimestamp,
+		ValidationTimestamp: p.ValidationTimestamp,
+	}
+
+	switch ch := change.(type) {
+	case *zetapb.ProposalTerms_NewMarket:
+		r.Change = ch
+	case *zetapb.ProposalTerms_UpdateMarket:
+		r.Change = ch
+	case *zetapb.ProposalTerms_UpdateNetworkParameter:
+		r.Change = ch
+	case *zetapb.ProposalTerms_NewAsset:
+		r.Change = ch
+	case *zetapb.ProposalTerms_UpdateAsset:
+		r.Change = ch
+	case *zetapb.ProposalTerms_NewFreeform:
+		r.Change = ch
+	}
+	return r
+}
+
+func (p ProposalTerms) DeepClone() *ProposalTerms {
+	cpy := p
+	cpy.Change = p.Change.DeepClone()
+	return &cpy
+}
+
+func (p ProposalTerms) String() string {
+	return fmt.Sprintf(
+		"validationTs(%v) closingTs(%v) enactmentTs(%v) change(%s)",
+		p.ValidationTimestamp,
+		p.ClosingTimestamp,
+		p.EnactmentTimestamp,
+		reflectPointerToString(p.Change),
+	)
+}
+
+func (p *ProposalTerms) GetNewAsset() *NewAsset {
+	switch c := p.Change.(type) {
+	case *ProposalTermsNewAsset:
+		return c.NewAsset
+	default:
+		return nil
+	}
+}
+
+func (p *ProposalTerms) GetUpdateAsset() *UpdateAsset {
+	switch c := p.Change.(type) {
+	case *ProposalTermsUpdateAsset:
+		return c.UpdateAsset
+	default:
+		return nil
+	}
+}
+
+func (p *ProposalTerms) GetNewMarket() *NewMarket {
+	switch c := p.Change.(type) {
+	case *ProposalTermsNewMarket:
+		return c.NewMarket
+	default:
+		return nil
+	}
+}
+
+func (p *ProposalTerms) GetUpdateMarket() *UpdateMarket {
+	switch c := p.Change.(type) {
+	case *ProposalTermsUpdateMarket:
+		return c.UpdateMarket
+	default:
+		return nil
+	}
+}
+
+func (p *ProposalTerms) GetUpdateNetworkParameter() *UpdateNetworkParameter {
+	switch c := p.Change.(type) {
+	case *ProposalTermsUpdateNetworkParameter:
+		return c.UpdateNetworkParameter
+	default:
+		return nil
+	}
+}
+
+func (p *ProposalTerms) GetNewFreeform() *NewFreeform {
+	switch c := p.Change.(type) {
+	case *ProposalTermsNewFreeform:
+		return c.NewFreeform
+	default:
+		return nil
+	}
+}
+
+func ProposalTermsFromProto(p *zetapb.ProposalTerms) (*ProposalTerms, error) {
+	var (
+		change proposalTerm
+		err    error
+	)
+	if p.Change != nil {
+		switch ch := p.Change.(type) {
+		case *zetapb.ProposalTerms_NewMarket:
+			change, err = NewNewMarketFromProto(ch)
+		case *zetapb.ProposalTerms_UpdateMarket:
+			change, err = UpdateMarketFromProto(ch)
+		case *zetapb.ProposalTerms_UpdateNetworkParameter:
+			change = NewUpdateNetworkParameterFromProto(ch)
+		case *zetapb.ProposalTerms_NewAsset:
+			change, err = NewNewAssetFromProto(ch)
+		case *zetapb.ProposalTerms_UpdateAsset:
+			change, err = NewUpdateAssetFromProto(ch)
+		case *zetapb.ProposalTerms_NewFreeform:
+			change = NewNewFreeformFromProto(ch)
+		}
+	}
+	if err != nil {
+		return nil, err
+	}
+
+	return &ProposalTerms{
+		ClosingTimestamp:    p.ClosingTimestamp,
+		EnactmentTimestamp:  p.EnactmentTimestamp,
+		ValidationTimestamp: p.ValidationTimestamp,
+		Change:              change,
+	}, nil
+}
+
+type proposalTerm interface {
+	isPTerm()
+	oneOfProto() interface{} // calls IntoProto
+	DeepClone() proposalTerm
+	GetTermType() ProposalTermsType
+	String() string
+}

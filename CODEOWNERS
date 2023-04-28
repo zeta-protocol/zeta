@@ -1,0 +1,6 @@
+*.md @edd @jeremyletang
+* @zetaprotocol/core
+core/integration/features/verified/ @zetaprotocol/research
+core/netparams/defaults.go @zetaprotocol/research
+datanode/gateway/graphql/schema.graphql @zetaprotocol/frontend @candida-d
+protos/**/*.proto @candida-d @gordsport

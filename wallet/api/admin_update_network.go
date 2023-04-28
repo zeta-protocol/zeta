@@ -1,0 +1,83 @@
+package api
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/zeta-protocol/zeta/libs/jsonrpc"
+	"github.com/zeta-protocol/zeta/wallet/network"
+	"github.com/mitchellh/mapstructure"
+)
+
+type AdminUpdateNetwork struct {
+	networkStore NetworkStore
+}
+
+func (h *AdminUpdateNetwork) Handle(_ context.Context, rawParams jsonrpc.Params) (jsonrpc.Result, *jsonrpc.ErrorDetails) {
+	updatedNetwork, err := validateUpdateNetworkParams(rawParams)
+	if err != nil {
+		return nil, invalidParams(err)
+	}
+
+	if exists, err := h.networkStore.NetworkExists(updatedNetwork.Name); err != nil {
+		return nil, internalError(fmt.Errorf("could not verify the network existence: %w", err))
+	} else if !exists {
+		return nil, invalidParams(ErrNetworkDoesNotExist)
+	}
+
+	if err := h.networkStore.SaveNetwork(&updatedNetwork); err != nil {
+		return nil, internalError(fmt.Errorf("could not save the network: %w", err))
+	}
+	return nil, nil
+}
+
+func validateUpdateNetworkParams(rawParams jsonrpc.Params) (network.Network, error) {
+	if rawParams == nil {
+		return network.Network{}, ErrParamsRequired
+	}
+
+	params := AdminNetwork{}
+	if err := mapstructure.Decode(rawParams, &params); err != nil {
+		return network.Network{}, ErrParamsDoNotMatch
+	}
+
+	if params.Name == "" {
+		return network.Network{}, ErrNetworkNameIsRequired
+	}
+
+	net := network.Network{
+		Name:     params.Name,
+		Metadata: params.Metadata,
+		API: network.APIConfig{
+			GRPC: network.GRPCConfig{
+				Hosts:   params.API.GRPC.Hosts,
+				Retries: params.API.GRPC.Retries,
+			},
+			REST: network.RESTConfig{
+				Hosts: params.API.REST.Hosts,
+			},
+			GraphQL: network.GraphQLConfig{
+				Hosts: params.API.GraphQL.Hosts,
+			},
+		},
+		Apps: network.AppsConfig{
+			Console:    params.Apps.Console,
+			Governance: params.Apps.Governance,
+			Explorer:   params.Apps.Explorer,
+		},
+	}
+
+	if err := net.EnsureCanConnectGRPCNode(); err != nil {
+		return network.Network{}, err
+	}
+
+	return net, nil
+}
+
+func NewAdminUpdateNetwork(
+	networkStore NetworkStore,
+) *AdminUpdateNetwork {
+	return &AdminUpdateNetwork{
+		networkStore: networkStore,
+	}
+}

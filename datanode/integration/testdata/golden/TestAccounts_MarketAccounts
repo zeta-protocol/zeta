@@ -1,0 +1,110 @@
+{
+	"TestName": "TestAccounts_MarketAccounts",
+	"Query": "{ marketsConnection{ edges { node { id accountsConnection{ edges { node { asset{ id } market { id } type balance } } } } } } }",
+	"Result": {
+		"marketsConnection": {
+			"edges": [
+				{
+					"node": {
+						"accountsConnection": {
+							"edges": [
+								{
+									"node": {
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"balance": "0",
+										"market": {
+											"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32"
+										},
+										"type": "ACCOUNT_TYPE_INSURANCE"
+									}
+								},
+								{
+									"node": {
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"balance": "0",
+										"market": {
+											"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32"
+										},
+										"type": "ACCOUNT_TYPE_FEES_LIQUIDITY"
+									}
+								}
+							]
+						},
+						"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32"
+					}
+				},
+				{
+					"node": {
+						"accountsConnection": {
+							"edges": [
+								{
+									"node": {
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"balance": "0",
+										"market": {
+											"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711"
+										},
+										"type": "ACCOUNT_TYPE_FEES_LIQUIDITY"
+									}
+								},
+								{
+									"node": {
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"balance": "0",
+										"market": {
+											"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711"
+										},
+										"type": "ACCOUNT_TYPE_INSURANCE"
+									}
+								}
+							]
+						},
+						"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711"
+					}
+				},
+				{
+					"node": {
+						"accountsConnection": {
+							"edges": [
+								{
+									"node": {
+										"asset": {
+											"id": "0fa76c9a96793dd080f21c41e4c192cee76d34bd150d5ead49574296a10cc665"
+										},
+										"balance": "0",
+										"market": {
+											"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd"
+										},
+										"type": "ACCOUNT_TYPE_FEES_LIQUIDITY"
+									}
+								},
+								{
+									"node": {
+										"asset": {
+											"id": "0fa76c9a96793dd080f21c41e4c192cee76d34bd150d5ead49574296a10cc665"
+										},
+										"balance": "0",
+										"market": {
+											"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd"
+										},
+										"type": "ACCOUNT_TYPE_INSURANCE"
+									}
+								}
+							]
+						},
+						"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd"
+					}
+				}
+			]
+		}
+	},
+	"Duration": 6151239
+}

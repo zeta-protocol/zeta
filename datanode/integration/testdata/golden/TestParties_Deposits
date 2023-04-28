@@ -1,0 +1,889 @@
+{
+	"TestName": "TestParties_Deposits",
+	"Query": "{ partiesConnection{ edges { node { id depositsConnection{ edges { node { id, party { id }, amount, asset { id }, status, createdTimestamp, creditedTimestamp, txHash } } } } } } }",
+	"Result": {
+		"partiesConnection": {
+			"edges": [
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": null
+						},
+						"id": "network"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:27:31.551371Z",
+										"creditedTimestamp": "2023-03-10T10:27:32.765122Z",
+										"id": "bd934c2bbd2952fa6651833689d30b54d803c51d53b5160deadd691ee93c92dd",
+										"party": {
+											"id": "6258344864c89a115c038cf524323bcb63f2e40bc7e9b44fa1512edc591ed5b8"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "6258344864c89a115c038cf524323bcb63f2e40bc7e9b44fa1512edc591ed5b8"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:27:30.054415Z",
+										"creditedTimestamp": "2023-03-10T10:27:31.551371Z",
+										"id": "b1a67ad77b6ce19bc4ccbfa126839642b20e9433c60547cd7578125777a42e78",
+										"party": {
+											"id": "f1a1741cb457aa59209e806b8312a6e959fbc83418d86b881191fb3bf2e1c95a"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "f1a1741cb457aa59209e806b8312a6e959fbc83418d86b881191fb3bf2e1c95a"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:27:23.700942Z",
+										"creditedTimestamp": "2023-03-10T10:27:25.514086Z",
+										"id": "ea6a12c11677e9f9ab279653bd6ea9d55fdb145366ec721db35576db8fe28e9c",
+										"party": {
+											"id": "a6ea3d9af8be934a022b0ad2b4e994980fb606198c0fcc8d5e50ae94f7a12435"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "a6ea3d9af8be934a022b0ad2b4e994980fb606198c0fcc8d5e50ae94f7a12435"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:27:24.907121Z",
+										"creditedTimestamp": "2023-03-10T10:27:26.12134Z",
+										"id": "7614160e64d1a7209e6754550cb214d841f783e29b33cfac290785ce3ee75b84",
+										"party": {
+											"id": "abbb79deea6dc6bb5b532d0641730d2366864bf349744663e750f64422ca5ebb"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "abbb79deea6dc6bb5b532d0641730d2366864bf349744663e750f64422ca5ebb"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:26:26.264357Z",
+										"creditedTimestamp": "2023-03-10T10:26:27.876581Z",
+										"id": "3bc7d5e8cd7e6587cd74e35e11232c9bf4d2c8ddd6a20969ce339c12e8cb3b29",
+										"party": {
+											"id": "8550c5350e9ddad81d270895f66a13bc03b030f7f6479443027a22adab801ea8"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "8550c5350e9ddad81d270895f66a13bc03b030f7f6479443027a22adab801ea8"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:26:26.264357Z",
+										"creditedTimestamp": "2023-03-10T10:26:27.876581Z",
+										"id": "6913f1ae4fb93ad3d6c67bc214200869b8467d9c2ad8d2eaffa45cb07d709783",
+										"party": {
+											"id": "3c1fcb30ced97bef4978ea5977334a08fed99de24b09ac3f0ef257b56e56c1f4"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "3c1fcb30ced97bef4978ea5977334a08fed99de24b09ac3f0ef257b56e56c1f4"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:26:26.264357Z",
+										"creditedTimestamp": "2023-03-10T10:26:27.876581Z",
+										"id": "28fd065abde9ee6bcf72b2b8446ded91b7e72ad345db2f7bdb0dac097e4e6974",
+										"party": {
+											"id": "21b6a8555b433b0c6d45720d08c0025a1c18a8aa20dbfd4e85e1de3c81878cd7"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "21b6a8555b433b0c6d45720d08c0025a1c18a8aa20dbfd4e85e1de3c81878cd7"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:26:26.264357Z",
+										"creditedTimestamp": "2023-03-10T10:26:27.876581Z",
+										"id": "9f5a2f5acec7f16a94aed520b2e1be3d0575d65d564847520cd4e69d612a712d",
+										"party": {
+											"id": "ee963982e8d93fd36ab7ec3b94e22e403647a1c44d37f9d262be9c6ffeba94e5"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "ee963982e8d93fd36ab7ec3b94e22e403647a1c44d37f9d262be9c6ffeba94e5"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:26:24.650904Z",
+										"creditedTimestamp": "2023-03-10T10:26:26.264357Z",
+										"id": "a8539214be9709465ae5490c2515c2de236df0f1de6c88a100f198138d09e988",
+										"party": {
+											"id": "dddf0f4bebe8669764f029655cf65c8a26c7ea49144279943f33c26f5d7d0b73"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "dddf0f4bebe8669764f029655cf65c8a26c7ea49144279943f33c26f5d7d0b73"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:26:24.239918Z",
+										"creditedTimestamp": "2023-03-10T10:26:25.850049Z",
+										"id": "62ad0d34e485008a70626b3fc42dddd97d917e26dce1a92cd420e6b1bf1b7151",
+										"party": {
+											"id": "73de7993cc410fed21b1e081bad7159698c03b5a2ca6c61c4785fe5d17600ffa"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "73de7993cc410fed21b1e081bad7159698c03b5a2ca6c61c4785fe5d17600ffa"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:26:23.132066Z",
+										"creditedTimestamp": "2023-03-10T10:26:25.063608Z",
+										"id": "a3e16b2e2391037c5750dbcb5bd5cf22c0a020c055ab1025949e7d4d08bd7370",
+										"party": {
+											"id": "6ceafd8e0e65935abd68899474fd20d7202abc50948fdda9c17a54d835c2498d"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "6ceafd8e0e65935abd68899474fd20d7202abc50948fdda9c17a54d835c2498d"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:26:26.264357Z",
+										"creditedTimestamp": "2023-03-10T10:26:27.876581Z",
+										"id": "8b68c721c2ce007825ecc9793918431e11486cea9ed5abf6b159cae438750ae7",
+										"party": {
+											"id": "1b8b57dde8383f0e9d1b3833d656803b3b48bdacc043d1992208824326a18842"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "1b8b57dde8383f0e9d1b3833d656803b3b48bdacc043d1992208824326a18842"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:26:27.046032Z",
+										"creditedTimestamp": "2023-03-10T10:26:28.654728Z",
+										"id": "17685b22d47abf314c3c1a8ce4b26d2b373f03c10f6a16f52d5a2cf4fd06cc77",
+										"party": {
+											"id": "a07aae3aa37bce328f432c953807ec281624c7ecb25e571bb6ba85887d04775d"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "a07aae3aa37bce328f432c953807ec281624c7ecb25e571bb6ba85887d04775d"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:26:23.787257Z",
+										"creditedTimestamp": "2023-03-10T10:26:25.438364Z",
+										"id": "e20f0de1b278648f2600bd7201d97f2f2516e12e1707f248d78740ae53ac4638",
+										"party": {
+											"id": "1bc144ea1fd3019cd7db12ae0a1e9fb9a3e0e8fcf7aaa6bdf2fbce7c35171a6f"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "1bc144ea1fd3019cd7db12ae0a1e9fb9a3e0e8fcf7aaa6bdf2fbce7c35171a6f"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:25:55.000366Z",
+										"creditedTimestamp": "2023-03-10T10:25:56.590708Z",
+										"id": "07eb6999454ca4000484ad7feab7658460a5a284da673d0723242c2a9cbf6950",
+										"party": {
+											"id": "c137b920e6b37cb8dd1841a07d24f4f7728e21fbe5f2343b32f0350e1407154f"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "c137b920e6b37cb8dd1841a07d24f4f7728e21fbe5f2343b32f0350e1407154f"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:25:55.000366Z",
+										"creditedTimestamp": "2023-03-10T10:25:56.590708Z",
+										"id": "14f46b83018fbb2cd30f64a8a2fedbdc927a49e97cf212e395bb4ef2b957e3a7",
+										"party": {
+											"id": "95a458eddea0a157b92c8450be9943cfa37521ca1048047eeef5fc20d86907ba"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "95a458eddea0a157b92c8450be9943cfa37521ca1048047eeef5fc20d86907ba"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:25:55.000366Z",
+										"creditedTimestamp": "2023-03-10T10:25:56.590708Z",
+										"id": "c9ec34e9336c436e2c5e8c0a10a7dc1ac5a24cfe30d1cc09ddd8b9ea9d7d305a",
+										"party": {
+											"id": "6d471a6b2b3e9c49170a2058389d33760a5959f6b2435ce7c75b938390520350"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "6d471a6b2b3e9c49170a2058389d33760a5959f6b2435ce7c75b938390520350"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": null
+						},
+						"id": "4dfff937cdcedf7d1622b1b7e4126e68f8dc02619437f4de6bfd45ca6db65738"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "10000000000000000000",
+										"asset": {
+											"id": "b4f2726571fbe8e33b442dc92ed2d7f0d810e21835b7371a7915a365f07ccd9b"
+										},
+										"createdTimestamp": "2023-03-10T10:25:16.332659Z",
+										"creditedTimestamp": "2023-03-10T10:25:17.807843Z",
+										"id": "b934a72c29a70886d16a153692b68e2671c2eb3f18f37a30f8ad61431166eb58",
+										"party": {
+											"id": "384c6b1977c55332597db057d7700a8bd73d26b51725c2bc984911cb6f35eaec"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": "0x8b03b67c4e97fe76794a9bf7e7690fc6c18a318f9918f5de20b56c2c531851c4"
+									}
+								}
+							]
+						},
+						"id": "384c6b1977c55332597db057d7700a8bd73d26b51725c2bc984911cb6f35eaec"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:24:21.769309Z",
+										"creditedTimestamp": "2023-03-10T10:24:23.35872Z",
+										"id": "1cea718999c5a47ad18c0a211d940cc1d2dd43035a77a64a5bd48acb11eae282",
+										"party": {
+											"id": "033acc4e3803f1160cb399b7e041735c92576db9dc4d7d94d13c508788464663"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "033acc4e3803f1160cb399b7e041735c92576db9dc4d7d94d13c508788464663"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:27:50.985185Z",
+										"creditedTimestamp": "2023-03-10T10:27:52.804752Z",
+										"id": "c3a6ca6e946341b2aff4a246ba13aa9443383db11f7559bf3279bcb6175a71a3",
+										"party": {
+											"id": "85d1b6579d441d251611965fdad680ac90dd768fddcc2d22a5ab8c5922d75f57"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								},
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:24:21.045557Z",
+										"creditedTimestamp": "2023-03-10T10:24:22.975505Z",
+										"id": "6d8822f349f716398ad4fa73186e7d80ee2e9bc0cd404c37fb30c6f763afdcbb",
+										"party": {
+											"id": "85d1b6579d441d251611965fdad680ac90dd768fddcc2d22a5ab8c5922d75f57"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "85d1b6579d441d251611965fdad680ac90dd768fddcc2d22a5ab8c5922d75f57"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "2000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:24:02.580313Z",
+										"creditedTimestamp": "2023-03-10T10:24:04.971505Z",
+										"id": "f41e0bd7b7bf9c092917ab66323a4fa035d071a49418e9636f606b560243c44e",
+										"party": {
+											"id": "a3803f7086a5169c13b382e29c3d3180fb73fd2b731d3358b7a8d9c54ea14183"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "a3803f7086a5169c13b382e29c3d3180fb73fd2b731d3358b7a8d9c54ea14183"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "2000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:24:02.580313Z",
+										"creditedTimestamp": "2023-03-10T10:24:04.971505Z",
+										"id": "d50c14ea810fc252c66a4d95c4d25b3461489b1543b0d9d97c88e7496d704d88",
+										"party": {
+											"id": "626b5bc6ed77b06bd32711bb33996a1b7373e9d1055290f4feb89f3964c6b19b"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "626b5bc6ed77b06bd32711bb33996a1b7373e9d1055290f4feb89f3964c6b19b"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "2000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:24:02.580313Z",
+										"creditedTimestamp": "2023-03-10T10:24:04.971505Z",
+										"id": "f79aa250edbb3528f356afcdaa80c155fa4506d69a5c5d3b1a938a889b850091",
+										"party": {
+											"id": "0c1e59433bec284a6d0e630eace136aaba41b86ed0c8e91f69c8e44d03d81348"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "0c1e59433bec284a6d0e630eace136aaba41b86ed0c8e91f69c8e44d03d81348"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "0fa76c9a96793dd080f21c41e4c192cee76d34bd150d5ead49574296a10cc665"
+										},
+										"createdTimestamp": "2023-03-10T10:23:55.673697Z",
+										"creditedTimestamp": "2023-03-10T10:23:57.217479Z",
+										"id": "17efc61e743597d68d9eb82cb29901f1391d16d0aaa27de5aa1ee6830f0a3868",
+										"party": {
+											"id": "cca5f6c7418d0b08d2d9ee87f46955e0fbd47dfc713ec7606dda7ac80b4baf29"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": "0xa01c0bb14a2ae8ee37412c77e58c11c42de309985988c88a8763719c275dffec"
+									}
+								},
+								{
+									"node": {
+										"amount": "100000000000000000000000",
+										"asset": {
+											"id": "0fa76c9a96793dd080f21c41e4c192cee76d34bd150d5ead49574296a10cc665"
+										},
+										"createdTimestamp": "2023-03-10T10:22:36.134561Z",
+										"creditedTimestamp": "2023-03-10T10:22:38.085618Z",
+										"id": "ec81a49347a8525c32bc51e7d1a4c4f4f21d401bef84a53c065eda76023f0842",
+										"party": {
+											"id": "cca5f6c7418d0b08d2d9ee87f46955e0fbd47dfc713ec7606dda7ac80b4baf29"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": "0x8a4289de2c8706ac70180ba1d79640fbe062a3a0e27ef9d005a1eeb082ddab0c"
+									}
+								},
+								{
+									"node": {
+										"amount": "100000000000000000000000",
+										"asset": {
+											"id": "aa7a5a629097b0d3abdb2510d992dfd943409db2cbe63151f6dd710a64f6c8bd"
+										},
+										"createdTimestamp": "2023-03-10T10:20:56.043042Z",
+										"creditedTimestamp": "2023-03-10T10:20:57.778429Z",
+										"id": "af0b4c2395fdb5f9b87b3c34a04b89cfd536c245c6f8df36d1a83079e5ba3610",
+										"party": {
+											"id": "cca5f6c7418d0b08d2d9ee87f46955e0fbd47dfc713ec7606dda7ac80b4baf29"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": "0xbd5ec641ac1cbdced6e93621a3aa3814e7e710ccf595e211003dca1aa861a370"
+									}
+								},
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:20:11.897953Z",
+										"creditedTimestamp": "2023-03-10T10:20:13.343407Z",
+										"id": "b06b20d6fa171ce86101a034f42cd9b31ab4ac478a5f1a734091934fdb783fbf",
+										"party": {
+											"id": "cca5f6c7418d0b08d2d9ee87f46955e0fbd47dfc713ec7606dda7ac80b4baf29"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "cca5f6c7418d0b08d2d9ee87f46955e0fbd47dfc713ec7606dda7ac80b4baf29"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:20:11.897953Z",
+										"creditedTimestamp": "2023-03-10T10:20:13.343407Z",
+										"id": "817e35e6a1ce552eb9cec9503c4b69f16aefff4c29055bbfc94ab10614fe14ce",
+										"party": {
+											"id": "a2835bc04c28b427616d35a5040fe452c3dc93587c9729fc3d5b59aa1fa01163"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "a2835bc04c28b427616d35a5040fe452c3dc93587c9729fc3d5b59aa1fa01163"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:20:11.897953Z",
+										"creditedTimestamp": "2023-03-10T10:20:13.343407Z",
+										"id": "cb2b57e8b40a11d88f5df8f3b2b1a05a6b830246bed884136c1c1d745d1c0ba9",
+										"party": {
+											"id": "83c9ef61f27178869fe9263222adc4749a25f3f29675eeb2ba6189b5ab84bc78"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "83c9ef61f27178869fe9263222adc4749a25f3f29675eeb2ba6189b5ab84bc78"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:20:11.897953Z",
+										"creditedTimestamp": "2023-03-10T10:20:13.343407Z",
+										"id": "7ef08d0cd8ad91b781262daf54805cfbeb69111d484bf57009d1ef6bbf41b384",
+										"party": {
+											"id": "72b033675512447a4f1d37da46dc0e455cec76c7e82e0203db87d0ab35eec02f"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "72b033675512447a4f1d37da46dc0e455cec76c7e82e0203db87d0ab35eec02f"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000000",
+										"asset": {
+											"id": "0fa76c9a96793dd080f21c41e4c192cee76d34bd150d5ead49574296a10cc665"
+										},
+										"createdTimestamp": "2023-03-10T10:22:55.983844Z",
+										"creditedTimestamp": "2023-03-10T10:22:57.732151Z",
+										"id": "9a5b5de5e9bf2ae311877d00a0a089b141af5c2bd56658d40d7068883c0eeedb",
+										"party": {
+											"id": "d49666f7327b3d5b077e10bc5fb9da19ff94b7f587dad9937200155a42b236b0"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": "0xe683d6ad266ab0a27799d8148c2338e05e788ef837ddc24e0903c4a55ae60b23"
+									}
+								},
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:20:08.586237Z",
+										"creditedTimestamp": "2023-03-10T10:20:10.707986Z",
+										"id": "f0e9ba80bd87034bd073fff3de21467c1564e9b913205009f178e5263b155d85",
+										"party": {
+											"id": "d49666f7327b3d5b077e10bc5fb9da19ff94b7f587dad9937200155a42b236b0"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "d49666f7327b3d5b077e10bc5fb9da19ff94b7f587dad9937200155a42b236b0"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "200000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:20:00.837095Z",
+										"creditedTimestamp": "2023-03-10T10:20:03.0261Z",
+										"id": "f174d4373b92e85788ebd15edee74d00e2d31c3655a19382da7be0dded1c32e1",
+										"party": {
+											"id": "bc48c903a4a233fd2fe92787f9694a395d0155881ef35f041c913d7d3ff97c27"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "bc48c903a4a233fd2fe92787f9694a395d0155881ef35f041c913d7d3ff97c27"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "10000000000000000000000000",
+										"asset": {
+											"id": "0fa76c9a96793dd080f21c41e4c192cee76d34bd150d5ead49574296a10cc665"
+										},
+										"createdTimestamp": "2023-03-10T10:23:15.818142Z",
+										"creditedTimestamp": "2023-03-10T10:23:17.279451Z",
+										"id": "4e59f94cfbb0310223fa5459beb2a9386e89acd09b6b21a81142881d6e1cc6b5",
+										"party": {
+											"id": "c2071f9874933829eb432b1af0d776b5d49d5d4a7feefffa7d1e9642d9d5ed19"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": "0x29b1e9f24f1f9b85d8c1f8b289b8e87ce88c3814ae0eea7ba7c6baa46c483371"
+									}
+								},
+								{
+									"node": {
+										"amount": "100000000000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:19:55.330423Z",
+										"creditedTimestamp": "2023-03-10T10:19:57.542692Z",
+										"id": "6049a16300e9374f99afac3171780d50775e3835a6bb377c66e5d38e93f4d51a",
+										"party": {
+											"id": "c2071f9874933829eb432b1af0d776b5d49d5d4a7feefffa7d1e9642d9d5ed19"
+										},
+										"status": "STATUS_FINALIZED",
+										"txHash": ""
+									}
+								}
+							]
+						},
+						"id": "c2071f9874933829eb432b1af0d776b5d49d5d4a7feefffa7d1e9642d9d5ed19"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": null
+						},
+						"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+					}
+				},
+				{
+					"node": {
+						"depositsConnection": {
+							"edges": null
+						},
+						"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+					}
+				}
+			]
+		}
+	},
+	"Duration": 7880475
+}

@@ -1,0 +1,35 @@
+{
+	"TestName": "TestMarkets_Basic",
+	"Query": "{ marketsConnection{ edges { node { id, decimalPlaces, tradingMode, state } } } }",
+	"Result": {
+		"marketsConnection": {
+			"edges": [
+				{
+					"node": {
+						"decimalPlaces": 5,
+						"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32",
+						"state": "STATE_ACTIVE",
+						"tradingMode": "TRADING_MODE_CONTINUOUS"
+					}
+				},
+				{
+					"node": {
+						"decimalPlaces": 5,
+						"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711",
+						"state": "STATE_SETTLED",
+						"tradingMode": "TRADING_MODE_NO_TRADING"
+					}
+				},
+				{
+					"node": {
+						"decimalPlaces": 5,
+						"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd",
+						"state": "STATE_ACTIVE",
+						"tradingMode": "TRADING_MODE_CONTINUOUS"
+					}
+				}
+			]
+		}
+	},
+	"Duration": 1068482
+}

@@ -1,0 +1,186 @@
+// Copyright (c) 2022 Gobalsky Labs Limited
+//
+// Use of this software is governed by the Business Source License included
+// in the LICENSE file and at https://www.mariadb.com/bsl11.
+//
+// Change Date: 18 months from the later of the date of the first publicly
+// available Distribution of this version of the repository, and 25 June 2022.
+//
+// On the date above, in accordance with the Business Source License, use
+// of this software will be governed by version 3 or later of the GNU General
+// Public License.
+
+package config
+
+import (
+	"fmt"
+
+	"github.com/zeta-protocol/zeta/paths"
+)
+
+/*
+description: Allows you to configure a binary and its arguments.
+example:
+
+	type: toml
+	value: |
+		path = "/path/binary"
+		args = ["--arg1", "val1", "--arg2"]
+*/
+type BinaryConfig struct {
+	/*
+		description: Path to the binary.
+		note: |
+			The absolute or relative path can be used.
+			Relative path is relative to a parent folder of this config file.
+	*/
+	Path string `toml:"path"`
+	/*
+		description: Arguments that will be applied to the binary.
+		note: |
+			Each element the list represents one space separated argument.
+	*/
+	Args []string `toml:"args"`
+}
+
+/*
+description: Allows you to configure a connection to a core node's exposed UNIX socket RPC API.
+example:
+
+	type: toml
+	value: |
+		[zeta.rpc]
+			socketPath = "/path/socket.sock"
+			httpPath = "/rpc"
+*/
+type RPCConfig struct {
+	/*
+		description: Path of the mounted socket.
+		note: This path can be configured in Zeta core node configuration.
+	*/
+	SocketPath string `toml:"socketPath"`
+	/*
+		description: HTTP path of the socket path.
+		note: This path can be configured in Zeta core node configuration.
+	*/
+	HTTPPath string `toml:"httpPath"`
+}
+
+/*
+description: Allows you to configure the Zeta binary and its arguments.
+example:
+
+	type: toml
+	value: |
+		[zeta]
+			[zeta.binary]
+				path = "/path/zeta-binary"
+				args = ["--arg1", "val1", "--arg2"]
+			[zeta.rpc]
+				socketPath = "/path/socket.sock"
+				httpPath = "/rpc"
+*/
+type ZetaConfig struct {
+	/*
+		description: Configuration of Zeta binary to be run.
+		example:
+			type: toml
+			value: |
+				[zeta.binary]
+					path = "/path/zeta-binary"
+					args = ["--arg1", "val1", "--arg2"]
+	*/
+	Binary BinaryConfig `toml:"binary"`
+
+	/*
+		description: |
+			Visor communicates with the core node via RPC API that runs over UNIX socket.
+			This parameter allows you to configure the UNIX socket to match the core node configuration.
+		example:
+			type: toml
+			value: |
+				[zeta.binary]
+					path = "/path/zeta-binary"
+					args = ["--arg1", "val1", "--arg2"]
+	*/
+	RCP RPCConfig `toml:"rpc"`
+}
+
+/*
+description: Allows you to configure a data node binary and its arguments.
+example:
+
+	type: toml
+	value: |
+		[data_node]
+			[data_node.binary]
+				path = "/path/data-node-binary"
+				args = ["--arg1", "val1", "--arg2"]
+*/
+type DataNodeConfig struct {
+	Binary BinaryConfig `toml:"binary"`
+}
+
+/*
+description: Root of the config file
+example:
+
+	type: toml
+	value: |
+		name = "v1.65.0"
+
+		[zeta]
+			[zeta.binary]
+				path = "/path/zeta-binary"
+				args = ["--arg1", "val1", "--arg2"]
+			[zeta.rpc]
+				socketPath = "/path/socket.sock"
+				httpPath = "/rpc"
+*/
+type RunConfig struct {
+	/*
+		description: Name of the upgrade.
+		note: It is recommended that you use the upgrade version as the name.
+	*/
+	Name string `toml:"name"`
+	// description: Configuration of a Zeta node.
+	Zeta ZetaConfig `toml:"zeta"`
+	// description: Configuration of a data node.
+	DataNode *DataNodeConfig `toml:"data_node"`
+}
+
+func ExampleRunConfig(name string, withDataNode bool) *RunConfig {
+	c := &RunConfig{
+		Name: name,
+		Zeta: ZetaConfig{
+			Binary: BinaryConfig{
+				Path: "zeta",
+				Args: []string{"arg1", "arg2", "..."},
+			},
+		},
+	}
+
+	if withDataNode {
+		c.DataNode = &DataNodeConfig{
+			Binary: BinaryConfig{
+				Path: "zeta data-node",
+				Args: []string{"arg1", "arg2", "..."},
+			},
+		}
+	}
+
+	return c
+}
+
+func ParseRunConfig(path string) (*RunConfig, error) {
+	conf := RunConfig{}
+	if err := paths.ReadStructuredFile(path, &conf); err != nil {
+		return nil, fmt.Errorf("failed to parse RunConfig: %w", err)
+	}
+
+	return &conf, nil
+}
+
+func (rc *RunConfig) WriteToFile(path string) error {
+	return paths.WriteStructuredFile(path, rc)
+}

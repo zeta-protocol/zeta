@@ -1,0 +1,130 @@
+{
+	"TestName": "TestMarkets_OrderTrades",
+	"Query": "{ marketsConnection{ edges { node { id, tradesConnection{ edges { node { id, price, size, createdAt, market{ id }, type, buyOrder, sellOrder, buyer{id}, seller{id}, aggressor, buyerAuctionBatch, sellerAuctionBatch } } } } } } }",
+	"Result": {
+		"marketsConnection": {
+			"edges": [
+				{
+					"node": {
+						"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32",
+						"tradesConnection": {
+							"edges": [
+								{
+									"node": {
+										"aggressor": "SIDE_BUY",
+										"buyOrder": "6b24805f91556eb0bd035a7560edffd43f23a32a9bc9c982df6cfdc4b1bc19dd",
+										"buyer": {
+											"id": "85d1b6579d441d251611965fdad680ac90dd768fddcc2d22a5ab8c5922d75f57"
+										},
+										"buyerAuctionBatch": 0,
+										"createdAt": "2023-03-10T10:27:57.709915Z",
+										"id": "57483b976b023d461efe161efc6505cb224c49ee50dcedfd866ec7f822bbf8a8",
+										"market": {
+											"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32"
+										},
+										"price": "97600000",
+										"sellOrder": "a7699d0d03e1dc3fb1ad88b38f41178b2925526b2558b6f59e2e971b1bb7346b",
+										"seller": {
+											"id": "033acc4e3803f1160cb399b7e041735c92576db9dc4d7d94d13c508788464663"
+										},
+										"sellerAuctionBatch": 0,
+										"size": "500000",
+										"type": "TYPE_DEFAULT"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711",
+						"tradesConnection": {
+							"edges": [
+								{
+									"node": {
+										"aggressor": "SIDE_SELL",
+										"buyOrder": "e16a48e9c76cf0dc566a12d1f66aa99358dcaea61dad09e3be388f52bd2dad1d",
+										"buyer": {
+											"id": "85d1b6579d441d251611965fdad680ac90dd768fddcc2d22a5ab8c5922d75f57"
+										},
+										"buyerAuctionBatch": 0,
+										"createdAt": "2023-03-10T10:24:29.769322Z",
+										"id": "f6ec05a69b9d9f2c9bca01275dafb3fc36197a821a48003a72935ee00965bd4a",
+										"market": {
+											"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711"
+										},
+										"price": "90000000",
+										"sellOrder": "9455b7e81360ff1033c6b5acda7cda1c79c35778d301f1ba93b380f8ab4ee4fd",
+										"seller": {
+											"id": "a3803f7086a5169c13b382e29c3d3180fb73fd2b731d3358b7a8d9c54ea14183"
+										},
+										"sellerAuctionBatch": 0,
+										"size": "100000",
+										"type": "TYPE_DEFAULT"
+									}
+								},
+								{
+									"node": {
+										"aggressor": "SIDE_BUY",
+										"buyOrder": "97bd39d0e771a3b6d7d72ffa1e31330ef4ebfce57a7a887ee0a1252448172d2e",
+										"buyer": {
+											"id": "85d1b6579d441d251611965fdad680ac90dd768fddcc2d22a5ab8c5922d75f57"
+										},
+										"buyerAuctionBatch": 0,
+										"createdAt": "2023-03-10T10:24:28.102781Z",
+										"id": "e226442b5186422b13a1996c2586f36ee90c2f4cfe29b3f6f3fcae93a08c603e",
+										"market": {
+											"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711"
+										},
+										"price": "97600000",
+										"sellOrder": "8946f945eda35bfc01a68284ee37ed02865424b667bc49d0342e40e636f5c088",
+										"seller": {
+											"id": "033acc4e3803f1160cb399b7e041735c92576db9dc4d7d94d13c508788464663"
+										},
+										"sellerAuctionBatch": 0,
+										"size": "500000",
+										"type": "TYPE_DEFAULT"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd",
+						"tradesConnection": {
+							"edges": [
+								{
+									"node": {
+										"aggressor": "SIDE_BUY",
+										"buyOrder": "6f08d24526662bbd9cdff9b1c129e10f13789fcad6bed25bebf690126e1de95e",
+										"buyer": {
+											"id": "cca5f6c7418d0b08d2d9ee87f46955e0fbd47dfc713ec7606dda7ac80b4baf29"
+										},
+										"buyerAuctionBatch": 0,
+										"createdAt": "2023-03-10T10:23:36.098501Z",
+										"id": "8a8bf403dc835b9f7d8d4149ea15fb2c5369d509d37a732bd1e05a94c994948c",
+										"market": {
+											"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd"
+										},
+										"price": "100000000",
+										"sellOrder": "ec265c6e6eeb5095f5ef4d034302f24a36686baf95acea1eb91e51b3b01aa65c",
+										"seller": {
+											"id": "d49666f7327b3d5b077e10bc5fb9da19ff94b7f587dad9937200155a42b236b0"
+										},
+										"sellerAuctionBatch": 0,
+										"size": "100000",
+										"type": "TYPE_DEFAULT"
+									}
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	},
+	"Duration": 3335832
+}

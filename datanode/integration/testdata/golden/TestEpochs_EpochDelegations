@@ -1,0 +1,35 @@
+{
+	"TestName": "TestEpochs_EpochDelegations",
+	"Query": "{ epoch{ delegationsConnection { edges { node { node { id }, party {id}, amount } } } } }",
+	"Result": {
+		"epoch": {
+			"delegationsConnection": {
+				"edges": [
+					{
+						"node": {
+							"amount": "1000000000000000000",
+							"node": {
+								"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+							},
+							"party": {
+								"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+							}
+						}
+					},
+					{
+						"node": {
+							"amount": "1000000000000000000",
+							"node": {
+								"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+							},
+							"party": {
+								"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+	"Duration": 17844220
+}

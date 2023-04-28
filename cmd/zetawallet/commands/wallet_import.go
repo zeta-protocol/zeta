@@ -1,0 +1,202 @@
+package cmd
+
+import (
+	"context"
+	"errors"
+	"fmt"
+	"io"
+	"os"
+	"strconv"
+	"strings"
+
+	"github.com/zeta-protocol/zeta/cmd/zetawallet/commands/cli"
+	"github.com/zeta-protocol/zeta/cmd/zetawallet/commands/flags"
+	"github.com/zeta-protocol/zeta/cmd/zetawallet/commands/printer"
+	vgfs "github.com/zeta-protocol/zeta/libs/fs"
+	vgzap "github.com/zeta-protocol/zeta/libs/zap"
+	"github.com/zeta-protocol/zeta/wallet/api"
+	"github.com/zeta-protocol/zeta/wallet/wallet"
+	"github.com/zeta-protocol/zeta/wallet/wallets"
+	"github.com/spf13/cobra"
+)
+
+var (
+	importWalletLong = cli.LongDesc(`
+		Import a wallet using the recovery phrase and generate the first Ed25519 key pair.
+
+		You will be asked to create a passphrase. The passphrase is used to protect
+		the file in which the keys are stored. Hence, it can be different from the
+		original passphrase, used during the wallet creation. This doesn't affect the
+		key generation process in any way.
+	`)
+
+	importWalletExample = cli.Examples(`
+		# Import a wallet using the recovery phrase
+		{{.Software}} import --wallet WALLET --recovery-phrase-file PATH_TO_RECOVERY_PHRASE
+
+		# Import an older version of the wallet using the recovery phrase
+		{{.Software}} import --wallet WALLET --recovery-phrase-file PATH_TO_RECOVERY_PHRASE --version VERSION
+	`)
+)
+
+type ImportWalletHandler func(api.AdminImportWalletParams) (importWalletResult, error)
+
+type importedWallet struct {
+	Name                 string `json:"name"`
+	KeyDerivationVersion uint32 `json:"keyDerivationVersion"`
+	FilePath             string `json:"filePath"`
+}
+
+type importWalletResult struct {
+	Wallet importedWallet `json:"wallet"`
+	Key    firstPublicKey `json:"key"`
+}
+
+func NewCmdImportWallet(w io.Writer, rf *RootFlags) *cobra.Command {
+	h := func(params api.AdminImportWalletParams) (importWalletResult, error) {
+		walletStore, err := wallets.InitialiseStore(rf.Home, false)
+		if err != nil {
+			return importWalletResult{}, fmt.Errorf("couldn't initialise wallets store: %w", err)
+		}
+		defer walletStore.Close()
+
+		importWallet := api.NewAdminImportWallet(walletStore)
+
+		rawResult, errDetails := importWallet.Handle(context.Background(), params)
+		if errDetails != nil {
+			return importWalletResult{}, errors.New(errDetails.Data)
+		}
+
+		result := rawResult.(api.AdminImportWalletResult)
+		return importWalletResult{
+			Wallet: importedWallet{
+				Name:                 result.Wallet.Name,
+				KeyDerivationVersion: result.Wallet.KeyDerivationVersion,
+				FilePath:             walletStore.GetWalletPath(result.Wallet.Name),
+			},
+			Key: firstPublicKey{
+				PublicKey: result.Key.PublicKey,
+				Algorithm: result.Key.Algorithm,
+				Meta:      result.Key.Meta,
+			},
+		}, nil
+	}
+
+	return BuildCmdImportWallet(w, h, rf)
+}
+
+func BuildCmdImportWallet(w io.Writer, handler ImportWalletHandler, rf *RootFlags) *cobra.Command {
+	f := &ImportWalletFlags{}
+
+	cmd := &cobra.Command{
+		Use:     "import",
+		Short:   "Import a wallet using the recovery phrase",
+		Long:    importWalletLong,
+		Example: importWalletExample,
+		RunE: func(_ *cobra.Command, _ []string) error {
+			req, err := f.Validate()
+			if err != nil {
+				return err
+			}
+
+			resp, err := handler(req)
+			if err != nil {
+				return err
+			}
+
+			switch rf.Output {
+			case flags.InteractiveOutput:
+				PrintImportWalletResponse(w, resp)
+			case flags.JSONOutput:
+				return printer.FprintJSON(w, resp)
+			}
+
+			return nil
+		},
+	}
+
+	cmd.Flags().StringVarP(&f.Wallet,
+		"wallet", "w",
+		"",
+		"Name of the wallet to use",
+	)
+	cmd.Flags().StringVarP(&f.PassphraseFile,
+		"passphrase-file", "p",
+		"",
+		"Path to the file containing the passphrase to access the wallet",
+	)
+	cmd.Flags().StringVar(&f.RecoveryPhraseFile,
+		"recovery-phrase-file",
+		"",
+		"Path to the file containing the recovery phrase of the wallet",
+	)
+	cmd.Flags().Uint32Var(&f.Version,
+		"version",
+		wallet.LatestVersion,
+		fmt.Sprintf("Version of the wallet to import: %v", wallet.SupportedKeyDerivationVersions),
+	)
+
+	_ = cmd.RegisterFlagCompletionFunc("version", func(_ *cobra.Command, _ []string, _ string) ([]string, cobra.ShellCompDirective) {
+		vs := make([]string, 0, len(wallet.SupportedKeyDerivationVersions))
+		for i, v := range wallet.SupportedKeyDerivationVersions {
+			vs[i] = strconv.FormatUint(uint64(v), 10) //nolint:gomnd
+		}
+		return vgzap.SupportedLogLevels, cobra.ShellCompDirectiveDefault
+	})
+
+	return cmd
+}
+
+type ImportWalletFlags struct {
+	Wallet             string
+	PassphraseFile     string
+	RecoveryPhraseFile string
+	Version            uint32
+}
+
+func (f *ImportWalletFlags) Validate() (api.AdminImportWalletParams, error) {
+	params := api.AdminImportWalletParams{
+		KeyDerivationVersion: f.Version,
+	}
+
+	if len(f.Wallet) == 0 {
+		return api.AdminImportWalletParams{}, flags.MustBeSpecifiedError("wallet")
+	}
+	params.Wallet = f.Wallet
+
+	if len(f.RecoveryPhraseFile) == 0 {
+		return api.AdminImportWalletParams{}, flags.MustBeSpecifiedError("recovery-phrase-file")
+	}
+	recoveryPhrase, err := vgfs.ReadFile(f.RecoveryPhraseFile)
+	if err != nil {
+		return api.AdminImportWalletParams{}, fmt.Errorf("couldn't read recovery phrase file: %w", err)
+	}
+	params.RecoveryPhrase = strings.Trim(string(recoveryPhrase), "\n")
+
+	passphrase, err := flags.GetConfirmedPassphrase(f.PassphraseFile)
+	if err != nil {
+		return api.AdminImportWalletParams{}, err
+	}
+	params.Passphrase = passphrase
+
+	return params, nil
+}
+
+func PrintImportWalletResponse(w io.Writer, resp importWalletResult) {
+	p := printer.NewInteractivePrinter(w)
+
+	str := p.String()
+	defer p.Print(str)
+
+	str.CheckMark().Text("Wallet ").Bold(resp.Wallet.Name).Text(" has been imported at: ").SuccessText(resp.Wallet.FilePath).NextLine()
+	str.CheckMark().Text("First key pair has been generated for the wallet ").Bold(resp.Wallet.Name).Text(" at: ").SuccessText(resp.Wallet.FilePath).NextLine()
+	str.CheckMark().SuccessText("Importing the wallet succeeded").NextSection()
+
+	str.Text("First public key:").NextLine()
+	str.WarningText(resp.Key.PublicKey).NextLine()
+	str.NextSection()
+
+	str.BlueArrow().InfoText("Run the service").NextLine()
+	str.Text("Now, you can run the service. See the following command:").NextSection()
+	str.Code(fmt.Sprintf("%s service run --help", os.Args[0])).NextLine()
+}

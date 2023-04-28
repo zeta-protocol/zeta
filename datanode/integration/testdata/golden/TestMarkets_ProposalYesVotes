@@ -1,0 +1,83 @@
+{
+	"TestName": "TestMarkets_ProposalYesVotes",
+	"Query": "{ marketsConnection{ edges { node { id, proposal{ id, votes{ yes{ votes{value, party { id }, datetime, proposalId, governanceTokenBalance, governanceTokenWeight} } } } } } } }",
+	"Result": {
+		"marketsConnection": {
+			"edges": [
+				{
+					"node": {
+						"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32",
+						"proposal": {
+							"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32",
+							"votes": {
+								"yes": {
+									"votes": [
+										{
+											"datetime": "2023-03-10T10:27:38.92756Z",
+											"governanceTokenBalance": "9749958450000000000",
+											"governanceTokenWeight": "1",
+											"party": {
+												"id": "abbb79deea6dc6bb5b532d0641730d2366864bf349744663e750f64422ca5ebb"
+											},
+											"proposalId": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32",
+											"value": "VALUE_YES"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711",
+						"proposal": {
+							"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711",
+							"votes": {
+								"yes": {
+									"votes": [
+										{
+											"datetime": "2023-03-10T10:24:10.795705Z",
+											"governanceTokenBalance": "9749958450000000000",
+											"governanceTokenWeight": "1",
+											"party": {
+												"id": "c2071f9874933829eb432b1af0d776b5d49d5d4a7feefffa7d1e9642d9d5ed19"
+											},
+											"proposalId": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711",
+											"value": "VALUE_YES"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd",
+						"proposal": {
+							"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd",
+							"votes": {
+								"yes": {
+									"votes": [
+										{
+											"datetime": "2023-03-10T10:23:23.403719Z",
+											"governanceTokenBalance": "9749958450000000000",
+											"governanceTokenWeight": "1",
+											"party": {
+												"id": "c2071f9874933829eb432b1af0d776b5d49d5d4a7feefffa7d1e9642d9d5ed19"
+											},
+											"proposalId": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd",
+											"value": "VALUE_YES"
+										}
+									]
+								}
+							}
+						}
+					}
+				}
+			]
+		}
+	},
+	"Duration": 3075378
+}

@@ -1,0 +1,50 @@
+{
+	"TestName": "TestMarkets_PropsalNoVotes",
+	"Query": "{ marketsConnection{ edges { node { id, proposal{ id, votes{ no{ votes{ value, party { id }, datetime, proposalId, governanceTokenBalance, governanceTokenWeight } } } } } } } }",
+	"Result": {
+		"marketsConnection": {
+			"edges": [
+				{
+					"node": {
+						"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32",
+						"proposal": {
+							"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32",
+							"votes": {
+								"no": {
+									"votes": null
+								}
+							}
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711",
+						"proposal": {
+							"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711",
+							"votes": {
+								"no": {
+									"votes": null
+								}
+							}
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd",
+						"proposal": {
+							"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd",
+							"votes": {
+								"no": {
+									"votes": null
+								}
+							}
+						}
+					}
+				}
+			]
+		}
+	},
+	"Duration": 7098527
+}

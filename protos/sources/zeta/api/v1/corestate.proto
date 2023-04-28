@@ -1,0 +1,194 @@
+syntax = "proto3";
+
+package zeta.api.v1;
+
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "zeta/assets.proto";
+import "zeta/events/v1/events.proto";
+import "zeta/governance.proto";
+import "zeta/markets.proto";
+import "zeta/zeta.proto";
+
+option go_package = "github.com/zeta-protocol/zeta/protos/zeta/api/v1";
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Zeta core state APIs";
+    version: "v0.71.0";
+  }
+  schemes: [
+    HTTP,
+    HTTPS
+  ]
+  host: "lb.testnet.zeta.xyz"
+};
+
+service CoreStateService {
+  // Accounts list
+  //
+  // Get a list of accounts
+  rpc ListAccounts(ListAccountsRequest) returns (ListAccountsResponse);
+
+  // Assets list
+  //
+  // Get a list of assets
+  rpc ListAssets(ListAssetsRequest) returns (ListAssetsResponse);
+
+  // Network parameters list
+  //
+  // Get a list of network parameters
+  rpc ListNetworkParameters(ListNetworkParametersRequest) returns (ListNetworkParametersResponse);
+
+  // Network limits list
+  //
+  // Get a list of network limits
+  rpc ListNetworkLimits(ListNetworkLimitsRequest) returns (ListNetworkLimitsResponse);
+
+  // Parties list
+  //
+  // Get a list of parties
+  rpc ListParties(ListPartiesRequest) returns (ListPartiesResponse);
+
+  // Validators list
+  //
+  // Get a list of validators
+  rpc ListValidators(ListValidatorsRequest) returns (ListValidatorsResponse);
+
+  // Markets list
+  //
+  // Get a list of markets
+  rpc ListMarkets(ListMarketsRequest) returns (ListMarketsResponse);
+
+  // Proposals list
+  //
+  // Get a list of proposals
+  rpc ListProposals(ListProposalsRequest) returns (ListProposalsResponse);
+
+  // Markets data list
+  //
+  // Get a list of markets data
+  rpc ListMarketsData(ListMarketsDataRequest) returns (ListMarketsDataResponse);
+
+  // Votes list
+  //
+  // Get a list of votes
+  rpc ListVotes(ListVotesRequest) returns (ListVotesResponse);
+
+  // Parties stake list
+  //
+  // Get a list of parties stake
+  rpc ListPartiesStake(ListPartiesStakeRequest) returns (ListPartiesStakeResponse);
+
+  // Delegations list
+  //
+  // Get a list of delegations
+  rpc ListDelegations(ListDelegationsRequest) returns (ListDelegationsResponse);
+}
+
+message Account {
+  string party = 1;
+  string market = 2;
+  string balance = 3;
+  string asset = 5;
+  string type = 6;
+}
+
+message ListAccountsRequest {
+  string party = 1;
+  string market = 2;
+}
+
+message ListAccountsResponse {
+  repeated Account accounts = 1;
+}
+
+message ListAssetsRequest {
+  string asset = 1; // optional ID
+}
+
+message ListAssetsResponse {
+  repeated zeta.Asset assets = 1;
+}
+
+message ListNetworkParametersRequest {
+  string network_parameter_key = 1; // optional parameter key
+}
+
+message ListNetworkParametersResponse {
+  repeated zeta.NetworkParameter network_parameters = 1;
+}
+
+message ListNetworkLimitsRequest {}
+
+message ListNetworkLimitsResponse {
+  zeta.NetworkLimits network_limits = 1;
+}
+
+message ListPartiesRequest {}
+
+message ListPartiesResponse {
+  repeated zeta.Party parties = 1;
+}
+
+message ListValidatorsRequest {}
+
+message ListValidatorsResponse {
+  repeated zeta.events.v1.ValidatorUpdate validators = 1;
+}
+
+message ListMarketsRequest {
+  string market = 1;
+}
+
+message ListMarketsResponse {
+  repeated zeta.Market markets = 1;
+}
+
+message ListProposalsRequest {
+  string proposal = 1; // optional ID
+  string proposer = 2; // optional party
+}
+
+message ListProposalsResponse {
+  repeated zeta.Proposal proposals = 1;
+}
+
+message ListMarketsDataRequest {
+  string market = 1;
+}
+
+message ListMarketsDataResponse {
+  repeated zeta.MarketData markets_data = 1;
+}
+
+message ListVotesRequest {
+  string proposal = 1;
+  string party = 2;
+}
+
+message ListVotesResponse {
+  repeated zeta.Vote votes = 1;
+}
+
+message PartyStake {
+  string party = 1;
+  string current_stake_available = 2;
+  repeated zeta.events.v1.StakeLinking stake_linkings = 3;
+}
+
+message ListPartiesStakeRequest {
+  string party = 1;
+}
+
+message ListPartiesStakeResponse {
+  repeated PartyStake parties_stake = 1;
+}
+
+message ListDelegationsRequest {
+  string party = 1;
+  string node = 2;
+  string epoch_seq = 3;
+}
+
+message ListDelegationsResponse {
+  repeated zeta.Delegation delegations = 1;
+}

@@ -1,0 +1,248 @@
+{
+	"TestName": "TestMarkets_OrderLP",
+	"Query": "{ marketsConnection{ edges { node { id, ordersConnection{ edges { node { id, liquidityProvision{ commitmentAmount, fee, status, version, reference, createdAt, updatedAt, market { id } } } } } } } } }",
+	"Result": {
+		"marketsConnection": {
+			"edges": [
+				{
+					"node": {
+						"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32",
+						"ordersConnection": {
+							"edges": [
+								{
+									"node": {
+										"id": "038f18b468911cd4ddede2aeb4023074b614395aebe6d3beab41c5425b12f494",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "1a3ddf5e274afb6ab146eaa19a7b8658d0c1eb7aeaf726b595ef5820628cb94a",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "b9b068be98c0246e066dbe242abc97dd88306e74b00760b96c6c5c0eb1cb7cfc",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "ec28bb9c031cf36ba321db7448bd0acb0ed5a99b51646939176328c40e023487",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "6b24805f91556eb0bd035a7560edffd43f23a32a9bc9c982df6cfdc4b1bc19dd",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "a7699d0d03e1dc3fb1ad88b38f41178b2925526b2558b6f59e2e971b1bb7346b",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "72caa61c855bbc7e1740dd5da69c7ed0119c3a23a0a9dc18cc3c232cc586ab04",
+										"liquidityProvision": {
+											"commitmentAmount": "3905000000000000000000000",
+											"createdAt": "2023-03-10T10:27:48.498375Z",
+											"fee": "0.3",
+											"market": {
+												"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32"
+											},
+											"reference": "6D1C98F12B",
+											"status": "STATUS_ACTIVE",
+											"updatedAt": "2023-03-10T10:27:48.498375Z",
+											"version": "1"
+										}
+									}
+								},
+								{
+									"node": {
+										"id": "a63412b9af37c9c5eed72e0522c868c229aefd26b76dee6a5246bc658d5a118d",
+										"liquidityProvision": {
+											"commitmentAmount": "3905000000000000000000000",
+											"createdAt": "2023-03-10T10:27:48.498375Z",
+											"fee": "0.3",
+											"market": {
+												"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32"
+											},
+											"reference": "6D1C98F12B",
+											"status": "STATUS_ACTIVE",
+											"updatedAt": "2023-03-10T10:27:48.498375Z",
+											"version": "1"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711",
+						"ordersConnection": {
+							"edges": [
+								{
+									"node": {
+										"id": "9455b7e81360ff1033c6b5acda7cda1c79c35778d301f1ba93b380f8ab4ee4fd",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "c4a1e949e032be6f65bcfcb4102df7dd38fc9fe88a3b8718803ef3a9a234724a",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "9759de46087004994917c1a562bb9b48636db7523e8bea48073d94b6c76d0006",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "4f4391745d35f2ee73161b9353cf8f684f2c53e2452fc61a90ba0833032dc240",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "683ce136d036ec003c567c6fb6de7facd0e3e365a2146a06b94712c39b2e6d79",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "8946f945eda35bfc01a68284ee37ed02865424b667bc49d0342e40e636f5c088",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "e16a48e9c76cf0dc566a12d1f66aa99358dcaea61dad09e3be388f52bd2dad1d",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "97bd39d0e771a3b6d7d72ffa1e31330ef4ebfce57a7a887ee0a1252448172d2e",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "21c23b57acd0c814aecf8da35655259a8e76bc597010a3a1c7d6f31551cc2d19",
+										"liquidityProvision": {
+											"commitmentAmount": "3905000000000000000000000",
+											"createdAt": "2023-03-10T10:24:18.66066Z",
+											"fee": "0.3",
+											"market": {
+												"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711"
+											},
+											"reference": "A8D5CA9600",
+											"status": "STATUS_STOPPED",
+											"updatedAt": "2023-03-10T10:24:18.66066Z",
+											"version": "1"
+										}
+									}
+								},
+								{
+									"node": {
+										"id": "ef0817ccbee70589807b3b18b15eab5d478baa910acca487e561573e82467f85",
+										"liquidityProvision": {
+											"commitmentAmount": "3905000000000000000000000",
+											"createdAt": "2023-03-10T10:24:18.66066Z",
+											"fee": "0.3",
+											"market": {
+												"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711"
+											},
+											"reference": "A8D5CA9600",
+											"status": "STATUS_STOPPED",
+											"updatedAt": "2023-03-10T10:24:18.66066Z",
+											"version": "1"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd",
+						"ordersConnection": {
+							"edges": [
+								{
+									"node": {
+										"id": "0abd55764a2e7a550624a3929842887934b31b9c040510e7a0565ef94f55170c",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "1b3d8b148a7b513ef1f1441b9ae32c0addabcb6aa6ec4136e1c19507631fa925",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "6f08d24526662bbd9cdff9b1c129e10f13789fcad6bed25bebf690126e1de95e",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "ec265c6e6eeb5095f5ef4d034302f24a36686baf95acea1eb91e51b3b01aa65c",
+										"liquidityProvision": null
+									}
+								},
+								{
+									"node": {
+										"id": "36029035fa749ba620400fa6ebc348bc2889e26381274097b32d748becb4fd9a",
+										"liquidityProvision": {
+											"commitmentAmount": "3905000000000000000000000",
+											"createdAt": "2023-03-10T10:23:32.222585Z",
+											"fee": "0.3",
+											"market": {
+												"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd"
+											},
+											"reference": "19F9D5C5F1",
+											"status": "STATUS_CANCELLED",
+											"updatedAt": "2023-03-10T10:23:32.222585Z",
+											"version": "1"
+										}
+									}
+								},
+								{
+									"node": {
+										"id": "af92ab81d1bb5f7f3a0eb54f685ce054f3791b776304a1b3cb17b3d4ba049451",
+										"liquidityProvision": {
+											"commitmentAmount": "3905000000000000000000000",
+											"createdAt": "2023-03-10T10:23:32.222585Z",
+											"fee": "0.3",
+											"market": {
+												"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd"
+											},
+											"reference": "19F9D5C5F1",
+											"status": "STATUS_CANCELLED",
+											"updatedAt": "2023-03-10T10:23:32.222585Z",
+											"version": "1"
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	},
+	"Duration": 7356836
+}

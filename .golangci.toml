@@ -1,0 +1,143 @@
+[run]
+allow-parallel-runners = true
+print-linter-name = true
+timeout = '15m0s'
+skip-dirs = [
+    'protos',
+]
+
+[issues]
+max-issues-per-linter = 0
+max-same-issues = 0
+#new = true
+
+[linters]
+enable-all = true
+disable = [
+    "containedctx",
+    "contextcheck",
+    "cyclop",
+    "dogsled",
+    "dupl",
+    "errcheck",
+    "errchkjson",
+    "errname",
+    "errorlint",
+    "exhaustive",
+    "exhaustivestruct",
+    "forcetypeassert",
+    "funlen",
+    "gochecknoglobals",
+    "gochecknoinits",
+    "gocognit",
+    "goconst",
+    "gocritic",
+    "gocyclo",
+    "godox",
+    "goerr113",
+    "goimports",
+    "gomnd",
+    "gomoddirectives",
+    "gosec",
+    "ifshort",
+    "interfacebloat",
+    "ireturn",
+    "maintidx",
+    "nestif",
+    "nilnil",
+    "nolintlint",
+    "paralleltest",
+    "predeclared",
+    "promlinter",
+    "stylecheck",
+    "tagliatelle",
+    "testpackage",
+    "tparallel",
+    "varnamelen",
+    "wrapcheck",
+    "wsl",
+    ## Disabled on-pupose.
+    "exhaustruct", # We often make incomplete structs.
+    "gci", # Doesn't match our code style.
+    "lll", # We don't have a line length.
+    "nlreturn", # Doesn't match our code style.
+    "nonamedreturns", # We don't mind named returns.
+
+    ## Deprecated linters.
+    "deadcode", # Replaced by 'unused'.
+    "golint", # Replaced by 'revive'.
+    "interfacer", # Not replaced.
+    "maligned", # Replaced by 'go vet fieldalignment'.
+    "nosnakecase", # Replaced by 'revive'.
+    "scopelint", # Replace by 'looppointer' or 'exportloopref'
+    "structcheck", # Replaced by 'unused'.
+    "varcheck", # Replaced by 'unused'.
+]
+
+[linters-settings.govet]
+enable = [
+    # "fieldalignment", to enable one day
+]
+
+[[issues.exclude-rules]]
+linters = ["staticcheck"]
+text = "SA1019:"
+
+[[issues.exclude-rules]]
+linters = ["staticcheck"]
+text = "SA5008:"
+
+[[issues.exclude-rules]]
+path = "_test\\.go"
+linters = ["forbidigo"]
+
+[[issues.exclude-rules]]
+path = "cmd/"
+linters = ["forbidigo"]
+
+[[issues.exclude-rules]]
+path = "zetatools/"
+linters = ["forbidigo"]
+
+[[issues.exclude-rules]]
+path = "flags.go"
+linters = ["forbidigo"]
+
+[[issues.exclude-rules]]
+path = "print.go"
+linters = ["forbidigo"]
+
+[[issues.exclude-rules]]
+path = "libs/json/json.go"
+linters = ["forbidigo"]
+
+[[issues.exclude-rules]]
+path = "_test.go"
+linters = ["exhaustruct", "noctx"]
+
+# Don't complain about context not being first argument in tests (convention is to use *testing.T)
+[[issues.exclude-rules]]
+paths = ["_test.go", "helpers.go"]
+linters = ["revive"]
+text = "context-as-argument"
+
+# Don't complain about underscores in test methods.
+[[issues.exclude-rules]]
+paths = ["_test.go", "helpers.go"]
+linters = ["revive"]
+text = "var-naming"
+
+[linters-settings.forbidigo]
+forbid = ["fmt\\.Print.*"]
+
+# protoc doesn't want us copying protobuf messages because they can have some internal state
+# that shouldn't be copied; but we do it a lot. see below for details
+# https://stackoverflow.com/questions/64183794/why-do-the-go-generated-protobuf-files-contain-mutex-locks
+[[issues.exclude-rules]]
+linters = ["govet"]
+text = "impl.MessageState contains sync.Mutex"
+
+# Temporary while the test is skipped to be removed.
+[[issues.exclude-rules]]
+path = "market_cp_restore_test.go"
+linters = ["unused"]

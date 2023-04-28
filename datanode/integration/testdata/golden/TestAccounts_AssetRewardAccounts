@@ -1,0 +1,76 @@
+{
+	"TestName": "TestAccounts_AssetRewardAccounts",
+	"Query": "{ assetsConnection{ edges { node { id globalRewardPoolAccount{ asset{ id } market { id } type balance } } } } }",
+	"Result": {
+		"assetsConnection": {
+			"edges": [
+				{
+					"node": {
+						"globalRewardPoolAccount": {
+							"asset": {
+								"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+							},
+							"balance": "0",
+							"market": null,
+							"type": "ACCOUNT_TYPE_GLOBAL_REWARD"
+						},
+						"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+					}
+				},
+				{
+					"node": {
+						"globalRewardPoolAccount": {
+							"asset": {
+								"id": "b4f2726571fbe8e33b442dc92ed2d7f0d810e21835b7371a7915a365f07ccd9b"
+							},
+							"balance": "0",
+							"market": null,
+							"type": "ACCOUNT_TYPE_GLOBAL_REWARD"
+						},
+						"id": "b4f2726571fbe8e33b442dc92ed2d7f0d810e21835b7371a7915a365f07ccd9b"
+					}
+				},
+				{
+					"node": {
+						"globalRewardPoolAccount": {
+							"asset": {
+								"id": "aa7a5a629097b0d3abdb2510d992dfd943409db2cbe63151f6dd710a64f6c8bd"
+							},
+							"balance": "0",
+							"market": null,
+							"type": "ACCOUNT_TYPE_GLOBAL_REWARD"
+						},
+						"id": "aa7a5a629097b0d3abdb2510d992dfd943409db2cbe63151f6dd710a64f6c8bd"
+					}
+				},
+				{
+					"node": {
+						"globalRewardPoolAccount": {
+							"asset": {
+								"id": "0fa76c9a96793dd080f21c41e4c192cee76d34bd150d5ead49574296a10cc665"
+							},
+							"balance": "0",
+							"market": null,
+							"type": "ACCOUNT_TYPE_GLOBAL_REWARD"
+						},
+						"id": "0fa76c9a96793dd080f21c41e4c192cee76d34bd150d5ead49574296a10cc665"
+					}
+				},
+				{
+					"node": {
+						"globalRewardPoolAccount": {
+							"asset": {
+								"id": "VOTE"
+							},
+							"balance": "0",
+							"market": null,
+							"type": "ACCOUNT_TYPE_GLOBAL_REWARD"
+						},
+						"id": "VOTE"
+					}
+				}
+			]
+		}
+	},
+	"Duration": 2502861
+}

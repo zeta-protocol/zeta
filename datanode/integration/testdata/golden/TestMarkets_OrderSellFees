@@ -1,0 +1,78 @@
+{
+	"TestName": "TestMarkets_OrderSellFees",
+	"Query": "{ marketsConnection{ edges { node { id, tradesConnection{ edges { node { id, sellerFee { makerFee, infrastructureFee, liquidityFee } } } } } } } }",
+	"Result": {
+		"marketsConnection": {
+			"edges": [
+				{
+					"node": {
+						"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32",
+						"tradesConnection": {
+							"edges": [
+								{
+									"node": {
+										"id": "57483b976b023d461efe161efc6505cb224c49ee50dcedfd866ec7f822bbf8a8",
+										"sellerFee": {
+											"infrastructureFee": "0",
+											"liquidityFee": "0",
+											"makerFee": "0"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711",
+						"tradesConnection": {
+							"edges": [
+								{
+									"node": {
+										"id": "f6ec05a69b9d9f2c9bca01275dafb3fc36197a821a48003a72935ee00965bd4a",
+										"sellerFee": {
+											"infrastructureFee": "900000000000000000",
+											"liquidityFee": "270000000000000000000",
+											"makerFee": "3600000000000000000"
+										}
+									}
+								},
+								{
+									"node": {
+										"id": "e226442b5186422b13a1996c2586f36ee90c2f4cfe29b3f6f3fcae93a08c603e",
+										"sellerFee": {
+											"infrastructureFee": "0",
+											"liquidityFee": "0",
+											"makerFee": "0"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd",
+						"tradesConnection": {
+							"edges": [
+								{
+									"node": {
+										"id": "8a8bf403dc835b9f7d8d4149ea15fb2c5369d509d37a732bd1e05a94c994948c",
+										"sellerFee": {
+											"infrastructureFee": "0",
+											"liquidityFee": "0",
+											"makerFee": "0"
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	},
+	"Duration": 2762997
+}

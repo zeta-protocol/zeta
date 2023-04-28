@@ -1,0 +1,877 @@
+syntax = "proto3";
+
+package zeta.events.v1;
+
+import "zeta/assets.proto";
+import "zeta/commands/v1/commands.proto";
+import "zeta/commands/v1/data.proto";
+import "zeta/commands/v1/validator_commands.proto";
+import "zeta/governance.proto";
+import "zeta/markets.proto";
+import "zeta/oracle.proto";
+import "zeta/zeta.proto";
+
+option go_package = "github.com/zeta-protocol/zeta/protos/zeta/events/v1";
+
+message ERC20MultiSigSignerAdded {
+  // ID of the signature bundle
+  string signature_id = 1;
+  // Node ID of the Zeta node to be added
+  string validator_id = 2;
+  // Time at which this happened
+  int64 timestamp = 3;
+  // Ethereum address of the new signer
+  string new_signer = 4;
+  // Address of the submitter of the transaction
+  string submitter = 5;
+  // Nonce used.
+  string nonce = 6;
+  // Epoch that the node was added for
+  string epoch_seq = 7;
+}
+
+message ERC20MultiSigSignerRemovedSubmitter {
+  // Signature ID of the signer removed.
+  string signature_id = 1;
+  // Address of the submitter of the transaction
+  string submitter = 2;
+}
+
+message ERC20MultiSigSignerRemoved {
+  // List containing all the IDs of bundle generated
+  // There should be one bundle generated for every validators
+  // in the validator set
+  repeated ERC20MultiSigSignerRemovedSubmitter signature_submitters = 1;
+  // Node ID of the Zeta node which is to be removed
+  string validator_id = 2;
+  // Time at which this happened
+  int64 timestamp = 3;
+  // Ethereum address of the signer to be removed
+  string old_signer = 4;
+  // Nonce used.
+  string nonce = 5;
+  // Epoch that the node was removed for
+  string epoch_seq = 6;
+}
+
+message Transfer {
+  enum Status {
+    // Default value
+    STATUS_UNSPECIFIED = 0;
+    // Indicates a transfer still being processed
+    STATUS_PENDING = 1;
+    // Indicates a transfer accepted by the Zeta network
+    STATUS_DONE = 2;
+    // Indicates a transfer rejected by the Zeta network
+    STATUS_REJECTED = 3;
+    // Indicates a transfer stopped by the Zeta network
+    // e.g: no funds left to cover the transfer
+    STATUS_STOPPED = 4;
+    // Indicates a transfer cancelled by the user
+    STATUS_CANCELLED = 5;
+  }
+
+  string id = 1;
+  string from = 2;
+  zeta.AccountType from_account_type = 3;
+  string to = 4;
+  zeta.AccountType to_account_type = 5;
+  string asset = 6;
+  string amount = 7;
+  string reference = 8;
+  Status status = 9;
+  int64 timestamp = 10;
+  optional string reason = 11;
+
+  oneof kind {
+    OneOffTransfer one_off = 101;
+    RecurringTransfer recurring = 102;
+  }
+}
+
+message OneOffTransfer {
+  int64 deliver_on = 1;
+}
+
+message RecurringTransfer {
+  uint64 start_epoch = 1;
+  optional uint64 end_epoch = 2;
+  string factor = 3;
+  DispatchStrategy dispatch_strategy = 4;
+}
+
+// StakeLinking - an event notifying of stake being deposited or removed for a given party
+// These events are emitted for every Staking deposit or removed accepted by the network
+message StakeLinking {
+  enum Type {
+    // Default value
+    TYPE_UNSPECIFIED = 0;
+    // Indicate of a stake deposit instruction
+    TYPE_LINK = 1;
+    // Indicate of a stake remove instruction
+    TYPE_UNLINK = 2;
+  }
+
+  enum Status {
+    // Default value
+    STATUS_UNSPECIFIED = 0;
+    // Indicates an event waiting for confirmation from the Zeta network
+    STATUS_PENDING = 1;
+    // Indicates an event accepted by the Zeta network
+    STATUS_ACCEPTED = 2;
+    // Indicates an event rejected by the Zeta network
+    STATUS_REJECTED = 3;
+  }
+
+  // Internal ID for this staking event
+  string id = 1;
+  // Stake linking event type.
+  Type type = 2;
+  // Timestamps at which the event was emitted by ethereum
+  int64 ts = 3;
+  // Party to whom the event is directed at.
+  string party = 4;
+  // Amount of stake deposited or removed
+  string amount = 5;
+  // Status of the event
+  Status status = 6;
+  // Time at which the zeta network finalized the state of the event
+  int64 finalized_at = 7;
+  // Hash of the transaction from which the events happen
+  string tx_hash = 8;
+  // Block when the event happened
+  uint64 block_height = 9;
+  // Block time
+  int64 block_time = 10;
+  // Log index
+  uint64 log_index = 11;
+  // Ethereum address from which the stake link was initiated
+  string ethereum_address = 12;
+}
+
+message ERC20MultiSigSignerEvent {
+  enum Type {
+    TYPE_UNSPECIFIED = 0;
+    TYPE_ADDED = 1;
+    TYPE_REMOVED = 2;
+  }
+
+  string id = 1;
+  Type type = 2;
+  string signer = 3;
+  string nonce = 4;
+  int64 block_time = 5;
+  string tx_hash = 6;
+  uint64 log_index = 7;
+  uint64 block_number = 8;
+}
+
+message ERC20MultiSigThresholdSetEvent {
+  string id = 1;
+  uint32 new_threshold = 2;
+  string nonce = 3;
+  int64 block_time = 4;
+  string tx_hash = 5;
+  uint64 log_index = 6;
+  uint64 block_number = 7;
+}
+
+message CheckpointEvent {
+  string hash = 1;
+  string block_hash = 2;
+  uint64 block_height = 3;
+}
+
+message StreamStartEvent {
+  string chain_id = 1;
+}
+
+message RewardPayoutEvent {
+  string party = 1;
+  string epoch_seq = 2;
+  string asset = 3;
+  string amount = 4;
+  string percent_of_total_reward = 5;
+  int64 timestamp = 6;
+  string reward_type = 7;
+  string market = 8;
+}
+
+// ValidatorScoreEvent is the score a validator gets for a given epoch
+message ValidatorScoreEvent {
+  string node_id = 1;
+  string epoch_seq = 2;
+  string validator_score = 3;
+  string normalised_score = 4;
+  string validator_performance = 5;
+  string raw_validator_score = 6;
+  string validator_status = 7;
+  string multisig_score = 8;
+}
+
+// DelegationBalanceEvent - updates on the delegation balance of a party to a node in the current epoch in effect
+message DelegationBalanceEvent {
+  string party = 1;
+  string node_id = 2;
+  string amount = 3;
+  string epoch_seq = 4;
+}
+
+// MarketEvent - the common denominator for all market events
+// interface has a method to return a string for logging
+message MarketEvent {
+  // Market ID for the event
+  string market_id = 1;
+  // Payload is a unique information string
+  string payload = 2;
+}
+
+message TransactionResult {
+  // Unique party ID for the related party
+  string party_id = 1;
+  // Status of the transaction, did it succeed or an error was raised.
+  bool status = 2;
+  // Hash of the transaction
+  string hash = 3;
+  // Transaction itself as received by the network
+
+  oneof transaction {
+    commands.v1.OrderSubmission order_submission = 101;
+    commands.v1.OrderAmendment order_amendment = 102;
+    commands.v1.OrderCancellation order_cancellation = 103;
+    commands.v1.ProposalSubmission proposal = 104;
+    commands.v1.VoteSubmission vote_submission = 105;
+    commands.v1.LiquidityProvisionSubmission liquidity_provision_submission = 106;
+    commands.v1.WithdrawSubmission withdraw_submission = 107;
+    commands.v1.DelegateSubmission delegate_submission = 108;
+    commands.v1.UndelegateSubmission undelegate_submission = 109;
+    commands.v1.LiquidityProvisionCancellation liquidity_provision_cancellation = 111;
+    commands.v1.LiquidityProvisionAmendment liquidity_provision_amendment = 112;
+    commands.v1.Transfer transfer = 113;
+    commands.v1.CancelTransfer cancel_transfer = 114;
+    commands.v1.AnnounceNode announce_node = 115;
+    commands.v1.OracleDataSubmission oracle_data_submission = 116;
+    commands.v1.ProtocolUpgradeProposal protocol_upgrade_proposal = 117;
+    commands.v1.IssueSignatures issue_signatures = 118;
+    commands.v1.BatchMarketInstructions batch_market_instructions = 119;
+    commands.v1.KeyRotateSubmission key_rotate_submission = 120;
+    commands.v1.EthereumKeyRotateSubmission ethereum_key_rotate_submission = 121;
+  }
+
+  // extra details about the transaction processing
+  oneof extra {
+    SuccessDetails success = 1001;
+    FailureDetails failure = 1002;
+  }
+
+  message SuccessDetails {
+    // TBD
+  }
+
+  message FailureDetails {
+    // Error message explaining the reason for the transaction failing processing
+    string error = 1;
+  }
+}
+
+message TxErrorEvent {
+  // This was the old restore checkpoint command
+  reserved 110;
+
+  // Unique party ID for the related party
+  string party_id = 1;
+  // Error message describing what went wrong
+  string err_msg = 2;
+  // Transaction that failed
+  oneof transaction {
+    commands.v1.OrderSubmission order_submission = 101;
+    commands.v1.OrderAmendment order_amendment = 102;
+    commands.v1.OrderCancellation order_cancellation = 103;
+    commands.v1.ProposalSubmission proposal = 104;
+    commands.v1.VoteSubmission vote_submission = 105;
+    commands.v1.LiquidityProvisionSubmission liquidity_provision_submission = 106;
+    commands.v1.WithdrawSubmission withdraw_submission = 107;
+    commands.v1.DelegateSubmission delegate_submission = 108;
+    commands.v1.UndelegateSubmission undelegate_submission = 109;
+    commands.v1.LiquidityProvisionCancellation liquidity_provision_cancellation = 111;
+    commands.v1.LiquidityProvisionAmendment liquidity_provision_amendment = 112;
+    commands.v1.Transfer transfer = 113;
+    commands.v1.CancelTransfer cancel_transfer = 114;
+    commands.v1.AnnounceNode announce_node = 115;
+    commands.v1.OracleDataSubmission oracle_data_submission = 116;
+    commands.v1.ProtocolUpgradeProposal protocol_upgrade_proposal = 117;
+    commands.v1.IssueSignatures issue_signatures = 118;
+    commands.v1.BatchMarketInstructions batch_market_instructions = 119;
+  }
+}
+
+// Time update event contains the latest time update from Zeta blockchain and indicates the start of a new block
+message TimeUpdate {
+  // Timestamp containing latest update from Zeta blockchain aka Zeta-time
+  int64 timestamp = 1;
+}
+
+// Epoch details
+message EpochEvent {
+  // Sequence number that increases by one each epoch
+  uint64 seq = 1;
+  // Action tells us what action is taking place
+  zeta.EpochAction action = 2;
+  // Zeta time at which this epoch started
+  int64 start_time = 3;
+  // Zeta time at which this epoch should end
+  int64 expire_time = 4;
+  // Zeta time at which this epoch actually ended
+  int64 end_time = 5;
+}
+
+// Transfer responses event contains a collection of transfer information
+message LedgerMovements {
+  // One or more entries containing internal transfer information
+  repeated LedgerMovement ledger_movements = 1;
+}
+
+// Position resolution event contains information on distressed trades
+message PositionResolution {
+  // Market ID for the event
+  string market_id = 1;
+  // Number of distressed traders
+  int64 distressed = 2;
+  // Number of close outs
+  int64 closed = 3;
+  // Mark price as a string representing a scaled price
+  string mark_price = 4;
+}
+
+// Loss socialization event contains details on the amount of wins unable to be distributed
+message LossSocialization {
+  // Market ID for the event
+  string market_id = 1;
+  // Party ID (public key) for the event
+  string party_id = 2;
+  // Amount distributed
+  string amount = 3;
+}
+
+// Trade settlement is part of the settle position event
+message TradeSettlement {
+  // Size of trade settlement
+  int64 size = 1;
+  // Price of settlement as string (in asset decimals)
+  string price = 2;
+  // Price of settlement as a string (in market decimals)
+  string market_price = 3;
+}
+
+// Settle position event contains position settlement information for a party
+message SettlePosition {
+  // Market ID for the event
+  string market_id = 1;
+  // Party ID (public key) for the event
+  string party_id = 2;
+  // Price of settlement as a string
+  string price = 3;
+  // A collection of 1 or more trade settlements
+  repeated TradeSettlement trade_settlements = 4;
+  // Position factor - 10 ^ number of position decimal places
+  string position_factor = 5;
+}
+
+// Settle market event to notify data node that a market has been settled
+// so positions and PL can be updated accordingly
+message SettleMarket {
+  // Market ID for the event
+  string market_id = 1;
+  // Price of settlement as a string
+  string price = 2;
+  // Position factor - 10 ^ number of position decimal places
+  string position_factor = 3;
+}
+
+// Position state event contains the current position state for a single party in a single market
+message PositionStateEvent {
+  // Party ID for this position update
+  string party_id = 1;
+  // Market ID for this position update
+  string market_id = 2;
+  // Current position
+  int64 size = 3;
+  // Potential orders
+  int64 potential_buys = 4;
+  int64 potential_sells = 5;
+  // Volume weighted prices
+  string vw_buy_price = 6;
+  string vw_sell_price = 7;
+}
+
+// Settle distressed event contains information on distressed trading parties who are closed out
+message SettleDistressed {
+  // Note: Any PositionResolution event (market level) will most likely be followed by a number of these events
+
+  // Market ID for the event
+  string market_id = 1;
+  // Party ID i.e. a party's public key for the event
+  string party_id = 2;
+  // Margin value as an integer, for example `123456` is a correctly
+  // formatted price of `1.23456` assuming market configured to 5 decimal places
+  string margin = 3;
+  // Price as an integer, for example `123456` is a correctly
+  // formatted price of `1.23456` assuming market configured to 5 decimal places
+  string price = 4;
+}
+
+// Distressed order contains the party IDs for all parties that were distressed and had their orders closed,
+// but did not need to be closed out after cancelling their orders
+message DistressedOrders {
+  // Market ID for the event
+  string market_id = 1;
+  // Slice of Party IDs i.e. each party's public key for the event
+  repeated string parties = 2;
+}
+
+// Distressed positions event contains the party IDs for all parties that were distressed, had their orders closed but because of insufficient volume on the book
+// could not be fully closed out. These parties are distressed, but still hold an active position on the book as a result. Once enough volume is on the book to close
+// them out, a SettleDistressed event will be sent. In case they manage to reduce their position, or meet the margin requirements, this status will be updated.
+// Parties that are no longer distressed but active will be listed in the safe_parties field.
+message DistressedPositions {
+  // Market ID for the event
+  string market_id = 1;
+  // Slice of party IDs i.e. each party's public key, that are distressed but still have open volume
+  repeated string distressed_parties = 2;
+  // Slice of party IDs i.e. each party's public key, who were distressed but now can safely maintain their position
+  repeated string safe_parties = 3;
+}
+
+// Market tick event contains the time value for when a particular market was last processed on Zeta
+message MarketTick {
+  // Market ID for the event
+  string id = 1;
+  // Timestamp containing latest update from Zeta blockchain aka Zeta-time
+  int64 time = 2;
+}
+
+// Auction event indicating a change in auction state, for example starting or ending an auction
+message AuctionEvent {
+  // Market ID for the event
+  string market_id = 1;
+  // True if the event indicates an auction opening and False otherwise
+  bool opening_auction = 2;
+  // True if the event indicates leaving auction mode and False otherwise
+  bool leave = 3;
+  // Timestamp containing the start time for an auction
+  int64 start = 4;
+  // Timestamp containing the end time for an auction
+  int64 end = 5;
+  // Reason this market is/was in auction
+  AuctionTrigger trigger = 6;
+  // If an auction was ongoing, but was extended for whatever reason, this field will
+  // be set to the trigger type indicating which component extended the auction
+  AuctionTrigger extension_trigger = 7;
+}
+
+// Validator update event contains information about validator node
+message ValidatorUpdate {
+  // Node ID of the validator node
+  string node_id = 1;
+  // Zeta public key of validator node
+  string zeta_pub_key = 2;
+  // Ethereum public key of validator node
+  string ethereum_address = 3;
+  // Public key of Tendermint
+  string tm_pub_key = 4;
+  // URL with more info on the node
+  string info_url = 5;
+  // Country code (ISO 3166-1 alpha-2) for the location of the node
+  string country = 6;
+  // Name of the validator
+  string name = 7;
+  // AvatarURL of the validator
+  string avatar_url = 8;
+  // Zeta public key derivation index
+  uint32 zeta_pub_key_index = 9;
+  // Flag indicating if the validator has been added to or removed from zeta
+  bool added = 10;
+  // Epoch in which the announced pending node will start participating in the network
+  uint64 from_epoch = 11;
+  // Ethereum public key being used as the submitter to allow automatic signature generation
+  string submitter_address = 12;
+  // Epoch in which the node was announced or removed from the network
+  uint64 epoch_seq = 13;
+}
+
+// Event that explains the status of the validator for the coming epoch
+message ValidatorRankingEvent {
+  string node_id = 1;
+  // Stake based score - no anti-whaling
+  string stake_score = 2;
+  // Performance base score
+  string performance_score = 3;
+  // Final score
+  string ranking_score = 4;
+  // Status of the validator in the previous epoch
+  string previous_status = 5;
+  // Status of the validator in the next epoch
+  string next_status = 6;
+  // Epoch seq for which the status is valid
+  string epoch_seq = 7;
+  // Tendermint voting power of the validator
+  uint32 tm_voting_power = 8;
+}
+
+// Event that contains information about a Zeta key rotation
+message KeyRotation {
+  // Node ID of the node that rotated their Zeta key
+  string node_id = 1;
+  // Zeta public key that was previously associated with the node
+  string old_pub_key = 2;
+  // Zeta public key that is newly associated with the node
+  string new_pub_key = 3;
+  // Block height when the key rotation took effect
+  uint64 block_height = 4;
+}
+
+// Event that contains information about an Ethereum key rotation
+message EthereumKeyRotation {
+  // Node ID of the node that rotated their Ethereum key
+  string node_id = 1;
+  // Ethereum address that was previously associated with the node
+  string old_address = 2;
+  // Ethereum address that is newly associated with the node
+  string new_address = 3;
+  // Block height when the key rotation took effect
+  uint64 block_height = 4;
+}
+
+enum ProtocolUpgradeProposalStatus {
+  PROTOCOL_UPGRADE_PROPOSAL_STATUS_UNSPECIFIED = 0;
+  // The proposal is pending
+  PROTOCOL_UPGRADE_PROPOSAL_STATUS_PENDING = 1;
+  // The proposal is approved
+  PROTOCOL_UPGRADE_PROPOSAL_STATUS_APPROVED = 2;
+  // The proposal is rejected
+  PROTOCOL_UPGRADE_PROPOSAL_STATUS_REJECTED = 3;
+}
+
+message ProtocolUpgradeEvent {
+  // Block height at which to perform the upgrade
+  uint64 upgrade_block_height = 1;
+  // Release tag for the zeta binary
+  string zeta_release_tag = 2;
+  // Tendermint validators that have agreed to the upgrade
+  repeated string approvers = 3;
+  // Status of the proposal
+  ProtocolUpgradeProposalStatus status = 4;
+}
+
+// StateVar event updates on state changes in state variable consensus
+message StateVar {
+  string id = 1;
+  string event_id = 2;
+  string state = 3;
+}
+
+// BeginBlock
+message BeginBlock {
+  uint64 height = 1;
+  int64 timestamp = 2;
+  string hash = 3;
+}
+
+// EndBlock
+message EndBlock {
+  uint64 height = 1;
+}
+
+// Event indicating the core is starting a protocol upgrade
+message ProtocolUpgradeStarted {
+  uint64 last_block_height = 1;
+}
+
+// Event indicating the data node is ready for protocol upgrade
+message ProtocolUpgradeDataNodeReady {
+  uint64 last_block_height = 1;
+}
+
+// CoreSnapshotData represents the core snapshot data.
+message CoreSnapshotData {
+  // Block height at which snapshot was taken
+  uint64 block_height = 1;
+  // Hash of the snapshot block
+  string block_hash = 2;
+  // Semver version number of the core.
+  string core_version = 3;
+  // Indicates if the snapshot is taken as part of protocol upgrade
+  bool protocol_upgrade_block = 4;
+}
+
+// Bus event type is used to specify a type of event
+// It has 2 styles of event:
+// Single values (e.g. BUS_EVENT_TYPE_ORDER) where they represent one data item
+// Group values (e.g. BUS_EVENT_TYPE_AUCTION) where they represent a group of data items
+enum BusEventType {
+  // Default value, always invalid
+  BUS_EVENT_TYPE_UNSPECIFIED = 0;
+  // Events of ALL event types, used when filtering stream from event bus
+  BUS_EVENT_TYPE_ALL = 1;
+  // Event for blockchain time updates
+  BUS_EVENT_TYPE_TIME_UPDATE = 2;
+  // Event for when a transfer happens internally, contains the transfer information
+  BUS_EVENT_TYPE_LEDGER_MOVEMENTS = 3;
+  // Event indicating position resolution has occurred
+  BUS_EVENT_TYPE_POSITION_RESOLUTION = 4;
+  // Event for order updates, both new and existing orders
+  BUS_EVENT_TYPE_ORDER = 5;
+  // Event for account updates
+  BUS_EVENT_TYPE_ACCOUNT = 6;
+  // Event for party updates
+  BUS_EVENT_TYPE_PARTY = 7;
+  // Event indicating a new trade has occurred
+  BUS_EVENT_TYPE_TRADE = 8;
+  // Event indicating margin levels have changed for a party
+  BUS_EVENT_TYPE_MARGIN_LEVELS = 9;
+  // Event for proposal updates (for governance)
+  BUS_EVENT_TYPE_PROPOSAL = 10;
+  // Event indicating a new vote has occurred (for governance)
+  BUS_EVENT_TYPE_VOTE = 11;
+  // Event for market data updates
+  BUS_EVENT_TYPE_MARKET_DATA = 12;
+  // Event for a new signature for a Zeta node
+  BUS_EVENT_TYPE_NODE_SIGNATURE = 13;
+  // Event indicating loss socialisation occurred for a party
+  BUS_EVENT_TYPE_LOSS_SOCIALIZATION = 14;
+  // Event for when a position is being settled
+  BUS_EVENT_TYPE_SETTLE_POSITION = 15;
+  // Event for when a position is distressed
+  BUS_EVENT_TYPE_SETTLE_DISTRESSED = 16;
+  // Event indicating a new market was created
+  BUS_EVENT_TYPE_MARKET_CREATED = 17;
+  // Event for when an asset is added to Zeta
+  BUS_EVENT_TYPE_ASSET = 18;
+  // Event indicating a market tick event
+  BUS_EVENT_TYPE_MARKET_TICK = 19;
+  // Event for when a withdrawal occurs
+  BUS_EVENT_TYPE_WITHDRAWAL = 20;
+  // Event for when a deposit occurs
+  BUS_EVENT_TYPE_DEPOSIT = 21;
+  // Event indicating a change in auction state, for example starting or ending an auction
+  BUS_EVENT_TYPE_AUCTION = 22;
+  // Event indicating a risk factor has been updated
+  BUS_EVENT_TYPE_RISK_FACTOR = 23;
+  // Event indicating a network parameter has been added or updated
+  BUS_EVENT_TYPE_NETWORK_PARAMETER = 24;
+  // Event indicating a liquidity provision has been created or updated
+  BUS_EVENT_TYPE_LIQUIDITY_PROVISION = 25;
+  // Event indicating a new market was created
+  BUS_EVENT_TYPE_MARKET_UPDATED = 26;
+  // Event indicating an oracle spec has been created or updated
+  BUS_EVENT_TYPE_ORACLE_SPEC = 27;
+  // Event indicating that an oracle data has been broadcast
+  BUS_EVENT_TYPE_ORACLE_DATA = 28;
+  // Event indicating that an delegation balance of a party to a node for current epoch has changed
+  BUS_EVENT_TYPE_DELEGATION_BALANCE = 29;
+  // Event indicating the validator score for the given epoch
+  BUS_EVENT_TYPE_VALIDATOR_SCORE = 30;
+  // Event indicating the start or end of an epoch
+  BUS_EVENT_TYPE_EPOCH_UPDATE = 31;
+  // Event indicating that validator node has been updated
+  BUS_EVENT_TYPE_VALIDATOR_UPDATE = 32;
+  // Event indicating a new staking event have been processed by the network
+  BUS_EVENT_TYPE_STAKE_LINKING = 33;
+  // Event indicating the payout of a reward has been initiated
+  BUS_EVENT_TYPE_REWARD_PAYOUT_EVENT = 34;
+  // Event indicating a new checkpoint was created
+  BUS_EVENT_TYPE_CHECKPOINT = 35;
+  // Event indicating stream is starting
+  BUS_EVENT_TYPE_STREAM_START = 36;
+  // Event indicating key rotation took place
+  BUS_EVENT_TYPE_KEY_ROTATION = 37;
+  // Event indicating state transitions in state variable consensus
+  BUS_EVENT_TYPE_STATE_VAR = 38;
+  // Event indicating network limits set or updated
+  BUS_EVENT_TYPE_NETWORK_LIMITS = 39;
+  // Event indicating a update for a transfer
+  BUS_EVENT_TYPE_TRANSFER = 40;
+  // Event indicating the ranking of validator and their status in Zeta
+  BUS_EVENT_TYPE_VALIDATOR_RANKING = 41;
+  // Event indicating a new multi sig signer event have been processed
+  BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_EVENT = 42;
+  // Event indicating the erc20 multi sig threshold have been updated
+  BUS_EVENT_TYPE_ERC20_MULTI_SIG_SET_THRESHOLD = 43;
+  // Event indicating a new signer has been added to the ERC-20 multisig
+  BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_ADDED = 44;
+  // Event indicating a signer has been removed from the ERC-20 multisig
+  BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_REMOVED = 45;
+  // Event indicating that a party's position has changed
+  BUS_EVENT_TYPE_POSITION_STATE = 46;
+  // Event indicating Ethereum key rotation took place
+  BUS_EVENT_TYPE_ETHEREUM_KEY_ROTATION = 47;
+  // Event indicating protocol upgrade proposal updates
+  BUS_EVENT_TYPE_PROTOCOL_UPGRADE_PROPOSAL = 48;
+  // Event indicating the core is starting to process a new block
+  BUS_EVENT_TYPE_BEGIN_BLOCK = 49;
+  // Event indicating the core finished to process a block
+  BUS_EVENT_TYPE_END_BLOCK = 50;
+  // Event indicating the core is starting a protocol upgrade
+  BUS_EVENT_TYPE_PROTOCOL_UPGRADE_STARTED = 51;
+  // Event indicating the market has stopped and settled
+  BUS_EVENT_TYPE_SETTLE_MARKET = 52;
+  // Event indicating the result of a transaction processed by the network
+  BUS_EVENT_TYPE_TRANSACTION_RESULT = 53;
+  // Event indicating a snapshot was taken at this block height
+  BUS_EVENT_TYPE_SNAPSHOT_TAKEN = 54;
+
+  // Event data node uses to notify that it is ready to upgrade
+  BUS_EVENT_TYPE_PROTOCOL_UPGRADE_DATA_NODE_READY = 55;
+
+  // Event indicating parties had orders closed because they were distressed, but were not closed out.
+  BUS_EVENT_TYPE_DISTRESSED_ORDERS_CLOSED = 56;
+  // Event indicating parties had orders closed because they were distressed, but were not closed out.
+  BUS_EVENT_TYPE_EXPIRED_ORDERS = 57;
+  // Event indicating parties have become, or were, distressed but still have an active position.
+  BUS_EVENT_TYPE_DISTRESSED_POSITIONS = 58;
+
+  // Event indicating a market related event, for example when a market opens
+  BUS_EVENT_TYPE_MARKET = 101;
+  // Event used to report failed transactions back to a user, this is excluded from the ALL type
+  BUS_EVENT_TYPE_TX_ERROR = 201;
+}
+
+// Bus event is a container for event bus events emitted by Zeta
+message BusEvent {
+  // Unique event ID for the message
+  string id = 1;
+  // The batch or block of transactions that the events relate to
+  string block = 2;
+  // The type of bus event. Must be one of the list below:
+  BusEventType type = 3;
+  oneof event {
+    // Time update events
+    TimeUpdate time_update = 101;
+    // Transfer responses update events
+    LedgerMovements ledger_movements = 102;
+    // Position resolution events
+    PositionResolution position_resolution = 103;
+    // Order events
+    Order order = 104;
+    // Account events
+    Account account = 105;
+    // Party events
+    Party party = 106;
+    // Trade events
+    Trade trade = 107;
+    // Margin level update events
+    MarginLevels margin_levels = 108;
+    // Proposal events for governance
+    Proposal proposal = 109;
+    // Vote events for governance
+    Vote vote = 110;
+    // Market data events
+    MarketData market_data = 111;
+    // Node signature events
+    zeta.commands.v1.NodeSignature node_signature = 112;
+    // Loss socialization events
+    LossSocialization loss_socialization = 113;
+    // Position settlement events
+    SettlePosition settle_position = 114;
+    // Position distressed events
+    SettleDistressed settle_distressed = 115;
+    // Market created events
+    Market market_created = 116;
+    // Asset events
+    Asset asset = 117;
+    // Market tick events
+    MarketTick market_tick = 118;
+    // Withdrawal events
+    Withdrawal withdrawal = 119;
+    // Deposit events
+    Deposit deposit = 120;
+    // Auction events
+    AuctionEvent auction = 121;
+    // Risk factor events
+    RiskFactor risk_factor = 122;
+    // Network parameter events
+    NetworkParameter network_parameter = 123;
+    // LiquidityProvision  events
+    LiquidityProvision liquidity_provision = 124;
+    // Market created events
+    Market market_updated = 125;
+    // OracleSpec events
+    zeta.OracleSpec oracle_spec = 126;
+    // OracleData events
+    zeta.OracleData oracle_data = 127;
+    // Delegation balance events
+    DelegationBalanceEvent delegation_balance = 129;
+    // Validator score calculated
+    ValidatorScoreEvent validator_score = 130;
+    // Epoch update events
+    EpochEvent epoch_event = 131;
+    // Validator update events
+    ValidatorUpdate validator_update = 132;
+    // Staking event
+    StakeLinking stake_linking = 133;
+    // Reward payout event
+    RewardPayoutEvent reward_payout = 134;
+    // Checkpoint was created
+    CheckpointEvent checkpoint = 135;
+    // Key rotation took place
+    KeyRotation key_rotation = 136;
+    // State variable consensus state transition update
+    StateVar state_var = 137;
+    // Network limits events
+    NetworkLimits network_limits = 138;
+    // Transfer event
+    Transfer transfer = 139;
+    // Ranking event
+    ValidatorRankingEvent ranking_event = 140;
+    // ERC20 multi sig signer event
+    ERC20MultiSigSignerEvent erc20_multisig_signer_event = 141;
+    // ERC20 multi sig set threshold event
+    ERC20MultiSigThresholdSetEvent erc20_multisig_set_threshold_event = 142;
+    // ERC20 multi sig signer added
+    ERC20MultiSigSignerAdded erc20_multisig_signer_added = 143;
+    // ERC20 multi sig signer removed
+    ERC20MultiSigSignerRemoved erc20_multisig_signer_removed = 144;
+    // Position status for a party in a market
+    PositionStateEvent position_state_event = 145;
+    // Ethereum key rotation took place
+    EthereumKeyRotation ethereum_key_rotation = 146;
+    // Protocol upgrade proposal updates
+    ProtocolUpgradeEvent protocol_upgrade_event = 147;
+    // Core is starting to process a new block
+    BeginBlock begin_block = 148;
+    // Core finished processing a block
+    EndBlock end_block = 149;
+    // Core is starting a protocol upgrade
+    ProtocolUpgradeStarted protocol_upgrade_started = 150;
+    // Settle market event for data-node to update positions for settled markets
+    SettleMarket settle_market = 151;
+    // Result of a transaction processed by the network
+    TransactionResult transaction_result = 152;
+    // Core snapshot has been taken at the end of the block
+    CoreSnapshotData core_snapshot_event = 153;
+    // Core snapshot has been taken at the end of the block
+    ProtocolUpgradeDataNodeReady protocol_upgrade_data_node_ready = 154;
+    // Parties that had their orders closed because they were distressed
+    DistressedOrders distressed_orders = 155;
+    // Orders that expired for a given market
+    ExpiredOrders expired_orders = 156;
+    // Open positions on the market that are/were distressed
+    DistressedPositions distressed_positions = 157;
+
+    // Market tick events
+    MarketEvent market = 1001;
+    // Transaction error events, not included in the ALL event type
+    TxErrorEvent tx_err_event = 2001;
+  }
+  // Version of bus event
+  uint32 version = 4;
+  string chain_id = 5;
+  string tx_hash = 6;
+}
+
+message ExpiredOrders {
+  // Market ID for the event
+  string market_id = 1;
+  // Slice of expired order IDs
+  repeated string order_ids = 2;
+}

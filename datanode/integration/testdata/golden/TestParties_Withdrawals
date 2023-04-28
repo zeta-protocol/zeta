@@ -1,0 +1,354 @@
+{
+	"TestName": "TestParties_Withdrawals",
+	"Query": "{ partiesConnection{ edges { node { id withdrawalsConnection { edges { node { id, party { id }, amount, asset { id }, status, ref, txHash, createdTimestamp, withdrawnTimestamp } } } } } } }",
+	"Result": {
+		"partiesConnection": {
+			"edges": [
+				{
+					"node": {
+						"id": "network",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "6258344864c89a115c038cf524323bcb63f2e40bc7e9b44fa1512edc591ed5b8",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "f1a1741cb457aa59209e806b8312a6e959fbc83418d86b881191fb3bf2e1c95a",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "a6ea3d9af8be934a022b0ad2b4e994980fb606198c0fcc8d5e50ae94f7a12435",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "abbb79deea6dc6bb5b532d0641730d2366864bf349744663e750f64422ca5ebb",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "8550c5350e9ddad81d270895f66a13bc03b030f7f6479443027a22adab801ea8",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "3c1fcb30ced97bef4978ea5977334a08fed99de24b09ac3f0ef257b56e56c1f4",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "21b6a8555b433b0c6d45720d08c0025a1c18a8aa20dbfd4e85e1de3c81878cd7",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "ee963982e8d93fd36ab7ec3b94e22e403647a1c44d37f9d262be9c6ffeba94e5",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "dddf0f4bebe8669764f029655cf65c8a26c7ea49144279943f33c26f5d7d0b73",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "73de7993cc410fed21b1e081bad7159698c03b5a2ca6c61c4785fe5d17600ffa",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "6ceafd8e0e65935abd68899474fd20d7202abc50948fdda9c17a54d835c2498d",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "1b8b57dde8383f0e9d1b3833d656803b3b48bdacc043d1992208824326a18842",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "a07aae3aa37bce328f432c953807ec281624c7ecb25e571bb6ba85887d04775d",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "1bc144ea1fd3019cd7db12ae0a1e9fb9a3e0e8fcf7aaa6bdf2fbce7c35171a6f",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "c137b920e6b37cb8dd1841a07d24f4f7728e21fbe5f2343b32f0350e1407154f",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "95a458eddea0a157b92c8450be9943cfa37521ca1048047eeef5fc20d86907ba",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "6d471a6b2b3e9c49170a2058389d33760a5959f6b2435ce7c75b938390520350",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "4dfff937cdcedf7d1622b1b7e4126e68f8dc02619437f4de6bfd45ca6db65738",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "384c6b1977c55332597db057d7700a8bd73d26b51725c2bc984911cb6f35eaec",
+						"withdrawalsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "10000000000000000000",
+										"asset": {
+											"id": "b4f2726571fbe8e33b442dc92ed2d7f0d810e21835b7371a7915a365f07ccd9b"
+										},
+										"createdTimestamp": "2023-03-10T10:25:19.06412Z",
+										"id": "692595a5049cebd114ed62265e300fb9252967e52beef35b42ff4e298059a954",
+										"party": {
+											"id": "384c6b1977c55332597db057d7700a8bd73d26b51725c2bc984911cb6f35eaec"
+										},
+										"ref": "1678443922",
+										"status": "STATUS_FINALIZED",
+										"txHash": "0xfff04e960f949330d229ecf8dfbcea89c24de6cd46c3be8d172e75302433bbe6",
+										"withdrawnTimestamp": "2023-03-10T10:25:36.594332Z"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "033acc4e3803f1160cb399b7e041735c92576db9dc4d7d94d13c508788464663",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "85d1b6579d441d251611965fdad680ac90dd768fddcc2d22a5ab8c5922d75f57",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "a3803f7086a5169c13b382e29c3d3180fb73fd2b731d3358b7a8d9c54ea14183",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "626b5bc6ed77b06bd32711bb33996a1b7373e9d1055290f4feb89f3964c6b19b",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "0c1e59433bec284a6d0e630eace136aaba41b86ed0c8e91f69c8e44d03d81348",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "cca5f6c7418d0b08d2d9ee87f46955e0fbd47dfc713ec7606dda7ac80b4baf29",
+						"withdrawalsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "10000000000000000000",
+										"asset": {
+											"id": "0fa76c9a96793dd080f21c41e4c192cee76d34bd150d5ead49574296a10cc665"
+										},
+										"createdTimestamp": "2023-03-10T10:23:37.337949Z",
+										"id": "37abcf78ade521cf1cd2523a9d303560243067cf0373c37875263e7a8c72a9a1",
+										"party": {
+											"id": "cca5f6c7418d0b08d2d9ee87f46955e0fbd47dfc713ec7606dda7ac80b4baf29"
+										},
+										"ref": "1678443819",
+										"status": "STATUS_FINALIZED",
+										"txHash": "0xf53e1e5d6e13d7a501816e3bae74dcb822e2620b148ff8fc11a0f2d0066ec324",
+										"withdrawnTimestamp": "2023-03-10T10:23:55.673697Z"
+									}
+								},
+								{
+									"node": {
+										"amount": "10000000000000000000",
+										"asset": {
+											"id": "aa7a5a629097b0d3abdb2510d992dfd943409db2cbe63151f6dd710a64f6c8bd"
+										},
+										"createdTimestamp": "2023-03-10T10:20:58.484397Z",
+										"id": "bdf1b1443e52442b400bd6c7cc749dd6fdd54dd40bbb893093f79b1e6b2a4fec",
+										"party": {
+											"id": "cca5f6c7418d0b08d2d9ee87f46955e0fbd47dfc713ec7606dda7ac80b4baf29"
+										},
+										"ref": "1678443659",
+										"status": "STATUS_FINALIZED",
+										"txHash": "0x26c147d7bc72f464ee37a61579863c19d0599e935ffb11333d01d52610307e66",
+										"withdrawnTimestamp": "2023-03-10T10:21:15.251398Z"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "a2835bc04c28b427616d35a5040fe452c3dc93587c9729fc3d5b59aa1fa01163",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "83c9ef61f27178869fe9263222adc4749a25f3f29675eeb2ba6189b5ab84bc78",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "72b033675512447a4f1d37da46dc0e455cec76c7e82e0203db87d0ab35eec02f",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "d49666f7327b3d5b077e10bc5fb9da19ff94b7f587dad9937200155a42b236b0",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "bc48c903a4a233fd2fe92787f9694a395d0155881ef35f041c913d7d3ff97c27",
+						"withdrawalsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "100000000000000000000",
+										"asset": {
+											"id": "ea438780e0f53a4fade0d05819f46716e101f2e63e18803cd3731875d523135b"
+										},
+										"createdTimestamp": "2023-03-10T10:20:04.274593Z",
+										"id": "edaf6bf0833c3063efdb0fd391b4048e50246ee3e5fb0a305ee4f0ef6e8edb9d",
+										"party": {
+											"id": "bc48c903a4a233fd2fe92787f9694a395d0155881ef35f041c913d7d3ff97c27"
+										},
+										"ref": "1678443604",
+										"status": "STATUS_FINALIZED",
+										"txHash": null,
+										"withdrawnTimestamp": null
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "c2071f9874933829eb432b1af0d776b5d49d5d4a7feefffa7d1e9642d9d5ed19",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15",
+						"withdrawalsConnection": {
+							"edges": null
+						}
+					}
+				}
+			]
+		}
+	},
+	"Duration": 5838549
+}

@@ -1,0 +1,53 @@
+{
+	"TestName": "TestMarkets_MarginCalculator",
+	"Query": "{ marketsConnection{ edges { node { id, tradableInstrument{ marginCalculator{ scalingFactors{ searchLevel, initialMargin,collateralRelease } } } } } } }",
+	"Result": {
+		"marketsConnection": {
+			"edges": [
+				{
+					"node": {
+						"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32",
+						"tradableInstrument": {
+							"marginCalculator": {
+								"scalingFactors": {
+									"collateralRelease": 1.4,
+									"initialMargin": 1.2,
+									"searchLevel": 1.1
+								}
+							}
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711",
+						"tradableInstrument": {
+							"marginCalculator": {
+								"scalingFactors": {
+									"collateralRelease": 1.4,
+									"initialMargin": 1.2,
+									"searchLevel": 1.1
+								}
+							}
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd",
+						"tradableInstrument": {
+							"marginCalculator": {
+								"scalingFactors": {
+									"collateralRelease": 1.4,
+									"initialMargin": 1.2,
+									"searchLevel": 1.1
+								}
+							}
+						}
+					}
+				}
+			]
+		}
+	},
+	"Duration": 1454187
+}

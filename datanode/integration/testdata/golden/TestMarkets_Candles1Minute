@@ -1,0 +1,71 @@
+{
+	"TestName": "TestMarkets_Candles1Minute",
+	"Query": "{ marketsConnection{ edges { node { id, candlesConnection(since : \"2000-01-01T00:00:00Z\",interval : INTERVAL_I1M)  { edges { node { periodStart, lastUpdateInPeriod, high, low, open, close, volume } } } } } } }",
+	"Result": {
+		"marketsConnection": {
+			"edges": [
+				{
+					"node": {
+						"candlesConnection": {
+							"edges": [
+								{
+									"node": {
+										"close": "97600000",
+										"high": "97600000",
+										"lastUpdateInPeriod": "2023-03-10T10:27:57.70992Z",
+										"low": "97600000",
+										"open": "97600000",
+										"periodStart": "2023-03-10T10:27:00Z",
+										"volume": "500000"
+									}
+								}
+							]
+						},
+						"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32"
+					}
+				},
+				{
+					"node": {
+						"candlesConnection": {
+							"edges": [
+								{
+									"node": {
+										"close": "90000000",
+										"high": "97600000",
+										"lastUpdateInPeriod": "2023-03-10T10:24:29.769344Z",
+										"low": "90000000",
+										"open": "97600000",
+										"periodStart": "2023-03-10T10:24:00Z",
+										"volume": "600000"
+									}
+								}
+							]
+						},
+						"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711"
+					}
+				},
+				{
+					"node": {
+						"candlesConnection": {
+							"edges": [
+								{
+									"node": {
+										"close": "100000000",
+										"high": "100000000",
+										"lastUpdateInPeriod": "2023-03-10T10:23:36.098505Z",
+										"low": "100000000",
+										"open": "100000000",
+										"periodStart": "2023-03-10T10:23:00Z",
+										"volume": "100000"
+									}
+								}
+							]
+						},
+						"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd"
+					}
+				}
+			]
+		}
+	},
+	"Duration": 10025544
+}

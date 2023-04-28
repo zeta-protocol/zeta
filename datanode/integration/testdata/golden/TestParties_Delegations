@@ -1,0 +1,2685 @@
+{
+	"TestName": "TestParties_Delegations",
+	"Query": "{ partiesConnection{ edges { node { id delegationsConnection{ edges { node { node { id }, party{ id }, epoch, amount } } } } } } }",
+	"Result": {
+		"partiesConnection": {
+			"edges": [
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "network"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "6258344864c89a115c038cf524323bcb63f2e40bc7e9b44fa1512edc591ed5b8"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "f1a1741cb457aa59209e806b8312a6e959fbc83418d86b881191fb3bf2e1c95a"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "a6ea3d9af8be934a022b0ad2b4e994980fb606198c0fcc8d5e50ae94f7a12435"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "abbb79deea6dc6bb5b532d0641730d2366864bf349744663e750f64422ca5ebb"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "8550c5350e9ddad81d270895f66a13bc03b030f7f6479443027a22adab801ea8"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "3c1fcb30ced97bef4978ea5977334a08fed99de24b09ac3f0ef257b56e56c1f4"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "21b6a8555b433b0c6d45720d08c0025a1c18a8aa20dbfd4e85e1de3c81878cd7"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "ee963982e8d93fd36ab7ec3b94e22e403647a1c44d37f9d262be9c6ffeba94e5"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "dddf0f4bebe8669764f029655cf65c8a26c7ea49144279943f33c26f5d7d0b73"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "73de7993cc410fed21b1e081bad7159698c03b5a2ca6c61c4785fe5d17600ffa"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "6ceafd8e0e65935abd68899474fd20d7202abc50948fdda9c17a54d835c2498d"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "1b8b57dde8383f0e9d1b3833d656803b3b48bdacc043d1992208824326a18842"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "a07aae3aa37bce328f432c953807ec281624c7ecb25e571bb6ba85887d04775d"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "1bc144ea1fd3019cd7db12ae0a1e9fb9a3e0e8fcf7aaa6bdf2fbce7c35171a6f"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "c137b920e6b37cb8dd1841a07d24f4f7728e21fbe5f2343b32f0350e1407154f"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "95a458eddea0a157b92c8450be9943cfa37521ca1048047eeef5fc20d86907ba"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "6d471a6b2b3e9c49170a2058389d33760a5959f6b2435ce7c75b938390520350"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "4dfff937cdcedf7d1622b1b7e4126e68f8dc02619437f4de6bfd45ca6db65738"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "384c6b1977c55332597db057d7700a8bd73d26b51725c2bc984911cb6f35eaec"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "033acc4e3803f1160cb399b7e041735c92576db9dc4d7d94d13c508788464663"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "85d1b6579d441d251611965fdad680ac90dd768fddcc2d22a5ab8c5922d75f57"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "a3803f7086a5169c13b382e29c3d3180fb73fd2b731d3358b7a8d9c54ea14183"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "626b5bc6ed77b06bd32711bb33996a1b7373e9d1055290f4feb89f3964c6b19b"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "0c1e59433bec284a6d0e630eace136aaba41b86ed0c8e91f69c8e44d03d81348"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "cca5f6c7418d0b08d2d9ee87f46955e0fbd47dfc713ec7606dda7ac80b4baf29"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "a2835bc04c28b427616d35a5040fe452c3dc93587c9729fc3d5b59aa1fa01163"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "83c9ef61f27178869fe9263222adc4749a25f3f29675eeb2ba6189b5ab84bc78"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "72b033675512447a4f1d37da46dc0e455cec76c7e82e0203db87d0ab35eec02f"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "d49666f7327b3d5b077e10bc5fb9da19ff94b7f587dad9937200155a42b236b0"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "bc48c903a4a233fd2fe92787f9694a395d0155881ef35f041c913d7d3ff97c27"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": null
+						},
+						"id": "c2071f9874933829eb432b1af0d776b5d49d5d4a7feefffa7d1e9642d9d5ed19"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 111,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 110,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 109,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 108,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 107,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 106,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 105,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 104,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 103,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 102,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 101,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 100,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 99,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 98,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 97,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 96,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 95,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 94,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 93,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 92,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 91,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 90,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 89,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 88,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 87,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 86,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 85,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 84,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 83,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 82,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 81,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 80,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 79,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 78,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 77,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 76,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 75,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 74,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 73,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 72,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 71,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 70,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 69,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 68,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 67,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 66,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 65,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 64,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 63,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 62,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 61,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 60,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 59,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 58,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 57,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 56,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 55,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 54,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 53,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 52,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 51,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 50,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 49,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 48,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 47,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 46,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 45,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 44,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 43,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 42,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 41,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 40,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 39,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 38,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 37,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 36,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 35,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 34,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 33,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 32,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 31,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 30,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 29,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 28,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 27,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 26,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 25,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 24,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 23,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 22,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 21,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 20,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 19,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 18,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 17,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 16,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 15,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 14,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 13,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 12,
+										"node": {
+											"id": "dc77661bcbd17b0bd132ba39f2569b490543a38b110b034ec1edb01f645ac07c"
+										},
+										"party": {
+											"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+										}
+									}
+								}
+							]
+						},
+						"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51"
+					}
+				},
+				{
+					"node": {
+						"delegationsConnection": {
+							"edges": [
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 111,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 110,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 109,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 108,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 107,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 106,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 105,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 104,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 103,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 102,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 101,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 100,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 99,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 98,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 97,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 96,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 95,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 94,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 93,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 92,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 91,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 90,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 89,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 88,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 87,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 86,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 85,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 84,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 83,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 82,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 81,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 80,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 79,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 78,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 77,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 76,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 75,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 74,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 73,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 72,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 71,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 70,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 69,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 68,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 67,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 66,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 65,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 64,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 63,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 62,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 61,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 60,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 59,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 58,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 57,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 56,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 55,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 54,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 53,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 52,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 51,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 50,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 49,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 48,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 47,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 46,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 45,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 44,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 43,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 42,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 41,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 40,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 39,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 38,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 37,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 36,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 35,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 34,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 33,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 32,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 31,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 30,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 29,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 28,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 27,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 26,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 25,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 24,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 23,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 22,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 21,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 20,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 19,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 18,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 17,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 16,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 15,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 14,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 13,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								},
+								{
+									"node": {
+										"amount": "1000000000000000000",
+										"epoch": 12,
+										"node": {
+											"id": "5f1f55b2dea1a86a775b0340cec4c649a12f93abac503e98d354b8642b7276c1"
+										},
+										"party": {
+											"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+										}
+									}
+								}
+							]
+						},
+						"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15"
+					}
+				}
+			]
+		}
+	},
+	"Duration": 103485890
+}

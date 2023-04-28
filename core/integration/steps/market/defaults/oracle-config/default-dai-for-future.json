@@ -1,0 +1,63 @@
+{
+  "dataSourceSpecForSettlementData": {
+    "id": "100",
+    "data": {
+      "external": {
+        "oracle": {
+          "signers": [
+            {
+              "pubKey": {
+                "key": "0x0000"
+              }
+            }
+          ],
+          "filters": [
+            {
+              "key": {
+                "name": "price.DAI.value",
+                "type": "TYPE_INTEGER",
+                "numberDecimalPlaces": "2"
+              },
+              "conditions": [
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "status": "STATUS_UNSPECIFIED"
+  },
+  "dataSourceSpecForTradingTermination": {
+    "data": {
+      "external": {
+        "oracle": {
+          "signers": [
+            {
+              "pubKey": {
+                "key": "0x0000"
+              }
+            }
+          ],
+          "filters": [
+            {
+              "key": {
+                "name": "price.DAI.value",
+                "type": "TYPE_INTEGER",
+                "numberDecimalPlaces": "2"
+              },
+              "conditions": [
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "status": "STATUS_UNSPECIFIED"
+},
+  "dataSourceSpecBinding": {
+    "settlementDataProperty": "price.DAI.value",
+    "tradingTerminationProperty": "price.DAI.value"
+  },
+  "quoteName": "DAI",
+  "settlementAsset": "DAI"
+}

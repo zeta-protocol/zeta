@@ -1,0 +1,526 @@
+---
+schema: schema.graphql
+exec:
+  filename: generated.go
+model:
+  filename: models.go
+
+skip_validation: true
+
+models:
+  String:
+    model:
+      - github.com/99designs/gqlgen/graphql.ID
+  Int:
+    model:
+      - github.com/99designs/gqlgen/graphql.Int
+      - github.com/99designs/gqlgen/graphql.Int64
+      - github.com/99designs/gqlgen/graphql.Int32
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.Uint32
+  ValidatorStatus:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.ValidatorStatus
+  LiquidityProvisionStatus:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.LiquidityProvisionStatus
+  ProposalType:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.ProposalType
+  Interval:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.Interval
+  Side:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.Side
+  TradeType:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.TradeType
+  OrderType:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.OrderType
+  MarketState:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.MarketState
+  MarketTradingMode:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.MarketTradingMode
+  ProposalRejectionReason:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.ProposalRejectionReason
+  OrderRejectionReason:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.OrderRejectionReason
+  PeggedReference:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.PeggedReference
+  OrderTimeInForce:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.OrderTimeInForce
+  OrderStatus:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.OrderStatus
+  DepositStatus:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.DepositStatus
+  WithdrawalStatus:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.WithdrawalStatus
+  StakeLinkingType:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.StakeLinkingType
+  StakeLinkingStatus:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.StakeLinkingStatus
+  TransferStatus:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.TransferStatus
+  TransferType:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.TransferType
+  DispatchMetric:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.DispatchMetric
+  NodeStatus:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.NodeStatus
+  AssetStatus:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.AssetStatus
+  NodeSignatureKind:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.NodeSignatureKind
+  OracleSpecStatus:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.OracleSpecStatus
+  PropertyKeyType:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.PropertyKeyType
+  ConditionOperator:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.ConditionOperator
+  ProposalState:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.ProposalState
+  VoteValue:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.VoteValue
+  AuctionTrigger:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.AuctionTrigger
+  Order:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Order
+  OrderUpdate:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Order
+  PaginatedOrder:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Order
+  TradeUpdate:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Trade
+  Trade:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Trade
+  PriceLevel:
+    model: github.com/zeta-protocol/zeta/protos/zeta.PriceLevel
+  MarketDepth:
+    model: github.com/zeta-protocol/zeta/protos/zeta.MarketDepth
+  ObservableMarketDepth:
+    model: github.com/zeta-protocol/zeta/protos/zeta.MarketDepth
+  MarketDepthUpdate:
+    model: github.com/zeta-protocol/zeta/protos/zeta.MarketDepthUpdate
+  ObservableMarketDepthUpdate:
+    model: github.com/zeta-protocol/zeta/protos/zeta.MarketDepthUpdate
+  Candle:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.Candle
+  Position:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Position
+  PositionUpdate:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Position
+  AccountEvent:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Account
+  AccountBalance:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.AccountBalance
+  AccountDetails:
+    model: github.com/zeta-protocol/zeta/protos/zeta.AccountDetails
+  AccountUpdate:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.AccountBalance
+  MarketData:
+    model: github.com/zeta-protocol/zeta/protos/zeta.MarketData
+  ObservableMarketData:
+    model: github.com/zeta-protocol/zeta/protos/zeta.MarketData
+  MarginLevels:
+    model: github.com/zeta-protocol/zeta/protos/zeta.MarginLevels
+  MarginLevelsUpdate:
+    model: github.com/zeta-protocol/zeta/protos/zeta.MarginLevels
+  MarginEstimate:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.MarginEstimate
+  LiquidationPrice:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.LiquidationPrice
+  LiquidationEstimate:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.LiquidationEstimate
+  NodeSignature:
+    model: github.com/zeta-protocol/zeta/protos/zeta/commands/v1.NodeSignature
+  ProposalEvent:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Proposal
+  RiskFactor:
+    model: github.com/zeta-protocol/zeta/protos/zeta.RiskFactor
+  NetworkParameter:
+    model: github.com/zeta-protocol/zeta/protos/zeta.NetworkParameter
+  LiquidityOrder:
+    model: github.com/zeta-protocol/zeta/protos/zeta.LiquidityOrder
+  LiquidityProvision:
+    model: github.com/zeta-protocol/zeta/protos/zeta.LiquidityProvision
+  LiquidityProvisionUpdate:
+    model: github.com/zeta-protocol/zeta/protos/zeta.LiquidityProvision
+  LiquidityOrderReference:
+    model: github.com/zeta-protocol/zeta/protos/zeta.LiquidityOrderReference
+  Future:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Future
+  TradableInstrument:
+    model: github.com/zeta-protocol/zeta/protos/zeta.TradableInstrument
+  SimpleRiskModel:
+    model: github.com/zeta-protocol/zeta/protos/zeta.SimpleRiskModel
+  SimpleRiskModelParams:
+    model: github.com/zeta-protocol/zeta/protos/zeta.SimpleModelParams
+  LogNormalRiskModel:
+    model: github.com/zeta-protocol/zeta/protos/zeta.LogNormalRiskModel
+  LogNormalModelParams:
+    model: github.com/zeta-protocol/zeta/protos/zeta.LogNormalModelParams
+  Instrument:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Instrument
+  InstrumentMetadata:
+    model: github.com/zeta-protocol/zeta/protos/zeta.InstrumentMetadata
+  Market:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Market
+    fields:
+      orders:
+        resolver: true
+      trades:
+        resolver: true
+      depth:
+        resolver: true
+      data:
+        resolver: true
+      candles:
+        resolver: true
+      accounts:
+        resolver: true
+      accountsConnection:
+        resolver: true
+      orderByReference:
+        resolver: true
+      liquidityProvisions:
+        resolver: true
+  Party:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Party
+    fields:
+      orders:
+        resolver: true
+      trades:
+        resolver: true
+      tradesPaged:
+        resolver: true
+      positions:
+        resolver: true
+      accounts:
+        resolver: true
+      accountsConnection:
+        resolver: true
+      margins:
+        resolver: true
+      delegations:
+        resolver: true
+  Proposal:
+    model: github.com/zeta-protocol/zeta/protos/zeta.GovernanceData
+    fields:
+      votes:
+        resolver: true
+  ProposalRationale:
+    model: github.com/zeta-protocol/zeta/protos/zeta.ProposalRationale
+  ProposalTerms:
+    model: github.com/zeta-protocol/zeta/protos/zeta.ProposalTerms
+  ProposalDetail:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Proposal
+  NewMarket:
+    model: github.com/zeta-protocol/zeta/protos/zeta.NewMarket
+  NewAsset:
+    model: github.com/zeta-protocol/zeta/protos/zeta.NewAsset
+  UpdateAsset:
+    model: github.com/zeta-protocol/zeta/protos/zeta.UpdateAsset
+  NewFreeform:
+    model: github.com/zeta-protocol/zeta/protos/zeta.NewFreeform
+  UpdateMarket:
+    model: github.com/zeta-protocol/zeta/protos/zeta.UpdateMarket
+  UpdateNetworkParameter:
+    model: github.com/zeta-protocol/zeta/protos/zeta.UpdateNetworkParameter
+  InstrumentConfiguration:
+    model: github.com/zeta-protocol/zeta/protos/zeta.InstrumentConfiguration
+  FutureProduct:
+    model: github.com/zeta-protocol/zeta/protos/zeta.FutureProduct
+  Asset:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Asset
+    fields:
+      infrastructureFeeAccount:
+        resolver: true
+  Deposit:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Deposit
+  Withdrawal:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Withdrawal
+    fields:
+      txHash:
+        resolver: true
+  PeggedOrder:
+    model: github.com/zeta-protocol/zeta/protos/zeta.PeggedOrder
+  DataSourceSpecToFutureBinding:
+    model: github.com/zeta-protocol/zeta/protos/zeta.DataSourceSpecToFutureBinding
+  DataSourceSpecConfiguration:
+    model: github.com/zeta-protocol/zeta/protos/zeta.DataSourceSpecConfiguration
+  OracleSpec:
+    model: github.com/zeta-protocol/zeta/protos/zeta.OracleSpec
+  Filter:
+    model: github.com/zeta-protocol/zeta/protos/zeta/data/v1.Filter
+  PropertyKey:
+    model: github.com/zeta-protocol/zeta/protos/zeta/data/v1.PropertyKey
+  Condition:
+    model: github.com/zeta-protocol/zeta/protos/zeta/data/v1.Condition
+  OracleData:
+    model: github.com/zeta-protocol/zeta/protos/zeta.OracleData
+    fields:
+      broadcastAt:
+        resolver: true
+  Property:
+    model: github.com/zeta-protocol/zeta/protos/zeta/data/v1.Property
+  AuctionEvent:
+    model: github.com/zeta-protocol/zeta/protos/zeta/events/v1.AuctionEvent
+  FeeFactors:
+    model: github.com/zeta-protocol/zeta/protos/zeta.FeeFactors
+  Fees:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Fees
+  ScalingFactors:
+    model: github.com/zeta-protocol/zeta/protos/zeta.ScalingFactors
+  MarginCalculator:
+    model: github.com/zeta-protocol/zeta/protos/zeta.MarginCalculator
+  Vote:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Vote
+  VoteConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.VoteConnection
+  VoteEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.VoteEdge
+  MarketTimestamps:
+    model: github.com/zeta-protocol/zeta/protos/zeta.MarketTimestamps
+  NodeData:
+    model: github.com/zeta-protocol/zeta/protos/zeta.NodeData
+  EpochData:
+    model: github.com/zeta-protocol/zeta/protos/zeta.EpochData
+  Delegation:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Delegation
+  Node:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Node
+  Epoch:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Epoch
+  EpochTimestamps:
+    model: github.com/zeta-protocol/zeta/protos/zeta.EpochTimestamps
+  Reward:
+    model: github.com/zeta-protocol/zeta/protos/zeta.Reward
+  RewardSummary:
+    model: github.com/zeta-protocol/zeta/protos/zeta.RewardSummary
+  StakeLinking:
+    model: github.com/zeta-protocol/zeta/protos/zeta/events/v1.StakeLinking
+  PartyStake:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.GetStakeResponse
+  KeyRotation:
+    model: github.com/zeta-protocol/zeta/protos/zeta/events/v1.KeyRotation
+  EthereumKeyRotationsConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.EthereumKeyRotationsConnection
+  EthereumKeyRotationEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.EthereumKeyRotationEdge
+  EthereumKeyRotation:
+    model: github.com/zeta-protocol/zeta/protos/zeta/events/v1.EthereumKeyRotation
+  Transfer:
+    model: github.com/zeta-protocol/zeta/protos/zeta/events/v1.Transfer
+  OneOffTransfer:
+    model: github.com/zeta-protocol/zeta/protos/zeta/events/v1.OneOffTransfer
+  RecurringTransfer:
+    model: github.com/zeta-protocol/zeta/protos/zeta/events/v1.RecurringTransfer
+  Statistics:
+    model: github.com/zeta-protocol/zeta/protos/zeta/api/v1.Statistics
+  AccountType:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.AccountType
+  AccountFilter:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.AccountFilter
+  AggregatedBalance:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.AggregatedBalance
+  LedgerEntryField:
+    model: github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.LedgerEntryField
+  LedgerEntryFilter:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.LedgerEntryFilter
+  AggregatedLedgerEntry:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.AggregatedLedgerEntry
+  AggregatedLedgerEntriesEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.AggregatedLedgerEntriesEdge
+  AggregatedLedgerEntriesConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.AggregatedLedgerEntriesConnection
+  Timestamp:
+    model: github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.Timestamp
+  NetworkLimits:
+    model: github.com/zeta-protocol/zeta/protos/zeta.NetworkLimits
+  RankingScore:
+    model: github.com/zeta-protocol/zeta/protos/zeta.RankingScore
+  RewardScore:
+    model: github.com/zeta-protocol/zeta/protos/zeta.RewardScore
+  UpdateMarketConfiguration:
+    model: github.com/zeta-protocol/zeta/protos/zeta.UpdateMarketConfiguration
+  UpdateMarketSimpleRiskModel:
+    model: github.com/zeta-protocol/zeta/protos/zeta.UpdateMarketConfiguration_Simple
+  UpdateMarketLogNormalRiskModel:
+    model: github.com/zeta-protocol/zeta/protos/zeta.UpdateMarketConfiguration_LogNormal
+  UpdateFutureProduct:
+    model: github.com/zeta-protocol/zeta/protos/zeta.UpdateFutureProduct
+  TradeConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.TradeConnection
+  TradeEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.TradeEdge
+  PageInfo:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.PageInfo
+  MarketConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.MarketConnection
+  MarketEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.MarketEdge
+  PositionConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.PositionConnection
+  PositionEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.PositionEdge
+  PartyConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.PartyConnection
+  PartyEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.PartyEdge
+  Pagination:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.Pagination
+  OrderEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.OrderEdge
+  OrderConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.OrderConnection
+  MarginEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.MarginEdge
+  MarginConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.MarginConnection
+  MarketDataEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.MarketDataEdge
+  MarketDataConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.MarketDataConnection
+  RewardEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.RewardEdge
+  RewardsConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.RewardsConnection
+  CandleEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.CandleEdge
+  CandleDataConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.CandleDataConnection
+  DepositEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.DepositEdge
+  DepositsConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.DepositsConnection
+  WithdrawalEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.WithdrawalEdge
+  WithdrawalsConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.WithdrawalsConnection
+  AssetEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.AssetEdge
+  AssetsConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.AssetsConnection
+  OracleSpecEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.OracleSpecEdge
+  OracleSpecsConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.OracleSpecsConnection
+  OracleDataEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.OracleDataEdge
+  OracleDataConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.OracleDataConnection
+  LiquidityProvisionsEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.LiquidityProvisionsEdge
+  LiquidityProvisionsConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.LiquidityProvisionsConnection
+  TransferEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.TransferEdge
+  TransferConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.TransferConnection
+  ProposalEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.GovernanceDataEdge
+  ProposalsConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.GovernanceDataConnection
+  DelegationEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.DelegationEdge
+  DelegationsConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.DelegationsConnection
+  NodeEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.NodeEdge
+  NodesConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.NodesConnection
+  NetworkParameterEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.NetworkParameterEdge
+  NetworkParametersConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.NetworkParameterConnection
+  NodeSignatureEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.NodeSignatureEdge
+  NodeSignaturesConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.NodeSignaturesConnection
+  KeyRotationEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.KeyRotationEdge
+  KeyRotationConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.KeyRotationConnection
+  StakeLinkingEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.StakeLinkingEdge
+  StakesConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.StakesConnection
+  AccountEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.AccountEdge
+  AccountsConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.AccountsConnection
+  DateRange:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.DateRange
+  AggregatedBalanceEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.AggregatedBalanceEdge
+  AggregatedBalanceConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.AggregatedBalanceConnection
+  TransactionResult:
+    model: github.com/zeta-protocol/zeta/protos/zeta/events/v1.TransactionResult
+  HistorySegment:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.HistorySegment
+  ProtocolUpgradeProposalConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.ProtocolUpgradeProposalConnection
+  ProtocolUpgradeProposalEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.ProtocolUpgradeProposalEdge
+  ProtocolUpgradeProposal:
+    model: github.com/zeta-protocol/zeta/protos/zeta/events/v1.ProtocolUpgradeEvent
+  ProtocolUpgradeProposalStatus:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.ProtocolUpgradeProposalStatus
+  OrderFilter:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.OrderFilter
+  CoreSnapshotConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.CoreSnapshotConnection
+  CoreSnapshotEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.CoreSnapshotEdge
+  CoreSnapshotData:
+    model: github.com/zeta-protocol/zeta/protos/zeta/events/v1.CoreSnapshotData
+  RewardSummaryFilter:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.RewardSummaryFilter
+  EpochRewardSummaryConnection:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.EpochRewardSummaryConnection
+  EpochRewardSummaryEdge:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.EpochRewardSummaryEdge
+  EpochRewardSummary:
+    model: github.com/zeta-protocol/zeta/protos/zeta.EpochRewardSummary
+  PositionsFilter:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.PositionsFilter
+  PositionStatus:
+    model:
+      - github.com/zeta-protocol/zeta/datanode/gateway/graphql/marshallers.PositionStatus
+  LedgerEntry:
+    model: github.com/zeta-protocol/zeta/protos/zeta.LedgerEntry
+  ERC20MultiSigSignerAddedBundle:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.ERC20MultiSigSignerAddedBundle
+  ERC20MultiSigSignerRemovedBundle:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.ERC20MultiSigSignerRemovedBundle
+  NodeBasic:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.NodeBasic
+  Entities:
+    model: github.com/zeta-protocol/zeta/protos/data-node/api/v2.ListEntitiesResponse

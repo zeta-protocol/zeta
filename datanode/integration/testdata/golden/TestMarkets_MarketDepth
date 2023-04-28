@@ -1,0 +1,118 @@
+{
+	"TestName": "TestMarkets_MarketDepth",
+	"Query": "{ marketsConnection{ edges { node { id, depth{ sequenceNumber buy{ price volume numberOfOrders} sell{ price volume numberOfOrders} lastTrade{ id buyer{id} seller{id} price size } } } } } }",
+	"Result": {
+		"marketsConnection": {
+			"edges": [
+				{
+					"node": {
+						"depth": {
+							"buy": [
+								{
+									"numberOfOrders": "1",
+									"price": "90000000",
+									"volume": "500000"
+								},
+								{
+									"numberOfOrders": "1",
+									"price": "89900000",
+									"volume": "86874305"
+								},
+								{
+									"numberOfOrders": "1",
+									"price": "10000000",
+									"volume": "100000"
+								}
+							],
+							"lastTrade": {
+								"buyer": {
+									"id": "85d1b6579d441d251611965fdad680ac90dd768fddcc2d22a5ab8c5922d75f57"
+								},
+								"id": "57483b976b023d461efe161efc6505cb224c49ee50dcedfd866ec7f822bbf8a8",
+								"price": "97600000",
+								"seller": {
+									"id": "033acc4e3803f1160cb399b7e041735c92576db9dc4d7d94d13c508788464663"
+								},
+								"size": "500000"
+							},
+							"sell": [
+								{
+									"numberOfOrders": "1",
+									"price": "120000000",
+									"volume": "500000"
+								},
+								{
+									"numberOfOrders": "1",
+									"price": "120100000",
+									"volume": "65029143"
+								},
+								{
+									"numberOfOrders": "1",
+									"price": "10000000000",
+									"volume": "100000"
+								}
+							],
+							"sequenceNumber": "1678444077709915009"
+						},
+						"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32"
+					}
+				},
+				{
+					"node": {
+						"depth": {
+							"buy": null,
+							"lastTrade": {
+								"buyer": {
+									"id": "85d1b6579d441d251611965fdad680ac90dd768fddcc2d22a5ab8c5922d75f57"
+								},
+								"id": "f6ec05a69b9d9f2c9bca01275dafb3fc36197a821a48003a72935ee00965bd4a",
+								"price": "90000000",
+								"seller": {
+									"id": "a3803f7086a5169c13b382e29c3d3180fb73fd2b731d3358b7a8d9c54ea14183"
+								},
+								"size": "100000"
+							},
+							"sell": null,
+							"sequenceNumber": "1678443901157162035"
+						},
+						"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711"
+					}
+				},
+				{
+					"node": {
+						"depth": {
+							"buy": [
+								{
+									"numberOfOrders": "1",
+									"price": "100000",
+									"volume": "100000"
+								}
+							],
+							"lastTrade": {
+								"buyer": {
+									"id": "cca5f6c7418d0b08d2d9ee87f46955e0fbd47dfc713ec7606dda7ac80b4baf29"
+								},
+								"id": "8a8bf403dc835b9f7d8d4149ea15fb2c5369d509d37a732bd1e05a94c994948c",
+								"price": "100000000",
+								"seller": {
+									"id": "d49666f7327b3d5b077e10bc5fb9da19ff94b7f587dad9937200155a42b236b0"
+								},
+								"size": "100000"
+							},
+							"sell": [
+								{
+									"numberOfOrders": "1",
+									"price": "1000000000",
+									"volume": "100000"
+								}
+							],
+							"sequenceNumber": "1678443816098501016"
+						},
+						"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd"
+					}
+				}
+			]
+		}
+	},
+	"Duration": 3810956
+}

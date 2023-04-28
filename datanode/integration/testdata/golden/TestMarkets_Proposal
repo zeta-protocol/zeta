@@ -1,0 +1,56 @@
+{
+	"TestName": "TestMarkets_Proposal",
+	"Query": "{ marketsConnection{ edges { node { id, proposal{ id, reference, party { id }, state, datetime, rejectionReason} } } } }",
+	"Result": {
+		"marketsConnection": {
+			"edges": [
+				{
+					"node": {
+						"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32",
+						"proposal": {
+							"datetime": "2023-03-10T10:27:34.03915Z",
+							"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32",
+							"party": {
+								"id": "abbb79deea6dc6bb5b532d0641730d2366864bf349744663e750f64422ca5ebb"
+							},
+							"reference": "E3D5AD3372",
+							"rejectionReason": null,
+							"state": "STATE_ENACTED"
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711",
+						"proposal": {
+							"datetime": "2023-03-10T10:24:05.588573Z",
+							"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711",
+							"party": {
+								"id": "c2071f9874933829eb432b1af0d776b5d49d5d4a7feefffa7d1e9642d9d5ed19"
+							},
+							"reference": "0EC3552800",
+							"rejectionReason": null,
+							"state": "STATE_ENACTED"
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd",
+						"proposal": {
+							"datetime": "2023-03-10T10:23:18.09062Z",
+							"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd",
+							"party": {
+								"id": "c2071f9874933829eb432b1af0d776b5d49d5d4a7feefffa7d1e9642d9d5ed19"
+							},
+							"reference": "490C15F54F",
+							"rejectionReason": null,
+							"state": "STATE_ENACTED"
+						}
+					}
+				}
+			]
+		}
+	},
+	"Duration": 4302873
+}

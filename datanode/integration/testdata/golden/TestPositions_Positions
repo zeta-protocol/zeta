@@ -1,0 +1,456 @@
+{
+	"TestName": "TestPositions_Positions",
+	"Query": "{\n\t\t\tpartiesConnection {\n\t\t\t  edges {\n\t\t\t\tnode {\n\t\t\t\t  id\n\t\t\t\t  positionsConnection{\n\t\t\t\t    edges{\n\t\t\t\t\t  node {\n\t\t\t\t\t\tmarket{id}\n\t\t\t\t    \tparty{id}\n\t\t\t\t    \topenVolume\n\t\t\t\t    \trealisedPNL\n\t\t\t\t    \tunrealisedPNL\n\t\t\t\t    \taverageEntryPrice\n\t\t\t\t    \tupdatedAt\n  \t\t\t\t\t  }\n\t\t\t\t\t}\n\t\t\t\t  }\n\t\t\t\t}\n\t\t\t  }\n\t\t\t}\n\t\t  }",
+	"Result": {
+		"partiesConnection": {
+			"edges": [
+				{
+					"node": {
+						"id": "network",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "6258344864c89a115c038cf524323bcb63f2e40bc7e9b44fa1512edc591ed5b8",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "f1a1741cb457aa59209e806b8312a6e959fbc83418d86b881191fb3bf2e1c95a",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "a6ea3d9af8be934a022b0ad2b4e994980fb606198c0fcc8d5e50ae94f7a12435",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "abbb79deea6dc6bb5b532d0641730d2366864bf349744663e750f64422ca5ebb",
+						"positionsConnection": {
+							"edges": [
+								{
+									"node": {
+										"averageEntryPrice": "0",
+										"market": {
+											"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32"
+										},
+										"openVolume": "0",
+										"party": {
+											"id": "abbb79deea6dc6bb5b532d0641730d2366864bf349744663e750f64422ca5ebb"
+										},
+										"realisedPNL": "0",
+										"unrealisedPNL": "0",
+										"updatedAt": "2023-03-10T10:27:57.709915Z"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "8550c5350e9ddad81d270895f66a13bc03b030f7f6479443027a22adab801ea8",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "3c1fcb30ced97bef4978ea5977334a08fed99de24b09ac3f0ef257b56e56c1f4",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "21b6a8555b433b0c6d45720d08c0025a1c18a8aa20dbfd4e85e1de3c81878cd7",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "ee963982e8d93fd36ab7ec3b94e22e403647a1c44d37f9d262be9c6ffeba94e5",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "dddf0f4bebe8669764f029655cf65c8a26c7ea49144279943f33c26f5d7d0b73",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "73de7993cc410fed21b1e081bad7159698c03b5a2ca6c61c4785fe5d17600ffa",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "6ceafd8e0e65935abd68899474fd20d7202abc50948fdda9c17a54d835c2498d",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "1b8b57dde8383f0e9d1b3833d656803b3b48bdacc043d1992208824326a18842",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "a07aae3aa37bce328f432c953807ec281624c7ecb25e571bb6ba85887d04775d",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "1bc144ea1fd3019cd7db12ae0a1e9fb9a3e0e8fcf7aaa6bdf2fbce7c35171a6f",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "c137b920e6b37cb8dd1841a07d24f4f7728e21fbe5f2343b32f0350e1407154f",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "95a458eddea0a157b92c8450be9943cfa37521ca1048047eeef5fc20d86907ba",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "6d471a6b2b3e9c49170a2058389d33760a5959f6b2435ce7c75b938390520350",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "4dfff937cdcedf7d1622b1b7e4126e68f8dc02619437f4de6bfd45ca6db65738",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "384c6b1977c55332597db057d7700a8bd73d26b51725c2bc984911cb6f35eaec",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "033acc4e3803f1160cb399b7e041735c92576db9dc4d7d94d13c508788464663",
+						"positionsConnection": {
+							"edges": [
+								{
+									"node": {
+										"averageEntryPrice": "97600000",
+										"market": {
+											"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32"
+										},
+										"openVolume": "-500000",
+										"party": {
+											"id": "033acc4e3803f1160cb399b7e041735c92576db9dc4d7d94d13c508788464663"
+										},
+										"realisedPNL": "0",
+										"unrealisedPNL": "0",
+										"updatedAt": "2023-03-10T10:27:57.709915Z"
+									}
+								},
+								{
+									"node": {
+										"averageEntryPrice": "97600000",
+										"market": {
+											"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711"
+										},
+										"openVolume": "0",
+										"party": {
+											"id": "033acc4e3803f1160cb399b7e041735c92576db9dc4d7d94d13c508788464663"
+										},
+										"realisedPNL": "4879495000000000000000",
+										"unrealisedPNL": "0",
+										"updatedAt": "2023-03-10T10:25:01.157162Z"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "85d1b6579d441d251611965fdad680ac90dd768fddcc2d22a5ab8c5922d75f57",
+						"positionsConnection": {
+							"edges": [
+								{
+									"node": {
+										"averageEntryPrice": "97600000",
+										"market": {
+											"id": "bda439ade276efe1567fedec94ea5b9c040c5f89f72382ef1cf893faf0454f32"
+										},
+										"openVolume": "500000",
+										"party": {
+											"id": "85d1b6579d441d251611965fdad680ac90dd768fddcc2d22a5ab8c5922d75f57"
+										},
+										"realisedPNL": "0",
+										"unrealisedPNL": "0",
+										"updatedAt": "2023-03-10T10:27:57.709915Z"
+									}
+								},
+								{
+									"node": {
+										"averageEntryPrice": "96333333",
+										"market": {
+											"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711"
+										},
+										"openVolume": "0",
+										"party": {
+											"id": "85d1b6579d441d251611965fdad680ac90dd768fddcc2d22a5ab8c5922d75f57"
+										},
+										"realisedPNL": "-5779394000000000000000",
+										"unrealisedPNL": "0",
+										"updatedAt": "2023-03-10T10:25:01.157162Z"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "a3803f7086a5169c13b382e29c3d3180fb73fd2b731d3358b7a8d9c54ea14183",
+						"positionsConnection": {
+							"edges": [
+								{
+									"node": {
+										"averageEntryPrice": "90000000",
+										"market": {
+											"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711"
+										},
+										"openVolume": "0",
+										"party": {
+											"id": "a3803f7086a5169c13b382e29c3d3180fb73fd2b731d3358b7a8d9c54ea14183"
+										},
+										"realisedPNL": "899899000000000000000",
+										"unrealisedPNL": "0",
+										"updatedAt": "2023-03-10T10:25:01.157162Z"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "626b5bc6ed77b06bd32711bb33996a1b7373e9d1055290f4feb89f3964c6b19b",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "0c1e59433bec284a6d0e630eace136aaba41b86ed0c8e91f69c8e44d03d81348",
+						"positionsConnection": {
+							"edges": [
+								{
+									"node": {
+										"averageEntryPrice": "0",
+										"market": {
+											"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711"
+										},
+										"openVolume": "0",
+										"party": {
+											"id": "0c1e59433bec284a6d0e630eace136aaba41b86ed0c8e91f69c8e44d03d81348"
+										},
+										"realisedPNL": "0",
+										"unrealisedPNL": "0",
+										"updatedAt": "2023-03-10T10:25:01.157162Z"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "cca5f6c7418d0b08d2d9ee87f46955e0fbd47dfc713ec7606dda7ac80b4baf29",
+						"positionsConnection": {
+							"edges": [
+								{
+									"node": {
+										"averageEntryPrice": "100000000",
+										"market": {
+											"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd"
+										},
+										"openVolume": "100000",
+										"party": {
+											"id": "cca5f6c7418d0b08d2d9ee87f46955e0fbd47dfc713ec7606dda7ac80b4baf29"
+										},
+										"realisedPNL": "0",
+										"unrealisedPNL": "0",
+										"updatedAt": "2023-03-10T10:23:36.098501Z"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "a2835bc04c28b427616d35a5040fe452c3dc93587c9729fc3d5b59aa1fa01163",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "83c9ef61f27178869fe9263222adc4749a25f3f29675eeb2ba6189b5ab84bc78",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "72b033675512447a4f1d37da46dc0e455cec76c7e82e0203db87d0ab35eec02f",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "d49666f7327b3d5b077e10bc5fb9da19ff94b7f587dad9937200155a42b236b0",
+						"positionsConnection": {
+							"edges": [
+								{
+									"node": {
+										"averageEntryPrice": "100000000",
+										"market": {
+											"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd"
+										},
+										"openVolume": "-100000",
+										"party": {
+											"id": "d49666f7327b3d5b077e10bc5fb9da19ff94b7f587dad9937200155a42b236b0"
+										},
+										"realisedPNL": "0",
+										"unrealisedPNL": "0",
+										"updatedAt": "2023-03-10T10:23:36.098501Z"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "bc48c903a4a233fd2fe92787f9694a395d0155881ef35f041c913d7d3ff97c27",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "c2071f9874933829eb432b1af0d776b5d49d5d4a7feefffa7d1e9642d9d5ed19",
+						"positionsConnection": {
+							"edges": [
+								{
+									"node": {
+										"averageEntryPrice": "0",
+										"market": {
+											"id": "c8657325431e08fc2a22f5094d3fb42a570b6b13d5dafc346924e340ea2a6711"
+										},
+										"openVolume": "0",
+										"party": {
+											"id": "c2071f9874933829eb432b1af0d776b5d49d5d4a7feefffa7d1e9642d9d5ed19"
+										},
+										"realisedPNL": "0",
+										"unrealisedPNL": "0",
+										"updatedAt": "2023-03-10T10:25:01.157162Z"
+									}
+								},
+								{
+									"node": {
+										"averageEntryPrice": "0",
+										"market": {
+											"id": "836da1ce68446d8b5cd1102bd46712fab678da8174c21f974d650212d928d5cd"
+										},
+										"openVolume": "0",
+										"party": {
+											"id": "c2071f9874933829eb432b1af0d776b5d49d5d4a7feefffa7d1e9642d9d5ed19"
+										},
+										"realisedPNL": "0",
+										"unrealisedPNL": "0",
+										"updatedAt": "2023-03-10T10:23:36.098501Z"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "fea234dd40479f4c356eead30d359b9ad349603e5ef7a4c0a58c9f2c432fcc51",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				},
+				{
+					"node": {
+						"id": "06b6e5998288ae08b72af1b94aac078f82dafe6871baa4806742a4456b112b15",
+						"positionsConnection": {
+							"edges": null
+						}
+					}
+				}
+			]
+		}
+	},
+	"Duration": 6383903
+}

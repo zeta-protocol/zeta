@@ -1,0 +1,68 @@
+---
+type: google.api.Service
+config_version: 3
+
+name: api.v1.trading
+title: Zeta Trading API
+
+apis:
+  - name: CoreService
+  - name: CoreStateService
+
+http:
+  rules:
+    # transaction
+    - selector: zeta.api.v1.CoreService.SubmitTransaction
+      post: '/transaction'
+      body: "*"
+    - selector: zeta.api.v1.CoreService.CheckTransaction
+      post: '/transaction/check'
+      body: "*"
+    - selector: zeta.api.v1.CoreService.SubmitRawTransaction
+      post: '/transaction/raw'
+      body: "*"
+    - selector: zeta.api.v1.CoreService.CheckRawTransaction
+      post: '/transaction/raw/check'
+      body: "*"
+
+
+    # Miscellaneous
+    - selector: zeta.api.v1.CoreService.Statistics
+      get: '/statistics'
+    - selector: zeta.api.v1.CoreService.GetSpamStatistics
+      get: '/statistics/spam/{party_id}'
+    - selector: zeta.api.v1.CoreService.LastBlockHeight
+      get: '/blockchain/height'
+    - selector: zeta.api.v1.CoreService.GetZetaTime
+      get: '/time'
+
+    # Core APIs
+    - selector: zeta.api.v1.CoreStateService.ListNetworkParameters
+      get: '/network/parameters'
+    - selector: zeta.api.v1.CoreStateService.ListNetworkLimits
+      get: '/network/limits'
+    - selector: zeta.api.v1.CoreStateService.ListAccounts
+      get: '/accounts'
+    - selector: zeta.api.v1.CoreStateService.ListAssets
+      get: '/assets'
+    - selector: zeta.api.v1.CoreStateService.ListParties
+      get: '/parties'
+    - selector: zeta.api.v1.CoreStateService.ListPartiesStake
+      get: '/parties/stake'
+    - selector: zeta.api.v1.CoreStateService.ListValidators
+      get: '/validators'
+    - selector: zeta.api.v1.CoreStateService.ListProposals
+      get: '/proposals'
+    - selector: zeta.api.v1.CoreStateService.ListVotes
+      get: '/votes'
+    - selector: zeta.api.v1.CoreStateService.ListMarkets
+      get: '/markets'
+    - selector: zeta.api.v1.CoreStateService.ListMarketsData
+      get: '/markets/data'
+    - selector: zeta.api.v1.CoreStateService.ListDelegations
+      get: '/delegations'
+
+    # websockets
+
+    - selector: zeta.api.v1.CoreService.ObserveEventBus
+      get: '/stream/event/bus'

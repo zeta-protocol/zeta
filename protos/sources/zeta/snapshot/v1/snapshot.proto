@@ -1,0 +1,831 @@
+syntax = "proto3";
+
+package zeta.snapshot.v1;
+
+import "zeta/assets.proto";
+import "zeta/chain_events.proto";
+import "zeta/checkpoint/v1/checkpoint.proto";
+import "zeta/data/v1/data.proto";
+import "zeta/events/v1/events.proto";
+import "zeta/governance.proto";
+import "zeta/markets.proto";
+import "zeta/zeta.proto";
+
+option go_package = "github.com/zeta-protocol/zeta/protos/zeta/snapshot/v1";
+
+enum Format {
+  // Default value, always invalid
+  FORMAT_UNSPECIFIED = 0;
+  // Standard proto encoding
+  FORMAT_PROTO = 1;
+  // Compressed proto, might come in handy
+  FORMAT_PROTO_COMPRESSED = 2;
+  // Simple JSON serialisation, probably not going to be used
+  FORMAT_JSON = 3;
+}
+
+message Snapshot {
+  uint64 height = 1;
+  Format format = 2;
+  uint32 chunks = 3;
+  bytes hash = 4;
+  bytes metadata = 5;
+}
+
+// NodeHash represents an exported node from the AVL tree and contains all the data necessary to reconstruct an identical copy of the
+// AVL tree after it's been serialised
+message NodeHash {
+  // Node's full key, for example epoch.all
+  string key = 3;
+  // Hash of the node's value
+  string hash = 4;
+  // Height of the node in the tree
+  int32 height = 5;
+  // Version of that node i.e., how many times its value has changed during tree updates
+  int64 version = 6;
+  // Whether or not the node contains a snapshot payload, only leaf nodes in the AVL contain payloads
+  bool is_leaf = 7;
+}
+
+message Metadata {
+  int64 version = 1;
+  repeated string chunk_hashes = 2;
+  repeated NodeHash node_hashes = 3; // hashes used by snapshot engine, different to chunk hash if data was split up, or combined into a single chunk
+}
+
+// Chunk is simply an as-is chunk belonging to a snapshot
+// not sure how usable this type would be
+message Chunk {
+  repeated Payload data = 1;
+  int64 nr = 2; // in case of multi-part data, this is chunk nr...
+  int64 of = 3; // ...of a total of N chunks
+}
+
+message Payload {
+  oneof data {
+    ActiveAssets active_assets = 1;
+    PendingAssets pending_assets = 2;
+    BankingWithdrawals banking_withdrawals = 3;
+    BankingDeposits banking_deposits = 4;
+    BankingSeen banking_seen = 5;
+    BankingAssetActions banking_asset_actions = 6;
+    Checkpoint checkpoint = 7;
+    CollateralAccounts collateral_accounts = 8;
+    CollateralAssets collateral_assets = 9;
+    DelegationActive delegation_active = 10;
+    DelegationPending delegation_pending = 11;
+    DelegationAuto delegation_auto = 12;
+    GovernanceActive governance_active = 13;
+    GovernanceEnacted governance_enacted = 14;
+    StakingAccounts staking_accounts = 15;
+    MatchingBook matching_book = 16;
+    NetParams network_parameters = 17;
+    ExecutionMarkets execution_markets = 18;
+    MarketPositions market_positions = 19;
+    AppState app_state = 20;
+    EpochState epoch = 21;
+    RewardsPendingPayouts rewards_pending_payouts = 23;
+    GovernanceNode governance_node = 24;
+    LimitState limit_state = 25;
+    VoteSpamPolicy vote_spam_policy = 26;
+    SimpleSpamPolicy simple_spam_policy = 27;
+    Notary notary = 28;
+    EventForwarder event_forwarder = 31;
+    StakeVerifierDeposited stake_verifier_deposited = 32;
+    StakeVerifierRemoved stake_verifier_removed = 33;
+    Witness witness = 34;
+    DelegationLastReconciliationTime delegation_last_reconciliation_time = 35;
+    Topology topology = 36;
+    OracleDataBatch oracle_data = 37;
+    LiquidityParameters liquidity_parameters = 38;
+    LiquidityPendingProvisions liquidity_pending_provisions = 39;
+    LiquidityPartiesLiquidityOrders liquidity_parties_liquidity_orders = 40;
+    LiquidityPartiesOrders liquidity_parties_orders = 41;
+    LiquidityProvisions liquidity_provisions = 42;
+    LiquiditySupplied liquidity_supplied = 43;
+    LiquidityTarget liquidity_target = 44;
+    FloatingPointConsensus floating_point_consensus = 46;
+    MarketTracker market_tracker = 47;
+    BankingRecurringTransfers banking_recurring_transfers = 49;
+    BankingScheduledTransfers banking_scheduled_transfers = 50;
+    ERC20MultiSigTopologyVerified erc20_multisig_topology_verified = 51;
+    ERC20MultiSigTopologyPending erc20_multisig_topology_pending = 52;
+    ProofOfWork proof_of_work = 53;
+    PendingAssetUpdates pending_asset_updates = 54;
+    ProtocolUpgradeProposals protocol_upgrade_proposals = 55;
+    BankingBridgeState banking_bridge_state = 56;
+    SettlementState settlement_state = 57;
+    LiquidityScores liquidity_scores = 58;
+  }
+}
+
+message TimestampedOpenInterest {
+  uint64 open_interest = 1;
+  int64 time = 2;
+}
+
+message LiquidityTarget {
+  string market_id = 1;
+  int64 current_time = 2;
+  int64 scheduled_truncate = 3;
+  repeated uint64 current_open_interests = 4;
+  repeated TimestampedOpenInterest previous_open_interests = 5;
+  TimestampedOpenInterest max_open_interests = 6;
+}
+
+message LiquidityOffsetProbabilityPair {
+  uint32 offset = 1;
+  string probability = 2;
+}
+
+message LiquiditySupplied {
+  string market_id = 1;
+  bool consensus_reached = 2;
+  repeated LiquidityOffsetProbabilityPair bid_cache = 3;
+  repeated LiquidityOffsetProbabilityPair ask_cache = 4;
+}
+
+message OracleDataBatch {
+  repeated OracleData oracle_data = 1;
+}
+
+message OracleData {
+  repeated zeta.data.v1.Signer signers = 1;
+  repeated OracleDataPair data = 2;
+}
+
+message OracleDataPair {
+  string key = 1;
+  string value = 2;
+}
+
+message Witness {
+  repeated Resource resources = 1;
+}
+
+message Resource {
+  string id = 1;
+  int64 check_until = 2;
+  repeated string votes = 3;
+  uint32 state = 4;
+}
+
+message EventForwarder {
+  repeated string acked_events = 1;
+}
+
+message CollateralAccounts {
+  repeated zeta.Account accounts = 1;
+}
+
+message CollateralAssets {
+  repeated zeta.Asset assets = 1;
+}
+
+message ActiveAssets {
+  repeated zeta.Asset assets = 1;
+}
+
+message PendingAssets {
+  repeated zeta.Asset assets = 1;
+}
+
+message PendingAssetUpdates {
+  repeated zeta.Asset assets = 1;
+}
+
+message Withdrawal {
+  string ref = 1;
+  zeta.Withdrawal withdrawal = 2;
+}
+
+message Deposit {
+  string id = 1;
+  zeta.Deposit deposit = 2;
+}
+
+message TxRef {
+  string asset = 1;
+  uint64 block_nr = 2;
+  string hash = 3;
+  uint64 log_index = 4;
+}
+
+message BankingWithdrawals {
+  repeated Withdrawal withdrawals = 1;
+}
+
+message BankingDeposits {
+  repeated Deposit deposit = 1;
+}
+
+message BankingSeen {
+  repeated string refs = 1;
+  uint64 last_seen_eth_block = 2;
+}
+
+message BankingAssetActions {
+  repeated zeta.checkpoint.v1.AssetAction asset_action = 1;
+}
+
+message BankingRecurringTransfers {
+  zeta.checkpoint.v1.RecurringTransfers recurring_transfers = 1;
+}
+
+message BankingScheduledTransfers {
+  repeated zeta.checkpoint.v1.ScheduledTransferAtTime transfers_at_time = 1;
+}
+
+message BankingBridgeState {
+  zeta.checkpoint.v1.BridgeState bridge_state = 1;
+}
+
+message Checkpoint {
+  int64 next_cp = 1;
+}
+
+message DelegationLastReconciliationTime {
+  int64 last_reconciliation_time = 1;
+}
+
+message DelegationActive {
+  repeated zeta.Delegation delegations = 1;
+}
+
+message DelegationPending {
+  repeated zeta.Delegation delegations = 1;
+  repeated zeta.Delegation undelegation = 2;
+}
+
+message DelegationAuto {
+  repeated string parties = 1;
+}
+
+message ProposalData {
+  zeta.Proposal proposal = 1;
+  repeated zeta.Vote yes = 2;
+  repeated zeta.Vote no = 3;
+  repeated zeta.Vote invalid = 4;
+}
+
+message GovernanceEnacted {
+  repeated ProposalData proposals = 1;
+}
+
+message GovernanceActive {
+  repeated ProposalData proposals = 1;
+}
+
+message GovernanceNode {
+  repeated zeta.Proposal proposals = 1;
+}
+
+message StakingAccount {
+  string party = 1;
+  string balance = 2;
+  repeated zeta.events.v1.StakeLinking events = 3;
+}
+
+message StakingAccounts {
+  repeated StakingAccount accounts = 1;
+  string staking_asset_total_supply = 2;
+  zeta.StakeTotalSupply pending_stake_total_supply = 3;
+}
+
+message MatchingBook {
+  string market_id = 1;
+  repeated zeta.Order buy = 2;
+  repeated zeta.Order sell = 3;
+  string last_traded_price = 4;
+  bool auction = 5;
+  uint64 batch_id = 6;
+}
+
+message NetParams {
+  repeated zeta.NetworkParameter params = 1;
+}
+
+message DecimalMap {
+  int64 key = 1;
+  string val = 2;
+}
+
+message TimePrice {
+  int64 time = 1;
+  string price = 2;
+}
+
+message PriceVolume {
+  string price = 1;
+  uint64 volume = 2;
+}
+
+message PriceRange {
+  string min = 1;
+  string max = 2;
+  string ref = 3;
+}
+
+message PriceBound {
+  bool active = 1;
+  string up_factor = 2;
+  string down_factor = 3;
+  zeta.PriceMonitoringTrigger trigger = 4;
+}
+
+message PriceRangeCache {
+  PriceBound bound = 1;
+  PriceRange range = 2;
+}
+
+message CurrentPrice {
+  string price = 1;
+  uint64 volume = 2;
+}
+
+message PastPrice {
+  int64 time = 1;
+  string volume_weighted_price = 2;
+}
+
+message PriceMonitor {
+  bool initialised = 3;
+  repeated DecimalMap fp_horizons = 4;
+  int64 now = 5;
+  int64 update = 6;
+  repeated PriceBound bounds = 7;
+  int64 price_range_cache_time = 8;
+  repeated PriceRangeCache price_range_cache = 9;
+  int64 ref_price_cache_time = 10;
+  repeated DecimalMap ref_price_cache = 11;
+  repeated CurrentPrice prices_now = 12;
+  repeated PastPrice prices_past = 13;
+  bool consensus_reached = 14;
+}
+
+message AuctionState {
+  zeta.Market.TradingMode mode = 1;
+  zeta.Market.TradingMode default_mode = 2;
+  zeta.AuctionTrigger trigger = 3;
+  int64 begin = 4;
+  zeta.AuctionDuration end = 5;
+  bool start = 6;
+  bool stop = 7;
+  zeta.AuctionTrigger extension = 8;
+  bool extension_event_sent = 9;
+}
+
+message EquityShareLP {
+  string id = 1;
+  string stake = 2;
+  string share = 3;
+  string avg = 4;
+  string vshare = 5;
+}
+
+message EquityShare {
+  string mvp = 1;
+  bool opening_auction_ended = 2;
+  repeated EquityShareLP lps = 3;
+  string r = 4;
+  string p_mvp = 5;
+}
+
+message FeeSplitter {
+  int64 time_window_start = 1;
+  string trade_value = 2;
+  string avg = 3;
+  uint64 window = 4;
+}
+
+message Market {
+  zeta.Market market = 1;
+  PriceMonitor price_monitor = 2;
+  AuctionState auction_state = 3;
+  PeggedOrders pegged_orders = 4;
+  repeated zeta.Order expiring_orders = 5;
+  string last_best_bid = 6;
+  string last_best_ask = 7;
+  string last_mid_bid = 8;
+  string last_mid_ask = 9;
+  string last_market_value_proxy = 10;
+  int64 last_equity_share_distributed = 11;
+  EquityShare equity_share = 12;
+  string current_mark_price = 13;
+  string risk_factor_short = 14;
+  string risk_factor_long = 15;
+  bool risk_factor_consensus_reached = 16;
+  FeeSplitter fee_splitter = 17;
+  string settlement_data = 18;
+  int64 next_mark_to_market = 19;
+  string last_traded_price = 20;
+  repeated string parties = 21;
+  bool closed = 22;
+}
+
+message PeggedOrders {
+  repeated zeta.Order parked_orders = 2;
+}
+
+message ExecutionMarkets {
+  repeated Market markets = 1;
+}
+
+message Position {
+  string party_id = 1;
+  int64 size = 2;
+  int64 buy = 3;
+  int64 sell = 4;
+  string price = 5;
+  string buy_sum_product = 6;
+  string sell_sum_product = 7;
+  bool distressed = 8;
+}
+
+message MarketPositions {
+  string market_id = 1;
+  repeated Position positions = 2;
+}
+
+message SettlementState {
+  string market_id = 1;
+  string last_mark_price = 2;
+  repeated LastSettledPosition last_settled_positions = 3;
+  repeated SettlementTrade trades = 4;
+}
+
+message LastSettledPosition {
+  string party = 1;
+  int64 settled_position = 2;
+}
+
+message SettlementTrade {
+  string party_id = 1;
+  string price = 2;
+  string market_price = 3;
+  int64 size = 4;
+  int64 new_size = 5;
+}
+
+message AppState {
+  uint64 height = 1;
+  string block = 2;
+  int64 time = 3;
+  string chain_id = 4;
+}
+
+// EpochState details
+message EpochState {
+  // Sequence number that increases by one each epoch
+  uint64 seq = 1;
+  // Time at which this epoch started
+  int64 start_time = 3;
+  // Time at which this epoch should end
+  int64 expire_time = 4;
+  // Ready to start a new epoch
+  bool ready_to_start_new_epoch = 6;
+  // Ready to end epoch
+  bool ready_to_end_epoch = 7;
+}
+
+message RewardsPendingPayouts {
+  repeated ScheduledRewardsPayout scheduled_rewards_payout = 1;
+}
+
+message ScheduledRewardsPayout {
+  int64 payout_time = 1;
+  repeated RewardsPayout rewards_payout = 2;
+}
+
+message RewardsPayout {
+  string from_account = 1;
+  string asset = 2;
+  repeated RewardsPartyAmount reward_party_amount = 3;
+  string total_reward = 4;
+  string epoch_seq = 5;
+  int64 timestamp = 6;
+}
+
+message RewardsPartyAmount {
+  string party = 1;
+  string amount = 2;
+}
+
+// LimitState details
+message LimitState {
+  // Number of blocks into the bootstrapping phase
+  uint32 block_count = 1;
+  // Whether or not the limit on market proposals has been lifted
+  bool can_propose_market = 2;
+  // Whether or not the limit on asset proposals has been lifted
+  bool can_propose_asset = 3;
+  // Whether or not the genesis state is loaded
+  bool genesis_loaded = 4;
+  // Fields derived from the genesis state
+  bool propose_market_enabled = 5;
+  bool propose_asset_enabled = 6;
+  int64 propose_market_enabled_from = 7;
+  int64 propose_asset_enabled_from = 8;
+}
+
+message VoteSpamPolicy {
+  repeated PartyProposalVoteCount party_to_vote = 1;
+  repeated BannedParty banned_parties = 2;
+  repeated PartyTokenBalance token_balance = 3;
+  repeated BlockRejectStats recent_blocks_reject_stats = 4;
+  uint64 current_block_index = 5;
+  uint64 last_increase_block = 6;
+  uint64 current_epoch_seq = 7;
+  string min_voting_tokens_factor = 8;
+}
+
+message PartyProposalVoteCount {
+  string party = 1;
+  string proposal = 2;
+  uint64 count = 3;
+}
+
+message PartyTokenBalance {
+  string party = 1;
+  string balance = 2;
+}
+
+message BlockRejectStats {
+  uint64 rejected = 1;
+  uint64 total = 2;
+}
+
+message SpamPartyTransactionCount {
+  string party = 1;
+  uint64 count = 2;
+}
+
+message SimpleSpamPolicy {
+  string policy_name = 1;
+  repeated SpamPartyTransactionCount party_to_count = 2;
+  repeated BannedParty banned_parties = 3;
+  repeated PartyTokenBalance token_balance = 4;
+  uint64 current_epoch_seq = 5;
+}
+
+message NotarySigs {
+  string id = 1;
+  int32 kind = 2;
+  string node = 3;
+  string sig = 4;
+  bool pending = 5;
+}
+
+message Notary {
+  repeated NotarySigs notary_sigs = 1;
+}
+
+message StakeVerifierDeposited {
+  repeated StakeVerifierPending pending_deposited = 1;
+}
+
+message StakeVerifierRemoved {
+  repeated StakeVerifierPending pending_removed = 1;
+}
+
+message StakeVerifierPending {
+  string ethereum_address = 1;
+  string zeta_public_key = 2;
+  string amount = 3;
+  int64 block_time = 4;
+  uint64 block_number = 5;
+  uint64 log_index = 6;
+  string tx_id = 7;
+  string id = 8;
+}
+
+message PendingKeyRotation {
+  uint64 block_height = 1;
+  string node_id = 2;
+  string new_pub_key = 3;
+  uint32 new_pub_key_index = 4;
+}
+
+message PendingEthereumKeyRotation {
+  uint64 block_height = 1;
+  string node_id = 2;
+  string new_address = 3;
+  string submitter = 4;
+  string old_address = 5;
+}
+
+message Topology {
+  repeated ValidatorState validator_data = 1;
+  repeated string chain_keys = 2;
+  repeated PendingKeyRotation pending_pub_key_rotations = 3;
+  ValidatorPerformance validator_performance = 4;
+  repeated PendingEthereumKeyRotation pending_ethereum_key_rotations = 5;
+  ToplogySignatures signatures = 6;
+  repeated PendingEthereumKeyRotation unsolved_ethereum_key_rotations = 7;
+}
+
+message ToplogySignatures {
+  repeated PendingERC20MultisigControlSignature pending_signatures = 1;
+  repeated IssuedERC20MultisigControlSignature issued_signatures = 2;
+}
+
+message PendingERC20MultisigControlSignature {
+  string node_id = 1;
+  string ethereum_address = 2;
+  string nonce = 3;
+  uint64 epoch_seq = 4;
+  bool added = 5;
+}
+
+message IssuedERC20MultisigControlSignature {
+  string resource_id = 1;
+  string ethereum_address = 2;
+  string submitter_address = 3;
+}
+
+message ValidatorState {
+  zeta.events.v1.ValidatorUpdate validator_update = 1;
+  uint64 block_added = 2;
+  int32 status = 3;
+  uint64 status_change_block = 4;
+  uint64 last_block_with_positive_ranking = 5;
+  uint64 eth_events_forwarded = 6;
+  HeartbeatTracker heartbeat_tracker = 7;
+  int64 validator_power = 8;
+  zeta.RankingScore ranking_score = 9;
+}
+
+message HeartbeatTracker {
+  string expected_next_hash = 1;
+  int64 expected_next_hash_since = 2;
+  int32 block_index = 3;
+  repeated bool block_sigs = 4;
+}
+
+message PerformanceStats {
+  string validator_address = 1;
+  uint64 proposed = 2;
+  uint64 elected = 3;
+  uint64 voted = 4;
+  int64 last_height_voted = 5;
+  int64 last_height_proposed = 6;
+  int64 last_height_elected = 7;
+}
+
+message ValidatorPerformance {
+  repeated PerformanceStats validator_perf_stats = 1;
+}
+
+message LiquidityParameters {
+  string max_fee = 1;
+  string max_shape_size = 2;
+  string stake_to_obligation_factor = 3;
+  // Market ID these liquidity parameters apply to. Required for key generation
+  string market_id = 4;
+}
+
+message LiquidityPendingProvisions {
+  repeated string pending_provisions = 1;
+  // Market ID these liquidity provisions apply to. Required for key generation
+  string market_id = 2;
+}
+
+message LiquidityPartiesLiquidityOrders {
+  repeated PartyOrders party_orders = 1;
+  // Market ID these liquidity orders apply to. Required for key generation
+  string market_id = 2;
+}
+
+message PartyOrders {
+  string party = 1;
+  repeated zeta.Order orders = 2;
+}
+
+message LiquidityPartiesOrders {
+  repeated PartyOrders party_orders = 1;
+  // Market ID these orders apply to. Required for key generation
+  string market_id = 2;
+}
+
+message LiquidityProvisions {
+  repeated zeta.LiquidityProvision liquidity_provisions = 1;
+  // Market ID these provisions apply to. Required for key generation
+  string market_id = 2;
+}
+
+message LiquidityScores {
+  int32 running_average_counter = 1;
+  repeated LiquidityScore scores = 2;
+  string market_id = 3;
+}
+
+message LiquidityScore {
+  string score = 1;
+  string party_id = 2;
+}
+
+// Snapshot payload for floating point consensus
+message FloatingPointConsensus {
+  repeated NextTimeTrigger next_time_trigger = 1;
+  repeated StateVarInternalState state_variables = 2;
+}
+
+message StateVarInternalState {
+  string id = 1;
+  int32 state = 2;
+  string event_id = 3;
+  repeated FloatingPointValidatorResult validators_results = 4;
+  int32 rounds_since_meaningful_update = 5;
+}
+
+message FloatingPointValidatorResult {
+  string id = 1;
+  repeated zeta.KeyValueBundle bundle = 2;
+}
+
+message NextTimeTrigger {
+  string asset = 1;
+  string market = 2;
+  string id = 3;
+  int64 next_trigger = 4;
+}
+
+message MarketTracker {
+  repeated checkpoint.v1.MarketActivityTracker market_activity = 1;
+}
+
+message SignerEventsPerAddress {
+  string address = 1;
+  repeated zeta.events.v1.ERC20MultiSigSignerEvent events = 2;
+}
+
+message ERC20MultiSigTopologyVerified {
+  repeated string signers = 1;
+  repeated SignerEventsPerAddress events_per_address = 2;
+  zeta.events.v1.ERC20MultiSigThresholdSetEvent threshold = 3;
+  repeated string seen_events = 4;
+}
+
+message ERC20MultiSigTopologyPending {
+  repeated zeta.events.v1.ERC20MultiSigSignerEvent pending_signers = 1;
+  repeated zeta.events.v1.ERC20MultiSigThresholdSetEvent pending_threshold_set = 2;
+  repeated string witnessed_signers = 3;
+  repeated string witnessed_threshold_sets = 4;
+}
+
+message ProofOfWork {
+  repeated uint64 block_height = 1;
+  repeated string block_hash = 2;
+  repeated TransactionsAtHeight tx_at_height = 4;
+  repeated TransactionsAtHeight tid_at_height = 6;
+  repeated BannedParty banned = 7;
+  repeated ProofOfWorkParams pow_params = 8;
+  repeated ProofOfWorkState pow_state = 9;
+}
+
+message BannedParty {
+  string party = 1;
+  int64 until = 2;
+}
+
+message ProofOfWorkParams {
+  uint64 spam_pow_number_of_past_blocks = 1;
+  uint32 spam_pow_difficulty = 2;
+  string spam_pow_hash_function = 3;
+  uint64 spam_pow_number_of_tx_per_block = 4;
+  bool spam_pow_increasing_difficulty = 5;
+  uint64 from_block = 6;
+  int64 until_block = 7;
+}
+
+message ProofOfWorkState {
+  repeated ProofOfWorkBlockState pow_state = 1;
+}
+
+message ProofOfWorkBlockState {
+  uint64 block_height = 1;
+  repeated ProofOfWorkPartyStateForBlock party_state = 2;
+}
+
+message ProofOfWorkPartyStateForBlock {
+  string party = 1;
+  uint64 seen_count = 2;
+  uint64 observed_difficulty = 3;
+}
+
+message TransactionsAtHeight {
+  uint64 height = 1;
+  repeated string transactions = 2;
+}
+
+message ProtocolUpgradeProposals {
+  repeated zeta.events.v1.ProtocolUpgradeEvent active_proposals = 1;
+  AcceptedProtocolUpgradeProposal accepted_proposal = 2;
+}
+
+message AcceptedProtocolUpgradeProposal {
+  // Block height at which to perform the upgrade
+  uint64 upgrade_block_height = 1;
+  // Release tag for the zeta binary
+  string zeta_release_tag = 2;
+}

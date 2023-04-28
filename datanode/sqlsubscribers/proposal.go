@@ -1,0 +1,67 @@
+// Copyright (c) 2022 Gobalsky Labs Limited
+//
+// Use of this software is governed by the Business Source License included
+// in the LICENSE.DATANODE file and at https://www.mariadb.com/bsl11.
+//
+// Change Date: 18 months from the later of the date of the first publicly
+// available Distribution of this version of the repository, and 25 June 2022.
+//
+// On the date above, in accordance with the Business Source License, use
+// of this software will be governed by version 3 or later of the GNU General
+// Public License.
+
+package sqlsubscribers
+
+import (
+	"context"
+
+	"github.com/pkg/errors"
+
+	"github.com/zeta-protocol/zeta/core/events"
+	"github.com/zeta-protocol/zeta/datanode/entities"
+	"github.com/zeta-protocol/zeta/protos/zeta"
+)
+
+type ProposalEvent interface {
+	events.Event
+	ProposalID() string
+	PartyID() string
+	Proposal() zeta.Proposal
+}
+
+type proposalAdder interface {
+	AddProposal(context.Context, entities.Proposal) error
+}
+
+type Proposal struct {
+	subscriber
+	store proposalAdder
+}
+
+func NewProposal(store proposalAdder) *Proposal {
+	ps := &Proposal{
+		store: store,
+	}
+	return ps
+}
+
+func (ps *Proposal) Types() []events.Type {
+	return []events.Type{events.ProposalEvent}
+}
+
+func (ps *Proposal) Push(ctx context.Context, evt events.Event) error {
+	return ps.consume(ctx, evt.(ProposalEvent))
+}
+
+func (ps *Proposal) consume(ctx context.Context, event ProposalEvent) error {
+	protoProposal := event.Proposal()
+	proposal, err := entities.ProposalFromProto(&protoProposal, entities.TxHash(event.TxHash()))
+
+	// The timestamp in the proto proposal is the time of the initial proposal, not any update
+	proposal.ZetaTime = ps.zetaTime
+	if err != nil {
+		return errors.Wrap(err, "unable to parse proposal")
+	}
+
+	return errors.Wrap(ps.store.AddProposal(ctx, proposal), "error adding proposal")
+}
